@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noah — Tu Tutor Inteligente de Idiomas en Telegram</title>
+  <meta name="description" content="Aprende inglés y ruso de forma natural en Telegram con Noah, tu tutor IA de idiomas 24/7 con feedback interactivo, voz y base vectorial.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* ─── VARIABLES & DESIGN SYSTEM ──────────────────────────────────────── */
+    :root {
+      --bg-color: #05060b;
+      --card-bg: rgba(13, 17, 30, 0.6);
+      --card-border: rgba(255, 255, 255, 0.05);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      
+      --primary: #00f2fe;
+      --secondary: #4facfe;
+      --accent: #a18cd1;
+      --primary-gradient: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+      --accent-gradient: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+      --purple-glow: 0 0 25px rgba(161, 140, 209, 0.2);
+      --neon-glow: 0 0 25px rgba(0, 242, 254, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    /* ─── SCROLLBAR ──────────────────────────────────────────────────────── */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #05060b;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--primary-gradient);
+    }
+
+    /* ─── LAYOUT & HIGHLIGHTS ────────────────────────────────────────────── */
+    .glow-bg {
+      position: absolute;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(0, 242, 254, 0.08) 0%, rgba(79, 172, 254, 0) 70%);
+      top: -15%;
+      right: -10%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .glow-bg-left {
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(161, 140, 209, 0.05) 0%, rgba(251, 194, 235, 0) 70%);
+      top: 40%;
+      left: -15%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .glow-bg-bottom {
+      position: absolute;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(0, 242, 254, 0.05) 0%, rgba(79, 172, 254, 0) 75%);
+      bottom: -10%;
+      right: -20%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── STICKY HEADER ──────────────────────────────────────────────────── */
+    header {
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(5, 6, 11, 0.75);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+      transition: all 0.3s ease;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 26px;
+      font-weight: 900;
+      font-family: 'Outfit', sans-serif;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .logo i {
+      -webkit-text-fill-color: var(--primary);
+      filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.4));
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14.5px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .nav-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-size: 14.5px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-btn:hover {
+      background: var(--primary-gradient);
+      color: #05060b;
+      border-color: transparent;
+      transform: translateY(-2px);
+      box-shadow: var(--neon-glow);
+    }
+
+    /* ─── HERO SECTION ───────────────────────────────────────────────────── */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 60px 0 100px 0;
+      gap: 60px;
+    }
+
+    .hero-content {
+      flex: 1.2;
+      max-width: 650px;
+    }
+
+    .tagline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 242, 254, 0.08);
+      border: 1px solid rgba(0, 242, 254, 0.15);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-title {
+      font-size: 64px;
+      line-height: 1.05;
+      margin-bottom: 24px;
+      color: #fff;
+      font-weight: 900;
+    }
+
+    .hero-title span {
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 40px rgba(0, 242, 254, 0.15);
+    }
+
+    .hero-desc {
+      font-size: 18px;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+
+    .cta-container {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 48px;
+    }
+
+    .cta-btn {
+      background: var(--primary-gradient);
+      border: none;
+      color: #05060b;
+      padding: 18px 40px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 800;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.3s ease;
+      box-shadow: var(--neon-glow);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 0 35px rgba(0, 242, 254, 0.45);
+    }
+
+    /* Hero Quick Stats */
+    .hero-stats {
+      display: flex;
+      gap: 36px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 28px;
+    }
+
+    .hero-stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-stat-val {
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-stat-lbl {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* ─── INTERACTIVE PHONE CHAT MOCKUP ──────────────────────────────────── */
+    .hero-visual {
+      flex: 0.9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .phone-wrapper {
+      position: relative;
+    }
+
+    .phone-wrapper::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: var(--primary-gradient);
+      border-radius: 40px;
+      top: 12px;
+      left: 12px;
+      z-index: -1;
+      filter: blur(15px);
+      opacity: 0.25;
+    }
+
+    .phone-frame {
+      width: 350px;
+      height: 610px;
+      background: #0a0b12;
+      border: 8px solid #1c1e2d;
+      border-radius: 38px;
+      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Telegram header mock */
+    .phone-header {
+      background: #121422;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .phone-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--primary-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: #05060b;
+      font-size: 16px;
+    }
+
+    .phone-user-info {
+      flex: 1;
+    }
+
+    .phone-username {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .phone-status {
+      font-size: 11px;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: 500;
+    }
+
+    .phone-status::before {
+      content: '';
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      background-color: var(--primary);
+      border-radius: 50%;
+      box-shadow: 0 0 6px var(--primary);
+    }
+
+    /* Phone Chat Area */
+    .phone-chat {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: radial-gradient(circle at center, #0f111f 0%, #06070d 100%);
+    }
+
+    .msg {
+      max-width: 82%;
+      padding: 12px 14px;
+      border-radius: 18px;
+      font-size: 13px;
+      line-height: 1.45;
+      animation: popIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: translateY(12px) scale(0.96); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .msg.user {
+      align-self: flex-end;
+      background: #3182ce;
+      color: #fff;
+      border-bottom-right-radius: 4px;
+    }
+
+    .msg.bot {
+      align-self: flex-start;
+      background: #181b2a;
+      color: #f1f5f9;
+      border-bottom-left-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .msg.bot p {
+      margin-bottom: 6px;
+    }
+
+    .msg.bot p:last-child {
+      margin-bottom: 0;
+    }
+
+    .correction-box {
+      background: rgba(239, 68, 68, 0.08);
+      border-left: 3px solid #ef4444;
+      padding: 6px 10px;
+      margin: 8px 0;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+
+    .success-box {
+      background: rgba(16, 185, 129, 0.08);
+      border-left: 3px solid #10b981;
+      padding: 6px 10px;
+      margin: 8px 0;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+
+    .msg-typing {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 12px 20px;
+      background: #181b2a;
+      border-radius: 18px;
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+      width: 70px;
+      justify-content: center;
+    }
+
+    .dot {
+      width: 5px;
+      height: 5px;
+      background: var(--text-muted);
+      border-radius: 50%;
+      animation: bounce 1.4s infinite ease-in-out both;
+    }
+
+    .dot:nth-child(1) { animation-delay: -0.32s; }
+    .dot:nth-child(2) { animation-delay: -0.16s; }
+
+    @keyframes bounce {
+      0%, 80%, 100% { transform: scale(0); }
+      40% { transform: scale(1.0); }
+    }
+
+    /* Suggestion Pills at Bottom of phone */
+    .phone-footer {
+      background: #121422;
+      padding: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .phone-suggestions-title {
+      font-size: 10.5px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .pills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+    }
+
+    .pill-btn {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      color: #cbd5e1;
+      padding: 8px 12px;
+      border-radius: 50px;
+      font-size: 11px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-weight: 500;
+    }
+
+    .pill-btn:hover {
+      background: var(--primary-gradient);
+      color: #05060b;
+      border-color: transparent;
+      transform: translateY(-1px);
+    }
+
+    /* ─── METHODOLOGY SECTION (PASOS) ────────────────────────────────────── */
+    .methodology {
+      padding: 100px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.02);
+      position: relative;
+    }
+
+    .steps-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      margin-top: 50px;
+    }
+
+    .step-item {
+      flex: 1;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 40px 30px;
+      border-radius: 24px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .step-item:hover {
+      transform: translateY(-5px);
+      border-color: rgba(0, 242, 254, 0.2);
+    }
+
+    .step-num {
+      position: absolute;
+      top: -24px;
+      left: 30px;
+      width: 48px;
+      height: 48px;
+      background: var(--primary-gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 900;
+      color: #05060b;
+      box-shadow: var(--neon-glow);
+    }
+
+    .step-title {
+      font-size: 22px;
+      margin: 10px 0 12px 0;
+      color: #fff;
+    }
+
+    .step-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ─── COMPARATIVE TABLE ──────────────────────────────────────────────── */
+    .compare-section {
+      padding: 100px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.02);
+    }
+
+    .table-wrapper {
+      margin-top: 50px;
+      overflow-x: auto;
+      border-radius: 24px;
+      border: 1px solid var(--card-border);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card-bg);
+      text-align: left;
+    }
+
+    th, td {
+      padding: 22px 28px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      font-size: 14.5px;
+    }
+
+    th {
+      background: #0d0f1a;
+      color: #fff;
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    td:first-child {
+      font-weight: 600;
+      color: #fff;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .highlight-cell {
+      background: rgba(0, 242, 254, 0.03);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .check-yes {
+      color: #10b981;
+      font-size: 18px;
+      margin-right: 6px;
+    }
+
+    .check-no {
+      color: #ef4444;
+      font-size: 18px;
+      margin-right: 6px;
+    }
+
+    /* ─── LEVELS SECTION ─────────────────────────────────────────────────── */
+    .levels {
+      padding: 100px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.02);
+    }
+
+    .levels-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .level-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 40px 30px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .level-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--purple-glow);
+      border-color: rgba(161, 140, 209, 0.2);
+    }
+
+    .level-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 700;
+      background: rgba(161, 140, 209, 0.1);
+      color: #fbc2eb;
+      margin-bottom: 20px;
+      border: 1px solid rgba(161, 140, 209, 0.2);
+    }
+
+    .level-card:nth-child(1) .level-badge {
+      background: rgba(0, 242, 254, 0.1);
+      color: var(--primary);
+      border-color: rgba(0, 242, 254, 0.2);
+    }
+
+    .level-card:nth-child(2) .level-badge {
+      background: rgba(79, 172, 254, 0.1);
+      color: var(--secondary);
+      border-color: rgba(79, 172, 254, 0.2);
+    }
+
+    .level-card-num {
+      font-size: 40px;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .level-card-title {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+
+    .level-card-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ─── FEATURES SECTION ────────────────────────────────────────────────── */
+    .features {
+      padding: 100px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.02);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title {
+      font-size: 44px;
+      margin-bottom: 16px;
+      color: #fff;
+      font-weight: 800;
+    }
+
+    .section-desc {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 40px 30px;
+      border-radius: 24px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(0, 242, 254, 0.2);
+      box-shadow: 0 20px 40px -15px rgba(0, 242, 254, 0.1);
+    }
+
+    .card-icon {
+      width: 50px;
+      height: 50px;
+      background: rgba(0, 242, 254, 0.06);
+      border: 1px solid rgba(0, 242, 254, 0.15);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: var(--primary);
+      margin-bottom: 24px;
+    }
+
+    .card-title {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+
+    .card-text {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ─── FAQ SECTION ────────────────────────────────────────────────────── */
+    .faq {
+      padding: 100px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.02);
+    }
+
+    .faq-container {
+      max-width: 800px;
+      margin: 40px auto 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .faq-header {
+      padding: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .faq-header h3 {
+      font-size: 16.5px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .faq-icon {
+      font-size: 14px;
+      color: var(--primary);
+      transition: transform 0.3s ease;
+    }
+
+    .faq-content {
+      padding: 0 24px;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .faq-content p {
+      padding-bottom: 24px;
+      font-size: 14.5px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .faq-item.active {
+      border-color: rgba(0, 242, 254, 0.2);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(180deg);
+    }
+
+    /* ─── CALL TO ACTION SECTION ────────────────────────────────────────── */
+    .cta-block {
+      padding: 100px 0;
+      text-align: center;
+      background: radial-gradient(circle at 50% 50%, rgba(0, 242, 254, 0.05) 0%, rgba(5, 6, 11, 1) 70%);
+      border-top: 1px solid rgba(255, 255, 255, 0.02);
+    }
+
+    .cta-block-title {
+      font-size: 48px;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .cta-block-desc {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 40px auto;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────────────────────── */
+    footer {
+      padding: 60px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.02);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    footer p {
+      margin-bottom: 12px;
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    /* ─── RESPONSIVENESS ──────────────────────────────────────────────────── */
+    @media (max-width: 968px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-bottom: 60px;
+      }
+      
+      .hero-content {
+        max-width: 100%;
+      }
+
+      .hero-title {
+        font-size: 44px;
+      }
+
+      .cta-container {
+        justify-content: center;
+      }
+
+      .hero-stats {
+        justify-content: center;
+      }
+
+      .hero-visual {
+        margin-top: 40px;
+      }
+
+      .steps-container {
+        flex-direction: column;
+        gap: 50px;
+      }
+
+      .levels-grid {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-bg"></div>
+  <div class="glow-bg-left"></div>
+  <div class="glow-bg-bottom"></div>
+
+  <!-- HEADER -->
+  <div class="container">
+    <header>
+      <div class="logo">
+        <i class="fa-solid fa-graduation-cap"></i> NOAH
+      </div>
+      <nav>
+        <a href="#metodologia">Metodología</a>
+        <a href="#comparativa">Comparativa</a>
+        <a href="#niveles">Plan de Estudios</a>
+        <a href="#faq">Preguntas Frecuentes</a>
+      </nav>
+      <a href="https://t.me/NoahLanguageBot" target="_blank" class="nav-btn">
+        <i class="fa-brands fa-telegram"></i> Ir al Bot
+      </a>
+    </header>
+  </div>
+
+  <!-- HERO SECTION -->
+  <div class="container">
+    <section class="hero">
+      <div class="hero-content">
+        <div class="tagline">
+          <i class="fa-solid fa-sparkles"></i> Tutor Inteligente IA 24/7
+        </div>
+        <h1 class="hero-title">
+          Domina el <span>Inglés</span> y <span>Ruso</span> hablando por Telegram
+        </h1>
+        <p class="hero-desc">
+          Noah es el compañero de aprendizaje definitivo. Un tutor inteligente interactivo con el que conversas de forma natural por texto o notas de voz, recibiendo explicaciones pedagógicas en español y correcciones en tiempo real.
+        </p>
+        <div class="cta-container">
+          <a href="https://t.me/NoahLanguageBot" target="_blank" class="cta-btn">
+            <i class="fa-brands fa-telegram"></i> Empezar en Telegram gratis
+          </a>
+        </div>
+        
+        <div class="hero-stats">
+          <div class="hero-stat-item">
+            <div class="hero-stat-val">100</div>
+            <div class="hero-stat-lbl">Niveles Adaptativos</div>
+          </div>
+          <div class="hero-stat-item">
+            <div class="hero-stat-val">24/7</div>
+            <div class="hero-stat-lbl">Disponibilidad</div>
+          </div>
+          <div class="hero-stat-item">
+            <div class="hero-stat-val">0</div>
+            <div class="hero-stat-lbl">Juicios o Vergüenza</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE MOBILE CHAT PREVIEW -->
+      <div class="hero-visual">
+        <div class="phone-wrapper">
+          <div class="phone-frame">
+            <div class="phone-header">
+              <div class="phone-avatar">N</div>
+              <div class="phone-user-info">
+                <div class="phone-username">Tutor Noah 🤖</div>
+                <div class="phone-status">en línea</div>
+              </div>
+              <div class="phone-actions">
+                <i class="fa-solid fa-ellipsis-vertical" style="color: var(--text-muted);"></i>
+              </div>
+            </div>
+
+            <div class="phone-chat" id="chatContainer">
+              <!-- Initial Bot Welcome Message -->
+              <div class="msg bot">
+                <p>👋 ¡Hola! Soy <b>Noah</b>, tu tutor personal de idiomas.</p>
+                <p>Escribe una frase en inglés o ruso para practicar, o haz clic en uno de los ejemplos de abajo y mira cómo te corrijo al instante en español. 🚀</p>
+              </div>
+            </div>
+
+            <div class="phone-footer">
+              <div class="phone-suggestions-title">Toca un ejemplo para interactuar:</div>
+              <div class="pills-container">
+                <button class="pill-btn" onclick="sendMockMessage('yesterday')">🇺🇸 Yesterday I go to cinema</button>
+                <button class="pill-btn" onclick="sendMockMessage('russian')">🇷🇺 Я хотеть кофе</button>
+                <button class="pill-btn" onclick="sendMockMessage('status')">📊 /infot (Mi Progreso)</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- METHODOLOGY SECTION (PASOS) -->
+  <section class="methodology" id="metodologia">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">¿Cómo funciona la metodología Noah?</h2>
+        <p class="section-desc">Nos basamos en la adquisición natural y práctica del idioma, imitando la manera en la que los niños aprenden: conversando y asociando conceptos.</p>
+      </div>
+
+      <div class="steps-container">
+        <!-- Paso 1 -->
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <h3 class="step-title">Charla Natural</h3>
+          <p class="step-desc">Tú inicias la conversación por texto o enviando notas de voz. Noah te planteará dinámicas de conversación ajustadas exactamente al tema y vocabulario de tu nivel actual.</p>
+        </div>
+        <!-- Paso 2 -->
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <h3 class="step-title">Feedback Inmediato</h3>
+          <p class="step-desc">Si cometes un desliz ortográfico o de pronunciación, la IA detecta tu error y te responde explicándote detalladamente en español el por qué de la corrección.</p>
+        </div>
+        <!-- Paso 3 -->
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <h3 class="step-title">Memoria a Largo Plazo</h3>
+          <p class="step-desc">El error corregido no se olvida. Se registra en una base de datos vectorial para que, en futuras sesiones, Noah traiga a colación ese mismo tema y consolides el aprendizaje.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARATIVE TABLE SECTION -->
+  <section class="compare-section" id="comparativa">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Noah vs. Otras Alternativas</h2>
+        <p class="section-desc">Descubre por qué Noah ofrece una experiencia educativa inigualable frente a métodos tradicionales y aplicaciones de gamificación.</p>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Característica</th>
+              <th class="highlight-cell">Tutor Noah 🤖</th>
+              <th>Duolingo 🦉</th>
+              <th>Clases Tradicionales 🏫</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Conversación 100% Libre</td>
+              <td class="highlight-cell"><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Sí, sin límites</td>
+              <td><span class="check-no"><i class="fa-solid fa-circle-xmark"></i></span> No (Frases fijas)</td>
+              <td><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Sí, pero limitada</td>
+            </tr>
+            <tr>
+              <td>Entendimiento de Notas de Voz</td>
+              <td class="highlight-cell"><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Sí, con IA Groq Whisper</td>
+              <td><span class="check-no"><i class="fa-solid fa-circle-xmark"></i></span> No (Solo repetición simple)</td>
+              <td><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Sí, con el docente</td>
+            </tr>
+            <tr>
+              <td>Correcciones explicadas en Español</td>
+              <td class="highlight-cell"><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Sí, análisis gramatical</td>
+              <td><span class="check-no"><i class="fa-solid fa-circle-xmark"></i></span> No (Solo correcto/incorrecto)</td>
+              <td><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Sí</td>
+            </tr>
+            <tr>
+              <td>Memoria Histórica de tus Errores</td>
+              <td class="highlight-cell"><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Sí (Base vectorial ChromaDB)</td>
+              <td><span class="check-no"><i class="fa-solid fa-circle-xmark"></i></span> No</td>
+              <td><span class="check-no"><i class="fa-solid fa-circle-xmark"></i></span> Solo si el docente se acuerda</td>
+            </tr>
+            <tr>
+              <td>Costo Mensual</td>
+              <td class="highlight-cell"><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Gratis / Ultra Bajo costo</td>
+              <td><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Gratis (con anuncios molestos)</td>
+              <td><span class="check-no"><i class="fa-solid fa-circle-xmark"></i></span> Muy Caro ($$$)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLAN DE ESTUDIOS SECTION -->
+  <section class="levels" id="niveles">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Plan de Estudios: 100 Niveles</h2>
+        <p class="section-desc">Tu progreso se mide bajo el Marco Común Europeo de Referencia (MCER). Avanzas desbloqueando temáticas especializadas a tu propio ritmo.</p>
+      </div>
+
+      <div class="levels-grid">
+        <!-- Bloque 1 -->
+        <div class="level-card">
+          <div class="level-badge">Principiante (A1 - A2)</div>
+          <div class="level-card-num">1 - 30</div>
+          <h3 class="level-card-title">Supervivencia y Rutina</h3>
+          <p class="level-card-desc">Aprende a presentarte, pedir en un restaurante, comprar ropa, dar direcciones y hablar de tus hobbies. Diseñado para perder el miedo a hablar.</p>
+        </div>
+        <!-- Bloque 2 -->
+        <div class="level-card">
+          <div class="level-badge">Intermedio (B1 - B2)</div>
+          <div class="level-card-num">31 - 70</div>
+          <h3 class="level-card-title">Autonomía y Debate</h3>
+          <p class="level-card-desc">Domina narraciones en pasado y futuro, redacta opiniones sobre películas, debates sobre tecnología, mantén conversaciones de trabajo y expresa hipótesis complejas.</p>
+        </div>
+        <!-- Bloque 3 -->
+        <div class="level-card">
+          <div class="level-badge">Avanzado (C1 - C2)</div>
+          <div class="level-card-num">71 - 100</div>
+          <h3 class="level-card-title">Fluidez y Maestría</h3>
+          <p class="level-card-desc">Vocabulario técnico y corporativo, modismos culturales complejos, ironía y matices emocionales en conversaciones de alta exigencia profesional.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">El poder de la IA conversacional en tu bolsillo</h2>
+        <p class="section-desc">Un ecosistema tecnológico robusto diseñado exclusivamente para acelerar tu aprendizaje.</p>
+      </div>
+
+      <div class="grid">
+        <!-- Feature 1 -->
+        <div class="card">
+          <div class="card-icon"><i class="fa-solid fa-circle-play"></i></div>
+          <h3 class="card-title">Typing Streaming</h3>
+          <p class="card-text">Las respuestas del tutor se transmiten letra por letra en tiempo real en Telegram, emulando la sensación de chatear con un nativo en vivo.</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="card">
+          <div class="card-icon"><i class="fa-solid fa-microphone"></i></div>
+          <h3 class="card-title">Audio en Memoria</h3>
+          <p class="card-text">Transcribe tus audios al instante usando Groq Whisper. Todo el procesamiento de audio ocurre en memoria sin escribir en disco, lo que da una velocidad insólita.</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="card">
+          <div class="card-icon"><i class="fa-solid fa-id-card"></i></div>
+          <h3 class="card-title">Tarjetas de Rango Dinámicas</h3>
+          <p class="card-text">Cada vez que subes de nivel, Noah genera y te envía una imagen personalizada con tu nuevo rango, racha de días y tus estadísticas de estudio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Preguntas Frecuentes</h2>
+        <p class="section-desc">Todo lo que necesitas saber antes de empezar a aprender con el tutor Noah.</p>
+      </div>
+
+      <div class="faq-container">
+        <!-- FAQ 1 -->
+        <div class="faq-item">
+          <div class="faq-header" onclick="toggleFaq(this)">
+            <h3>¿Cómo me evalúa Noah?</h3>
+            <i class="fa-solid fa-chevron-down faq-icon"></i>
+          </div>
+          <div class="faq-content">
+            <p>Noah evalúa de forma asíncrona cada uno de tus mensajes en segundo plano. Analiza tu ortografía, coherencia gramatical y el uso de vocabulario recomendado para tu nivel. Al final de cada sesión de conversación te informará si estás listo para subir de nivel.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item">
+          <div class="faq-header" onclick="toggleFaq(this)">
+            <h3>¿Qué idiomas puedo aprender?</h3>
+            <i class="fa-solid fa-chevron-down faq-icon"></i>
+          </div>
+          <div class="faq-content">
+            <p>Actualmente el bot está especializado en Inglés y Ruso. Para ruso, el tutor te proporciona los caracteres en cirílico seguidos de su transcripción fonética en español en paréntesis, para facilitar drásticamente la pronunciación.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item">
+          <div class="faq-header" onclick="toggleFaq(this)">
+            <h3>¿Cómo funciona el envío de audios?</h3>
+            <i class="fa-solid fa-chevron-down faq-icon"></i>
+          </div>
+          <div class="faq-content">
+            <p>Puedes pulsar el botón de micrófono en Telegram y enviar una nota de voz de forma natural. Noah la transcribirá mediante el motor ultra rápido Groq Whisper y procesará el texto tal como si hubieses escrito, detectando también tu entonación.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item">
+          <div class="faq-header" onclick="toggleFaq(this)">
+            <h3>¿Pierdo mi progreso si detengo el bot?</h3>
+            <i class="fa-solid fa-chevron-down faq-icon"></i>
+          </div>
+          <div class="faq-content">
+            <p>No. Noah cuenta con una base de datos persistente dinámica. Cuando utilices el comando /start de nuevo, el sistema te dará la bienvenida y recordará exactamente en qué nivel estabas y cuál era tu historial, protegiendo todo tu esfuerzo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALL TO ACTION -->
+  <section class="cta-block">
+    <div class="container">
+      <h2 class="cta-block-title">¿Listo para llevar tu bilingüismo al siguiente nivel?</h2>
+      <p class="cta-block-desc">Conversa con Noah hoy mismo. Sin cuotas de registro, sin exámenes estresantes. A tu propio ritmo.</p>
+      <a href="https://t.me/NoahLanguageBot" target="_blank" class="cta-btn">
+        <i class="fa-brands fa-telegram"></i> Empezar en Telegram Gratis
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Noah Language Project. Desarrollado con 💖 para revolucionar el aprendizaje de idiomas.</p>
+      <p>¿Tienes dudas? <a href="https://t.me/NoahLanguageBot" target="_blank">Escríbele a Noah en Telegram</a></p>
+    </div>
+  </footer>
+
+  <!-- INTERACTIVE WEB CHAT & FAQ SCRIPTS -->
+  <script>
+    const chatContainer = document.getElementById('chatContainer');
+    let isTyping = false;
+
+    async function sendMockMessage(type) {
+      if (isTyping) return;
+      isTyping = true;
+
+      // 1. Mostrar mensaje del usuario
+      let userText = '';
+      if (type === 'yesterday') userText = 'Yesterday I go to the cinema with my friends';
+      else if (type === 'russian') userText = 'Привет! Я хотеть кофе, пожалуйста';
+      else if (type === 'status') userText = '/infot';
+
+      appendMessage(userText, 'user');
+
+      // Desplazar al final
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+
+      // 2. Mostrar "Tutor escribiendo..."
+      const typingIndicator = appendTypingIndicator();
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+
+      // Delay interactivo simulando red
+      await new Promise(r => setTimeout(r, 1500));
+
+      // Quitar indicador de escritura
+      typingIndicator.remove();
+
+      // 3. Generar y mostrar respuesta del bot
+      let botResponse = '';
+      if (type === 'yesterday') {
+        botResponse = `
+          <p>✍️ <b>¡Buen intento!</b> Has cometido un pequeño desliz con el tiempo pasado.</p>
+          <div class="correction-box">
+            ✗ <i>Yesterday I go...</i><br>
+            ✓ <b>Yesterday I went to the cinema with my friends.</b> 
+            <button onclick="speakText('Yesterday I went to the cinema with my friends', 'en')" style="background:none; border:none; color:var(--primary); cursor:pointer; font-size:14px; margin-left:8px; display:inline-flex; align-items:center; vertical-align:middle;" title="Escuchar pronunciación">
+              <i class="fa-solid fa-volume-high"></i>
+            </button>
+          </div>
+          <p>💡 <b>Explicación:</b> El verbo <i>"go"</i> es irregular, por lo que su pasado es <b>"went"</b>. ¿Qué película fuiste a ver? ¡Respóndeme en inglés! 😊</p>
+        `;
+      } else if (type === 'russian') {
+        botResponse = `
+          <p>🇷🇺 <b>¡Отлично! (¡Excelente!)</b> Se entiende perfectamente lo que quieres decir, pero podemos hacerlo sonar más natural.</p>
+          <div class="correction-box">
+            ✗ <i>Я хотеть кофе...</i> (Estás usando el verbo en infinitivo "querer")<br>
+            ✓ <b>Я хочу кофе, пожалуйста.</b>
+            <button onclick="speakText('Я хочу кофе, пожалуйста', 'ru')" style="background:none; border:none; color:var(--primary); cursor:pointer; font-size:14px; margin-left:8px; display:inline-flex; align-items:center; vertical-align:middle;" title="Слушать произношение">
+              <i class="fa-solid fa-volume-high"></i>
+            </button>
+          </div>
+          <p>💡 <b>Explicación:</b> Para decir "yo quiero", conjugamos el verbo <i>хотеть</i> en primera persona del singular, convirtiéndose en <b>"хочу"</b>. ¡Vas muy bien con el ruso! ☕</p>
+        `;
+      } else if (type === 'status') {
+        botResponse = `
+          <p>📊 <b>Estadísticas de Estudio — Alumno</b><br>
+          ━━━━━━━━━━━━━━━━━━━━<br>
+          🎯 Nivel actual: <b>Nivel 14 — En el Restaurante (A2)</b><br>
+          🔥 Racha activa: <b>5 día(s) seguidos</b><br>
+          📚 Vocabulario aprendido: <b>78 palabras</b><br>
+          💬 Clases completadas: <b>8 sesiones</b><br>
+          ⚠️ Errores corregidos: <b>12 frecuentes</b></p>
+          <div class="success-box">
+            🎉 ¡Estás a solo 1 lección de subir al Nivel 15! ¡Sigue practicando!
+          </div>
+        `;
+      }
+
+      appendMessage(botResponse, 'bot');
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+      isTyping = false;
+    }
+
+    // Función de síntesis de voz (Text to Speech) nativa del navegador
+    function speakText(text, lang) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel(); // Cancelar cualquier audio anterior
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = lang === 'ru' ? 'ru-RU' : 'en-US';
+        utterance.pitch = 1.0;
+        utterance.rate = 0.85; // Un ritmo ligeramente lento para fines pedagógicos
+        window.speechSynthesis.speak(utterance);
+      } else {
+        alert('Tu navegador o dispositivo no soporta la síntesis de voz para este idioma.');
+      }
+    }
+
+    function appendMessage(content, sender) {
+      const msgDiv = document.createElement('div');
+      msgDiv.classList.add('msg', sender);
+      msgDiv.innerHTML = content;
+      chatContainer.appendChild(msgDiv);
+      return msgDiv;
+    }
+
+    function appendTypingIndicator() {
+      const typingDiv = document.createElement('div');
+      typingDiv.classList.add('msg-typing');
+      typingDiv.innerHTML = '<div class="dot"></div><div class="dot"></div><div class="dot"></div>';
+      chatContainer.appendChild(typingDiv);
+      return typingDiv;
+    }
+
+    // FAQ Accordion Toggle
+    function toggleFaq(header) {
+      const item = header.parentElement;
+      const content = item.querySelector('.faq-content');
+      const isActive = item.classList.contains('active');
+
+      // Cerrar otros abiertos
+      document.querySelectorAll('.faq-item').forEach(el => {
+        if (el !== item) {
+          el.classList.remove('active');
+          el.querySelector('.faq-content').style.maxHeight = null;
+        }
+      });
+
+      if (isActive) {
+        item.classList.remove('active');
+        content.style.maxHeight = null;
+      } else {
+        item.classList.add('active');
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+    }
+  </script>
+
+</body>
+</html>
