@@ -168,8 +168,25 @@ export function updateMaxLevel(idUsuario, nivel) {
  * Si sí, sube el nivel y retorna true.
  */
 export function checkAndLevelUp(idUsuario, sessionsRequired = 2) {
-  const recent = getLastNSessions(idUsuario, sessionsRequired);
-  if (recent.length < sessionsRequired) return false;
+  const activeSession = getActiveSession(idUsuario);
+  if (!activeSession) return false;
+
+  if (sessionsRequired === 1) {
+    if (activeSession.listo_para_subir === 1) {
+      const user = getUser(idUsuario);
+      const newLevel = (user.nivel_actual || 1) + 1;
+      if (newLevel > 100) return false;
+
+      updateUser(idUsuario, { nivel_actual: newLevel });
+      updateMaxLevel(idUsuario, newLevel);
+      return newLevel;
+    }
+    return false;
+  }
+
+  const recent = getLastNSessions(idUsuario, sessionsRequired - 1);
+  if (activeSession.listo_para_subir !== 1) return false;
+  if (recent.length < sessionsRequired - 1) return false;
 
   const allReady = recent.every(s => s.listo_para_subir === 1);
   if (!allReady) return false;

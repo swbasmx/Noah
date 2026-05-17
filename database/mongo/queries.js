@@ -231,8 +231,32 @@ export async function updateMaxLevel(idUsuario, nivel) {
 // ─── LEVEL UP ────────────────────────────────────────────────────────────────
 
 export async function checkAndLevelUp(idUsuario, sessionsRequired = 2) {
-  const recent = await getLastNSessions(idUsuario, sessionsRequired);
-  if (recent.length < sessionsRequired) return false;
+  const activeSession = await getActiveSession(idUsuario);
+  if (!activeSession) return false;
+
+  if (sessionsRequired === 1) {
+    if (activeSession.listo_para_subir === 1) {
+      const user = await getUser(idUsuario);
+      const newLevel = (user.nivel_actual || 1) + 1;
+      if (newLevel > 100) return false;
+
+      await updateUser(idUsuario, { nivel_actual: newLevel });
+      await updateMaxLevel(idUsuario, newLevel);
+      return newLevel;
+    }
+    return false;
+  }
+
+  // Obtener las sesiones cerradas más recientes
+  const docs = await getSessionsCol()
+    .find({ id_usuario: Number(idUsuario), fecha_fin: { $ne: null } })
+    .sort({ fecha_inicio: -1 })
+    .limit(sessionsRequired - 1)
+    .toArray();
+  const recent = docs.map(s => ({ ...s, id: s._id.toString() }));
+
+  if (activeSession.listo_para_subir !== 1) return false;
+  if (recent.length < sessionsRequired - 1) return false;
 
   const allReady = recent.every(s => s.listo_para_subir === 1);
   if (!allReady) return false;
