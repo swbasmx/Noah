@@ -458,7 +458,13 @@ async function processTextChat(ctx, user, userMsg, openai, statusMsgId = null) {
       await saveConversationTurn(userId, userMsg, finalVisible, user.nivel_actual);
 
       // Procesar errores detectados
-      const sessionErrors = JSON.parse(activeSession.errores_sesion || '[]');
+      let sessionErrors = [];
+      if (activeSession.errores_sesion) {
+        sessionErrors = Array.isArray(activeSession.errores_sesion)
+          ? activeSession.errores_sesion
+          : JSON.parse(activeSession.errores_sesion || '[]');
+      }
+
       if (evaluation.errores_detectados && evaluation.errores_detectados.length > 0) {
         for (const err of evaluation.errores_detectados) {
           // Guardar en Base de Datos activa
@@ -484,7 +490,13 @@ async function processTextChat(ctx, user, userMsg, openai, statusMsgId = null) {
       }
 
       // Procesar palabras del nivel utilizadas
-      const sessionWords = JSON.parse(activeSession.palabras_nuevas_usadas || '[]');
+      let sessionWords = [];
+      if (activeSession.palabras_nuevas_usadas) {
+        sessionWords = Array.isArray(activeSession.palabras_nuevas_usadas)
+          ? activeSession.palabras_nuevas_usadas
+          : JSON.parse(activeSession.palabras_nuevas_usadas || '[]');
+      }
+
       if (evaluation.palabras_nivel_usadas_correctamente && evaluation.palabras_nivel_usadas_correctamente.length > 0) {
         for (const w of evaluation.palabras_nivel_usadas_correctamente) {
           if (!sessionWords.includes(w)) sessionWords.push(w);
