@@ -30,6 +30,7 @@ export const {
   touchSession,
   openSession,
   closeSession,
+  updateSession,
   getLastNSessions,
   saveError,
   getTopErrors,

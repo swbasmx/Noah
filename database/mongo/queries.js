@@ -118,12 +118,34 @@ export async function closeSession(sessionId, extras = {}) {
   );
 }
 
+export async function updateSession(sessionId, extras = {}) {
+  let queryId;
+  try {
+    queryId = new ObjectId(sessionId);
+  } catch (err) {
+    queryId = sessionId;
+  }
+
+  await getSessionsCol().updateOne(
+    { _id: queryId },
+    {
+      $set: {
+        mensajes_totales: extras.mensajes_totales ?? 0,
+        errores_sesion: extras.errores_sesion ?? [],
+        palabras_nuevas_usadas: extras.palabras_nuevas_usadas ?? [],
+        listo_para_subir: extras.listo_para_subir ? 1 : 0
+      }
+    }
+  );
+}
+
 export async function getLastNSessions(idUsuario, n = 2) {
-  return await getSessionsCol()
+  const docs = await getSessionsCol()
     .find({ id_usuario: Number(idUsuario) })
     .sort({ fecha_inicio: -1 })
     .limit(n)
     .toArray();
+  return docs.map(s => ({ ...s, id: s._id.toString() }));
 }
 
 // ─── ERRORES ─────────────────────────────────────────────────────────────────
@@ -225,5 +247,9 @@ export async function checkAndLevelUp(idUsuario, sessionsRequired = 2) {
 }
 
 export async function getActiveSession(idUsuario) {
-  return await getSessionsCol().findOne({ id_usuario: Number(idUsuario), fecha_fin: null });
+  const session = await getSessionsCol().findOne({ id_usuario: Number(idUsuario), fecha_fin: null });
+  if (session) {
+    session.id = session._id.toString();
+  }
+  return session;
 }

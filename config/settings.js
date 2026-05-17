@@ -27,7 +27,7 @@ export const settings = {
   session: {
     maxHistory:      parseInt(process.env.MAX_HISTORY_MESSAGES)          || 15,
     maxChromaResults: parseInt(process.env.MAX_CHROMA_RESULTS)           || 3,
-    sessionsToLevelUp: parseInt(process.env.SESSIONS_REQUIRED_TO_LEVEL_UP) || 2,
+    sessionsToLevelUp: parseInt(process.env.SESSIONS_REQUIRED_TO_LEVEL_UP) || 1,
   },
   tutor: {
     name: process.env.TUTOR_NAME || 'Noah',

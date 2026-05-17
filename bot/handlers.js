@@ -7,6 +7,7 @@ import {
   checkAndLevelUp,
   openSession,
   closeSession,
+  updateSession,
   incrementProgress,
   getActiveSession,
   updateUser
@@ -505,9 +506,9 @@ async function processTextChat(ctx, user, userMsg, openai, statusMsgId = null) {
         await incrementProgress(userId, { palabras: evaluation.palabras_nivel_usadas_correctamente.length });
       }
 
-      // Actualizar sesión activa
+      // Actualizar sesión activa sin cerrarla (manteniendo fecha_fin en null)
       const readyToLevelUp = evaluation.listo_para_subir_de_nivel ? 1 : 0;
-      await closeSession(activeSession.id, {
+      await updateSession(activeSession.id, {
         mensajes_totales: (activeSession.mensajes_totales || 0) + 1,
         errores_sesion: sessionErrors,
         palabras_nuevas_usadas: sessionWords,
@@ -517,7 +518,7 @@ async function processTextChat(ctx, user, userMsg, openai, statusMsgId = null) {
       // 5. Gestionar la progresión de niveles
       const nextLevel = await checkAndLevelUp(userId, settings.session.sessionsToLevelUp);
       if (nextLevel) {
-        // La sesión se cierra oficialmente con éxito
+        // La sesión se cierra oficialmente con éxito al subir de nivel
         await closeSession(activeSession.id, {
           mensajes_totales: (activeSession.mensajes_totales || 0) + 1,
           errores_sesion: sessionErrors,

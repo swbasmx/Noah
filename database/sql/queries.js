@@ -75,6 +75,23 @@ export function closeSession(sessionId, extras = {}) {
   );
 }
 
+export function updateSession(sessionId, extras = {}) {
+  getDB().prepare(`
+    UPDATE sessions
+    SET mensajes_totales   = ?,
+        errores_sesion     = ?,
+        palabras_nuevas_usadas = ?,
+        listo_para_subir   = ?
+    WHERE id = ?
+  `).run(
+    extras.mensajes_totales   ?? 0,
+    JSON.stringify(extras.errores_sesion       ?? []),
+    JSON.stringify(extras.palabras_nuevas_usadas ?? []),
+    extras.listo_para_subir   ? 1 : 0,
+    sessionId,
+  );
+}
+
 export function getLastNSessions(idUsuario, n = 2) {
   return getDB().prepare(`
     SELECT * FROM sessions
