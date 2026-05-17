@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Noah — Tu Tutor Inteligente de Idiomas en Telegram</title>
-  <meta name="description" content="Aprende inglés, ruso, francés, alemán, italiano, portugués, japonés y coreano en Telegram con Noah, tu tutor IA de idiomas con voz y base vectorial.">
+  <title>Noah — Tu Tutor IA de Idiomas en Telegram</title>
+  <meta name="description" content="Aprende a hablar 8 idiomas sin miedo. Practica con notas de voz en Telegram usando escenarios reales.">
   
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,7 +43,7 @@
       --primary-gradient: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
       --accent-gradient: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
       --purple-glow: 0 0 25px rgba(161, 140, 209, 0.2);
-      --neon-glow: 0 0 25px rgba(0, 242, 254, 0.25);
+      --neon-glow: 0 0 30px rgba(0, 242, 254, 0.35);
       
       --glow-color-1: rgba(0, 242, 254, 0.08);
       --glow-color-2: rgba(161, 140, 209, 0.05);
@@ -51,20 +51,20 @@
 
     [data-theme="light"] {
       /* Premium Light Theme */
-      --bg-color: #f3f4f6;
-      --card-bg: rgba(255, 255, 255, 0.8);
+      --bg-color: #f8fafc;
+      --card-bg: rgba(255, 255, 255, 0.9);
       --card-border: rgba(0, 0, 0, 0.06);
-      --text-main: #1f2937;
-      --text-muted: #6b7280;
-      --header-bg: rgba(243, 244, 246, 0.8);
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --header-bg: rgba(248, 250, 252, 0.85);
       
       --phone-bg: #ffffff;
-      --phone-border: #e5e7eb;
-      --phone-header: #f9fafb;
-      --chat-msg-bot: #f3f4f6;
+      --phone-border: #e2e8f0;
+      --phone-header: #f1f5f9;
+      --chat-msg-bot: #f1f5f9;
       --chat-msg-user: #2563eb;
       --chat-msg-text-user: #fff;
-      --table-header: #e5e7eb;
+      --table-header: #e2e8f0;
       --table-bg: rgba(255, 255, 255, 0.9);
       
       --primary: #0284c7;
@@ -73,10 +73,10 @@
       --primary-gradient: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
       --accent-gradient: linear-gradient(135deg, #7c3aed 0%, #c084fc 100%);
       --purple-glow: 0 4px 20px rgba(124, 58, 237, 0.1);
-      --neon-glow: 0 4px 20px rgba(14, 165, 233, 0.15);
+      --neon-glow: 0 8px 30px rgba(14, 165, 233, 0.25);
       
-      --glow-color-1: rgba(14, 165, 233, 0.04);
-      --glow-color-2: rgba(124, 58, 237, 0.03);
+      --glow-color-1: rgba(14, 165, 233, 0.05);
+      --glow-color-2: rgba(124, 58, 237, 0.04);
     }
 
     * {
@@ -97,26 +97,16 @@
 
     h1, h2, h3, h4 {
       font-family: 'Outfit', sans-serif;
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: -0.02em;
     }
 
-    /* ─── SCROLLBAR ──────────────────────────────────────────────────────── */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: var(--bg-color);
-    }
-    ::-webkit-scrollbar-thumb {
-      background: rgba(128, 128, 128, 0.3);
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--primary-gradient);
-    }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-color); }
+    ::-webkit-scrollbar-thumb { background: rgba(128, 128, 128, 0.3); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--primary-gradient); }
 
-    /* ─── LAYOUT & HIGHLIGHTS ────────────────────────────────────────────── */
+    /* ─── BACKGROUND GLOWS ────────────────────────────────────────────── */
     .glow-bg {
       position: absolute;
       width: 800px;
@@ -135,17 +125,6 @@
       background: radial-gradient(circle, var(--glow-color-2) 0%, rgba(251, 194, 235, 0) 70%);
       top: 40%;
       left: -15%;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .glow-bg-bottom {
-      position: absolute;
-      width: 800px;
-      height: 800px;
-      background: radial-gradient(circle, var(--glow-color-1) 0%, rgba(79, 172, 254, 0) 75%);
-      bottom: -10%;
-      right: -20%;
       z-index: 0;
       pointer-events: none;
     }
@@ -203,46 +182,68 @@
       transition: color 0.3s ease;
     }
 
-    nav a:hover {
-      color: var(--primary);
-    }
+    nav a:hover { color: var(--primary); }
 
     .header-right {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 12px;
     }
 
     .nav-btn {
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--card-border);
       color: var(--text-main);
-      padding: 10px 22px;
+      padding: 10px 20px;
       border-radius: 50px;
-      font-size: 14.5px;
+      font-size: 14px;
       font-weight: 600;
       text-decoration: none;
       transition: all 0.3s ease;
+      cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 8px;
     }
 
     .nav-btn:hover {
-      background: var(--primary-gradient);
-      color: #05060b;
-      border-color: transparent;
-      transform: translateY(-2px);
-      box-shadow: var(--neon-glow);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(0, 242, 254, 0.3);
+      color: var(--primary);
+      transform: translateY(-1px);
     }
 
-    /* Theme & Narrator Control Buttons */
+    [data-theme="light"] .nav-btn {
+      background: rgba(0, 0, 0, 0.03);
+      border-color: rgba(0, 0, 0, 0.08);
+    }
+
+    [data-theme="light"] .nav-btn:hover {
+      background: rgba(0, 0, 0, 0.06);
+    }
+
+    .btn-main {
+      background: var(--primary-gradient);
+      color: #ffffff !important;
+      border: none !important;
+      box-shadow: var(--neon-glow);
+    }
+    
+    [data-theme="dark"] .btn-main {
+      color: #05060b !important;
+    }
+
+    .btn-main:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 0 35px rgba(0, 242, 254, 0.45);
+    }
+
     .icon-control-btn {
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--card-border);
       color: var(--text-muted);
-      width: 40px;
-      height: 40px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -253,10 +254,13 @@
     }
 
     .icon-control-btn:hover {
-      background: rgba(255, 255, 255, 0.08);
       color: var(--primary);
       border-color: rgba(0, 242, 254, 0.2);
-      transform: translateY(-1px);
+    }
+
+    [data-theme="light"] .icon-control-btn {
+      background: rgba(0, 0, 0, 0.03);
+      border-color: rgba(0, 0, 0, 0.08);
     }
 
     /* ─── HERO SECTION ───────────────────────────────────────────────────── */
@@ -264,7 +268,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 60px 0 100px 0;
+      padding: 80px 0 100px 0;
       gap: 60px;
     }
 
@@ -279,7 +283,7 @@
       gap: 8px;
       background: rgba(0, 242, 254, 0.08);
       border: 1px solid rgba(0, 242, 254, 0.15);
-      padding: 6px 16px;
+      padding: 8px 18px;
       border-radius: 50px;
       font-size: 13px;
       font-weight: 700;
@@ -290,11 +294,10 @@
     }
 
     .hero-title {
-      font-size: 58px;
+      font-size: 64px;
       line-height: 1.05;
       margin-bottom: 24px;
       color: var(--text-main);
-      font-weight: 900;
     }
 
     .hero-title span {
@@ -305,10 +308,10 @@
     }
 
     .hero-desc {
-      font-size: 18px;
+      font-size: 19px;
       color: var(--text-muted);
-      margin-bottom: 36px;
-      line-height: 1.7;
+      margin-bottom: 40px;
+      line-height: 1.6;
     }
 
     .cta-container {
@@ -334,6 +337,10 @@
       box-shadow: var(--neon-glow);
     }
 
+    [data-theme="light"] .cta-btn {
+      color: #fff;
+    }
+
     .cta-btn:hover {
       transform: translateY(-3px) scale(1.02);
       box-shadow: 0 0 35px rgba(0, 242, 254, 0.45);
@@ -341,9 +348,9 @@
 
     .hero-stats {
       display: flex;
-      gap: 36px;
+      gap: 40px;
       border-top: 1px solid var(--card-border);
-      padding-top: 28px;
+      padding-top: 32px;
     }
 
     .hero-stat-item {
@@ -352,7 +359,7 @@
     }
 
     .hero-stat-val {
-      font-size: 28px;
+      font-size: 32px;
       font-weight: 800;
       color: var(--text-main);
       background: var(--primary-gradient);
@@ -363,7 +370,7 @@
     .hero-stat-lbl {
       font-size: 13px;
       color: var(--text-muted);
-      font-weight: 500;
+      font-weight: 600;
     }
 
     /* ─── INTERACTIVE PHONE CHAT MOCKUP ──────────────────────────────────── */
@@ -393,8 +400,8 @@
     }
 
     .phone-frame {
-      width: 350px;
-      height: 620px;
+      width: 360px;
+      height: 640px;
       background: var(--phone-bg);
       border: 8px solid var(--phone-border);
       border-radius: 38px;
@@ -415,8 +422,8 @@
     }
 
     .phone-avatar {
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
       background: var(--primary-gradient);
       display: flex;
@@ -424,7 +431,11 @@
       justify-content: center;
       font-weight: 800;
       color: #05060b;
-      font-size: 16px;
+      font-size: 18px;
+    }
+    
+    [data-theme="light"] .phone-avatar {
+      color: #fff;
     }
 
     .phone-user-info {
@@ -432,13 +443,13 @@
     }
 
     .phone-username {
-      font-size: 14.5px;
+      font-size: 15px;
       font-weight: 700;
       color: var(--text-main);
     }
 
     .phone-status {
-      font-size: 11px;
+      font-size: 12px;
       color: var(--primary);
       display: flex;
       align-items: center;
@@ -449,8 +460,8 @@
     .phone-status::before {
       content: '';
       display: inline-block;
-      width: 5px;
-      height: 5px;
+      width: 6px;
+      height: 6px;
       background-color: var(--primary);
       border-radius: 50%;
       box-shadow: 0 0 6px var(--primary);
@@ -462,7 +473,7 @@
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
       background: var(--phone-bg);
       scrollbar-width: none;
     }
@@ -473,10 +484,10 @@
 
     .msg {
       max-width: 85%;
-      padding: 12px 14px;
-      border-radius: 18px;
-      font-size: 13px;
-      line-height: 1.45;
+      padding: 14px 16px;
+      border-radius: 20px;
+      font-size: 13.5px;
+      line-height: 1.5;
       animation: popIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
@@ -504,38 +515,38 @@
     .correction-box {
       background: rgba(239, 68, 68, 0.08);
       border-left: 3px solid #ef4444;
-      padding: 8px 10px;
-      margin: 8px 0;
-      border-radius: 6px;
-      font-size: 12px;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      font-size: 12.5px;
     }
 
     .success-box {
       background: rgba(16, 185, 129, 0.08);
       border-left: 3px solid #10b981;
-      padding: 6px 10px;
-      margin: 8px 0;
-      border-radius: 6px;
-      font-size: 12px;
+      padding: 8px 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      font-size: 12.5px;
     }
 
     .msg-typing {
       display: flex;
       align-items: center;
-      gap: 4px;
-      padding: 12px 20px;
+      gap: 5px;
+      padding: 14px 22px;
       background: var(--chat-msg-bot);
-      border-radius: 18px;
+      border-radius: 20px;
       align-self: flex-start;
       border-bottom-left-radius: 4px;
-      width: 70px;
+      width: 75px;
       justify-content: center;
       border: 1px solid var(--card-border);
     }
 
     .dot {
-      width: 5px;
-      height: 5px;
+      width: 6px;
+      height: 6px;
       background: var(--text-muted);
       border-radius: 50%;
       animation: bounce 1.4s infinite ease-in-out both;
@@ -551,14 +562,14 @@
 
     .phone-footer {
       background: var(--phone-header);
-      padding: 12px;
+      padding: 14px;
       border-top: 1px solid var(--card-border);
     }
 
     .phone-suggestions-title {
-      font-size: 10.5px;
+      font-size: 11px;
       color: var(--text-muted);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       text-transform: uppercase;
       letter-spacing: 0.06em;
       text-align: center;
@@ -574,7 +585,7 @@
       justify-content: flex-start;
       align-items: center;
       width: 100%;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .pills-container::-webkit-scrollbar {
@@ -582,33 +593,46 @@
     }
 
     .pill-btn {
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--card-border);
       color: var(--text-main);
-      padding: 8px 12px;
+      padding: 10px 14px;
       border-radius: 50px;
-      font-size: 11px;
+      font-size: 12px;
       cursor: pointer;
       flex-shrink: 0;
-      font-weight: 500;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    [data-theme="light"] .pill-btn {
+      background: #ffffff;
     }
 
     .pill-btn:hover {
       background: var(--primary-gradient);
-      color: #05060b;
+      color: #fff;
       border-color: transparent;
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+    }
+    
+    [data-theme="dark"] .pill-btn:hover {
+      color: #05060b;
     }
 
     /* Phone Input dictation bar */
     .phone-input-bar {
       display: flex;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.05);
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.06);
       border: 1px solid var(--card-border);
       border-radius: 50px;
-      padding: 4px 6px 4px 14px;
+      padding: 6px 8px 6px 16px;
       align-items: center;
+    }
+
+    [data-theme="light"] .phone-input-bar {
+      background: #ffffff;
     }
 
     .phone-input-bar input {
@@ -617,7 +641,12 @@
       border: none;
       outline: none;
       color: var(--text-main);
-      font-size: 12.5px;
+      font-size: 13.5px;
+      font-family: inherit;
+    }
+
+    .phone-input-bar input::placeholder {
+      color: var(--text-muted);
     }
 
     .phone-input-bar button {
@@ -625,14 +654,15 @@
       border: none;
       outline: none;
       cursor: pointer;
-      width: 28px;
-      height: 28px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--text-muted);
       transition: all 0.2s ease;
+      font-size: 14px;
     }
 
     .phone-input-bar button:hover {
@@ -640,8 +670,16 @@
       color: var(--primary);
     }
 
+    [data-theme="light"] .phone-input-bar button:hover {
+      background: rgba(0, 0, 0, 0.05);
+    }
+
     .phone-input-bar button#sendBtn {
       background: var(--primary-gradient);
+      color: #fff;
+    }
+
+    [data-theme="dark"] .phone-input-bar button#sendBtn {
       color: #05060b;
     }
 
@@ -658,199 +696,11 @@
 
     @keyframes pulseMic {
       0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
-      70% { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
+      70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
       100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
     }
 
-    /* ─── METHODOLOGY SECTION (PASOS) ────────────────────────────────────── */
-    .methodology {
-      padding: 100px 0;
-      border-top: 1px solid var(--card-border);
-      position: relative;
-    }
-
-    .steps-container {
-      display: flex;
-      justify-content: space-between;
-      gap: 40px;
-      margin-top: 50px;
-    }
-
-    .step-item {
-      flex: 1;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      padding: 40px 30px;
-      border-radius: 24px;
-      position: relative;
-    }
-
-    .step-item:hover {
-      transform: translateY(-5px);
-      border-color: rgba(0, 242, 254, 0.2);
-    }
-
-    .step-num {
-      position: absolute;
-      top: -24px;
-      left: 30px;
-      width: 48px;
-      height: 48px;
-      background: var(--primary-gradient);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      font-weight: 900;
-      color: #05060b;
-      box-shadow: var(--neon-glow);
-    }
-
-    .step-title {
-      font-size: 22px;
-      margin: 10px 0 12px 0;
-      color: var(--text-main);
-    }
-
-    .step-desc {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    /* ─── COMPARATIVE TABLE ──────────────────────────────────────────────── */
-    .compare-section {
-      padding: 100px 0;
-      border-top: 1px solid var(--card-border);
-    }
-
-    .table-wrapper {
-      margin-top: 50px;
-      overflow-x: auto;
-      border-radius: 24px;
-      border: 1px solid var(--card-border);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: var(--table-bg);
-      text-align: left;
-    }
-
-    th, td {
-      padding: 22px 28px;
-      border-bottom: 1px solid var(--card-border);
-      font-size: 14.5px;
-    }
-
-    th {
-      background: var(--table-header);
-      color: var(--text-main);
-      font-weight: 700;
-      font-size: 16px;
-    }
-
-    td:first-child {
-      font-weight: 600;
-      color: var(--text-main);
-    }
-
-    tr:last-child td {
-      border-bottom: none;
-    }
-
-    .highlight-cell {
-      background: rgba(0, 242, 254, 0.03);
-      color: var(--primary);
-      font-weight: 600;
-    }
-
-    .check-yes {
-      color: #10b981;
-      font-size: 18px;
-      margin-right: 6px;
-    }
-
-    .check-no {
-      color: #ef4444;
-      font-size: 18px;
-      margin-right: 6px;
-    }
-
-    /* ─── LEVELS SECTION ─────────────────────────────────────────────────── */
-    .levels {
-      padding: 100px 0;
-      border-top: 1px solid var(--card-border);
-    }
-
-    .levels-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-      margin-top: 50px;
-    }
-
-    .level-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 24px;
-      padding: 40px 30px;
-      text-align: center;
-    }
-
-    .level-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--purple-glow);
-      border-color: rgba(161, 140, 209, 0.2);
-    }
-
-    .level-badge {
-      display: inline-block;
-      padding: 6px 16px;
-      border-radius: 50px;
-      font-size: 12px;
-      font-weight: 700;
-      background: rgba(161, 140, 209, 0.1);
-      color: #fbc2eb;
-      margin-bottom: 20px;
-      border: 1px solid rgba(161, 140, 209, 0.2);
-    }
-
-    .level-card:nth-child(1) .level-badge {
-      background: rgba(0, 242, 254, 0.1);
-      color: var(--primary);
-      border-color: rgba(0, 242, 254, 0.2);
-    }
-
-    .level-card:nth-child(2) .level-badge {
-      background: rgba(79, 172, 254, 0.1);
-      color: var(--secondary);
-      border-color: rgba(79, 172, 254, 0.2);
-    }
-
-    .level-card-num {
-      font-size: 40px;
-      font-weight: 900;
-      color: var(--text-main);
-      margin-bottom: 12px;
-    }
-
-    .level-card-title {
-      font-size: 20px;
-      margin-bottom: 12px;
-      color: var(--text-main);
-    }
-
-    .level-card-desc {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    /* ─── FEATURES SECTION ────────────────────────────────────────────────── */
+    /* ─── VALUE PROPOSITION SECTION ────────────────────────────────────── */
     .features {
       padding: 100px 0;
       border-top: 1px solid var(--card-border);
@@ -858,290 +708,91 @@
 
     .section-header {
       text-align: center;
-      margin-bottom: 60px;
+      margin-bottom: 70px;
     }
 
     .section-title {
-      font-size: 44px;
-      margin-bottom: 16px;
+      font-size: 48px;
+      margin-bottom: 20px;
       color: var(--text-main);
-      font-weight: 800;
+      font-weight: 900;
     }
 
     .section-desc {
-      font-size: 16px;
+      font-size: 18px;
       color: var(--text-muted);
-      max-width: 600px;
+      max-width: 650px;
       margin: 0 auto;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 36px;
     }
 
     .card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      padding: 40px 30px;
-      border-radius: 24px;
+      padding: 44px 36px;
+      border-radius: 28px;
       backdrop-filter: blur(10px);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(0, 242, 254, 0.2);
-      box-shadow: 0 20px 40px -15px rgba(0, 242, 254, 0.1);
+      transform: translateY(-8px);
+      border-color: rgba(0, 242, 254, 0.3);
+      box-shadow: 0 25px 50px -15px rgba(0, 242, 254, 0.15);
     }
 
     .card-icon {
-      width: 50px;
-      height: 50px;
-      background: rgba(0, 242, 254, 0.06);
-      border: 1px solid rgba(0, 242, 254, 0.15);
-      border-radius: 16px;
+      width: 60px;
+      height: 60px;
+      background: rgba(0, 242, 254, 0.08);
+      border: 1px solid rgba(0, 242, 254, 0.2);
+      border-radius: 18px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      font-size: 26px;
       color: var(--primary);
-      margin-bottom: 24px;
+      margin-bottom: 28px;
+      box-shadow: inset 0 0 20px rgba(0, 242, 254, 0.05);
     }
 
     .card-title {
-      font-size: 20px;
-      margin-bottom: 12px;
+      font-size: 24px;
+      margin-bottom: 14px;
       color: var(--text-main);
     }
 
     .card-text {
-      font-size: 14px;
+      font-size: 15.5px;
       color: var(--text-muted);
       line-height: 1.6;
     }
 
-    /* ─── FAQ SECTION ────────────────────────────────────────────────────── */
-    .faq {
-      padding: 100px 0;
-      border-top: 1px solid var(--card-border);
-    }
-
-    .faq-container {
-      max-width: 800px;
-      margin: 40px auto 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .faq-item {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      overflow: hidden;
-    }
-
-    .faq-header {
-      padding: 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .faq-header h3 {
-      font-size: 16.5px;
-      font-weight: 600;
-      color: var(--text-main);
-    }
-
-    .faq-icon {
-      font-size: 14px;
-      color: var(--primary);
-      transition: transform 0.3s ease;
-    }
-
-    .faq-content {
-      padding: 0 24px;
-      max-height: 0;
-      overflow: hidden;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .faq-content p {
-      padding-bottom: 24px;
-      font-size: 14.5px;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-
-    .faq-item.active {
-      border-color: rgba(0, 242, 254, 0.2);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    }
-
-    .faq-item.active .faq-icon {
-      transform: rotate(180deg);
-    }
-
-    /* ─── NARRATOR CONTROL PANEL ─────────────────────────────────────────── */
-    .narrator-panel {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 320px;
-      background: rgba(10, 12, 22, 0.9);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 20px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(20px);
-      z-index: 9999;
-      transform: translateY(120%);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      overflow: hidden;
-    }
-
-    .narrator-panel.active {
-      transform: translateY(0);
-    }
-
-    [data-theme="light"] .narrator-panel {
-      background: rgba(255, 255, 255, 0.95);
-      border-color: rgba(0, 0, 0, 0.08);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    }
-
-    .narrator-header {
-      padding: 16px 20px;
-      background: rgba(255, 255, 255, 0.02);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    [data-theme="light"] .narrator-header {
-      background: rgba(0, 0, 0, 0.02);
-      border-color: rgba(0, 0, 0, 0.05);
-    }
-
-    .narrator-title {
-      font-size: 14.5px;
-      font-weight: 700;
-      color: var(--text-main);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .narrator-header button {
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      font-size: 20px;
-      cursor: pointer;
-    }
-
-    .narrator-body {
-      padding: 20px;
-    }
-
-    .narrator-body p {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-      line-height: 1.4;
-    }
-
-    .narrator-controls {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-
-    .control-action-btn {
-      flex: 1;
-      padding: 10px 16px;
-      border-radius: 50px;
-      font-size: 13px;
-      font-weight: 700;
-      border: none;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: all 0.3s ease;
-      background: var(--primary-gradient);
-      color: #05060b;
-    }
-
-    .control-action-btn.stop {
-      background: rgba(255, 255, 255, 0.06);
-      color: var(--text-main);
-      border: 1px solid var(--card-border);
-    }
-
-    .control-action-btn:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
-    .narrator-lang-select {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .narrator-lang-select label {
-      font-size: 11.5px;
-      font-weight: 600;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    .narrator-lang-select select {
-      padding: 8px 12px;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--card-border);
-      color: var(--text-main);
-      font-size: 13px;
-      outline: none;
-    }
-
-    [data-theme="light"] .narrator-lang-select select {
-      background: #ffffff;
-    }
-
-    .narrating-highlight {
-      background-color: rgba(0, 242, 254, 0.18) !important;
-      border-radius: 6px;
-      box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
-    }
-
     /* ─── CALL TO ACTION SECTION ────────────────────────────────────────── */
     .cta-block {
-      padding: 100px 0;
+      padding: 120px 0;
       text-align: center;
-      background: radial-gradient(circle at 50% 50%, rgba(0, 242, 254, 0.05) 0%, var(--bg-color) 70%);
+      background: radial-gradient(circle at 50% 50%, rgba(0, 242, 254, 0.06) 0%, var(--bg-color) 70%);
       border-top: 1px solid var(--card-border);
     }
 
     .cta-block-title {
-      font-size: 48px;
-      margin-bottom: 20px;
+      font-size: 56px;
+      margin-bottom: 24px;
       color: var(--text-main);
+      font-weight: 900;
     }
 
     .cta-block-desc {
-      font-size: 18px;
+      font-size: 20px;
       color: var(--text-muted);
-      max-width: 600px;
-      margin: 0 auto 40px auto;
+      max-width: 650px;
+      margin: 0 auto 48px auto;
     }
 
     /* ─── FOOTER ─────────────────────────────────────────────────────────── */
@@ -1150,7 +801,7 @@
       border-top: 1px solid var(--card-border);
       text-align: center;
       color: var(--text-muted);
-      font-size: 14px;
+      font-size: 15px;
     }
 
     footer p {
@@ -1160,6 +811,7 @@
     footer a {
       color: var(--primary);
       text-decoration: none;
+      font-weight: 600;
     }
 
     /* ─── RESPONSIVENESS ──────────────────────────────────────────────────── */
@@ -1175,7 +827,7 @@
       }
 
       .hero-title {
-        font-size: 40px;
+        font-size: 46px;
       }
 
       .cta-container {
@@ -1190,15 +842,6 @@
         margin-top: 40px;
       }
 
-      .steps-container {
-        flex-direction: column;
-        gap: 50px;
-      }
-
-      .levels-grid {
-        grid-template-columns: 1fr;
-      }
-
       nav {
         display: none;
       }
@@ -1209,7 +852,6 @@
 
   <div class="glow-bg"></div>
   <div class="glow-bg-left"></div>
-  <div class="glow-bg-bottom"></div>
 
   <!-- HEADER -->
   <div class="container">
@@ -1218,22 +860,21 @@
         <i class="fa-solid fa-graduation-cap"></i> NOAH
       </div>
       <nav>
-        <a href="#metodologia">Metodología</a>
-        <a href="#comparativa">Comparativa</a>
-        <a href="#niveles">Plan de Estudios</a>
-        <a href="#faq">Preguntas Frecuentes</a>
+        <a href="#caracteristicas" data-en="Features" data-es="Características">Características</a>
+        <a href="#metodo" data-en="Our Method" data-es="El Método">El Método</a>
+        <a href="#idiomas" data-en="Languages" data-es="Idiomas">Idiomas</a>
       </nav>
       <div class="header-right">
+        <!-- EN/ES Toggle -->
+        <button id="langToggleBtn" onclick="toggleLanguage()" class="nav-btn" title="Switch Language">
+          🇺🇸 EN
+        </button>
         <!-- Theme Toggle -->
         <button id="themeToggleBtn" onclick="toggleTheme()" class="icon-control-btn" title="Cambiar Tema (Claro/Oscuro)">
           <i class="fa-solid fa-moon"></i>
         </button>
-        <!-- Website Transcriber / Voice Narrator -->
-        <button id="narratorBtn" onclick="toggleNarrator()" class="icon-control-btn" title="Activar Narrador de Página">
-          <i class="fa-solid fa-volume-high"></i>
-        </button>
-        <a href="https://t.me/NoahLanguageBot" target="_blank" class="nav-btn">
-          <i class="fa-brands fa-telegram"></i> Ir al Bot
+        <a href="https://t.me/NoahLanguageBot" target="_blank" class="nav-btn btn-main" data-en="Open Telegram" data-es="Ir a Telegram">
+          <i class="fa-brands fa-telegram"></i> Ir a Telegram
         </a>
       </div>
     </header>
@@ -1243,33 +884,33 @@
   <div class="container">
     <section class="hero">
       <div class="hero-content">
-        <div class="tagline" id="read-tagline">
-          <i class="fa-solid fa-sparkles"></i> Tutor Inteligente IA Multilingüe 24/7
+        <div class="tagline" data-en="<i class='fa-solid fa-sparkles'></i> The Future of Language Learning" data-es="<i class='fa-solid fa-sparkles'></i> El Futuro del Aprendizaje">
+          <i class="fa-solid fa-sparkles"></i> El Futuro del Aprendizaje
         </div>
-        <h1 class="hero-title" id="read-title">
-          Domina <span>8 Idiomas</span> conversando por Telegram
+        <h1 class="hero-title" data-en="Speak fluently. <span>Without studying grammar.</span>" data-es="Habla fluido. <span>Sin estudiar gramática.</span>">
+          Habla fluido. <span>Sin estudiar gramática.</span>
         </h1>
-        <p class="hero-desc" id="read-desc">
-          Noah es tu tutor de bolsillo definitivo. Conversa de forma natural en inglés, ruso, francés, alemán, italiano, portugués, japonés o coreano por texto o notas de voz, recibiendo explicaciones pedagógicas detalladas en español y correcciones en tiempo real.
+        <p class="hero-desc" data-en="Noah is your private AI tutor on Telegram. Stop repeating boring words. Practice real conversations with voice notes, lose your fear of speaking, and get instant native feedback." data-es="Noah es tu tutor de IA privado en Telegram. Deja de repetir frases robóticas. Practica conversaciones reales con notas de voz, pierde el miedo a hablar y recibe feedback instantáneo.">
+          Noah es tu tutor de IA privado en Telegram. Deja de repetir frases robóticas. Practica conversaciones reales con notas de voz, pierde el miedo a hablar y recibe feedback instantáneo.
         </p>
         <div class="cta-container">
-          <a href="https://t.me/NoahLanguageBot" target="_blank" class="cta-btn">
-            <i class="fa-brands fa-telegram"></i> Empezar en Telegram gratis
+          <a href="https://t.me/NoahLanguageBot" target="_blank" class="cta-btn" data-en="<i class='fa-brands fa-telegram'></i> Try Noah for Free" data-es="<i class='fa-brands fa-telegram'></i> Probar Noah Gratis">
+            <i class="fa-brands fa-telegram"></i> Probar Noah Gratis
           </a>
         </div>
         
         <div class="hero-stats">
           <div class="hero-stat-item">
             <div class="hero-stat-val">8</div>
-            <div class="hero-stat-lbl">Idiomas Disponibles</div>
+            <div class="hero-stat-lbl" data-en="Languages" data-es="Idiomas Nativos">Idiomas Nativos</div>
           </div>
           <div class="hero-stat-item">
-            <div class="hero-stat-val">100</div>
-            <div class="hero-stat-lbl">Niveles Adaptativos</div>
+            <div class="hero-stat-val">0</div>
+            <div class="hero-stat-lbl" data-en="Monthly Fees" data-es="Mensualidades">Mensualidades</div>
           </div>
           <div class="hero-stat-item">
             <div class="hero-stat-val">24/7</div>
-            <div class="hero-stat-lbl">Clases personalizadas</div>
+            <div class="hero-stat-lbl" data-en="Availability" data-es="Disponibilidad">Disponibilidad</div>
           </div>
         </div>
       </div>
@@ -1281,40 +922,31 @@
             <div class="phone-header">
               <div class="phone-avatar">N</div>
               <div class="phone-user-info">
-                <div class="phone-username">Tutor Noah 🤖</div>
-                <div class="phone-status">en línea</div>
-              </div>
-              <div class="phone-actions">
-                <i class="fa-solid fa-ellipsis-vertical" style="color: var(--text-muted);"></i>
+                <div class="phone-username" data-en="Tutor Noah 🤖" data-es="Tutor Noah 🤖">Tutor Noah 🤖</div>
+                <div class="phone-status" data-en="online" data-es="en línea">en línea</div>
               </div>
             </div>
 
             <div class="phone-chat" id="chatContainer">
-              <!-- Initial Bot Welcome Message -->
-              <div class="msg bot">👋 ¡Hola! Soy <b>Noah</b>, tu tutor personal de idiomas.
-
-Hoy cuento con soporte completo para **8 idiomas**.
-
-Toca uno de los ejemplos o haz clic en el 🎤 para **transcribir tu voz en tiempo real** y hablarme directamente. ¡Verás cómo te corrijo al instante! 🚀</div>
+              <div class="msg bot" data-en="👋 Hello! I am <b>Noah</b>. I teach you languages through real conversations, not boring tests. <br><br>Tap a button below or click the 🎤 to speak to me naturally!" data-es="👋 ¡Hola! Soy <b>Noah</b>. Te enseño idiomas conversando, sin cuestionarios aburridos.<br><br>¡Toca un botón abajo o presiona el 🎤 para hablarme naturalmente!">👋 ¡Hola! Soy <b>Noah</b>. Te enseño idiomas conversando, sin cuestionarios aburridos.<br><br>¡Toca un botón abajo o presiona el 🎤 para hablarme naturalmente!</div>
             </div>
 
             <div class="phone-footer">
-              <div class="phone-suggestions-title">Desliza y toca un ejemplo para probar:</div>
+              <div class="phone-suggestions-title" data-en="Swipe and tap to interact:" data-es="Desliza y toca para interactuar:">Desliza y toca para interactuar:</div>
               <div class="pills-container">
-                <button class="pill-btn" onclick="sendMockMessage('en')">🇺🇸 Inglés (go/went)</button>
-                <button class="pill-btn" onclick="sendMockMessage('fr')">🇫🇷 Francés (suis/es)</button>
-                <button class="pill-btn" onclick="sendMockMessage('ru')">🇷🇺 Ruso (хочу/хотеть)</button>
-                <button class="pill-btn" onclick="sendMockMessage('ja')">🇯🇵 Japonés (Intenciones)</button>
-                <button class="pill-btn" onclick="sendMockMessage('de')">🇩🇪 Alemán (Gustos)</button>
-                <button class="pill-btn" onclick="sendMockMessage('ko')">🇰🇷 Coreano (Partículas)</button>
-                <button class="pill-btn" onclick="sendMockMessage('it')">🇮🇹 Italiano (Gustos)</button>
-                <button class="pill-btn" onclick="sendMockMessage('pt')">🇵🇹 Portugués (Gostar)</button>
+                <button class="pill-btn" onclick="sendMockMessage('en')">🇺🇸 I wants coffee</button>
+                <button class="pill-btn" onclick="sendMockMessage('fr')">🇫🇷 Je es mexicain</button>
+                <button class="pill-btn" onclick="sendMockMessage('ru')">🇷🇺 Я хотеть</button>
+                <button class="pill-btn" onclick="sendMockMessage('ja')">🇯🇵 こんにちは</button>
+                <button class="pill-btn" onclick="sendMockMessage('de')">🇩🇪 Ich bin</button>
+                <button class="pill-btn" onclick="sendMockMessage('ko')">🇰🇷 안녕</button>
+                <button class="pill-btn" onclick="sendMockMessage('it')">🇮🇹 Mi piace</button>
+                <button class="pill-btn" onclick="sendMockMessage('pt')">🇵🇹 Eu gosto</button>
               </div>
               
-              <!-- Custom Dictation & Keyboard Bar -->
               <div class="phone-input-bar">
-                <input type="text" id="chatInput" placeholder="Escribe tu mensaje o dictalo..." onkeypress="handleKeyPress(event)">
-                <button id="micBtn" onclick="toggleSpeechRecognition()" title="Transcribir voz con un botón">
+                <input type="text" id="chatInput" placeholder="Escribe o dicta..." onkeypress="handleKeyPress(event)" data-en-placeholder="Type or speak..." data-es-placeholder="Escribe o dicta...">
+                <button id="micBtn" onclick="toggleSpeechRecognition()" title="Dictate voice message">
                   <i class="fa-solid fa-microphone"></i>
                 </button>
                 <button id="sendBtn" onclick="submitCustomMessage()">
@@ -1328,199 +960,34 @@ Toca uno de los ejemplos o haz clic en el 🎤 para **transcribir tu voz en tiem
     </section>
   </div>
 
-  <!-- METHODOLOGY SECTION (PASOS) -->
-  <section class="methodology" id="metodologia">
+  <!-- VALUE PROPOSITION / FEATURES SECTION -->
+  <section class="features" id="caracteristicas">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title" id="read-methodology-title">Metodología conversacional acelerada</h2>
-        <p class="section-desc">Nos enfocamos en la asimilación natural, combinando interactividad y tecnología de punta.</p>
-      </div>
-
-      <div class="steps-container">
-        <!-- Paso 1 -->
-        <div class="step-item" id="read-step-1">
-          <div class="step-num">1</div>
-          <h3 class="step-title">Práctica Activa</h3>
-          <p class="step-desc">Tú conversas libremente mediante mensajes o notas de voz. Noah te guiará nivel a nivel a través de 5 ejercicios interactivos estructurados y súper concisos.</p>
-        </div>
-        <!-- Paso 2 -->
-        <div class="step-item" id="read-step-2">
-          <div class="step-num">2</div>
-          <h3 class="step-title">Feedback Inmediato</h3>
-          <p class="step-desc">Si cometes algún desliz de ortografía, pronunciación o gramática, el tutor IA te corregirá al instante en español explicándote el por qué de forma muy amigable.</p>
-        </div>
-        <!-- Paso 3 -->
-        <div class="step-item" id="read-step-3">
-          <div class="step-num">3</div>
-          <h3 class="step-title">Consolidación en Memoria</h3>
-          <p class="step-desc">Tus deslices se registran automáticamente en una base vectorial (ChromaDB), de modo que Noah personalizará los retos futuros para garantizar que domines tus puntos débiles.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- COMPARATIVE TABLE SECTION -->
-  <section class="compare-section" id="comparativa">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title" id="read-compare-title">Noah frente a los métodos tradicionales</h2>
-        <p class="section-desc">Descubre por qué Noah revoluciona tu aprendizaje en comparación con otras alternativas del mercado.</p>
-      </div>
-
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th>Característica</th>
-              <th class="highlight-cell">Tutor Noah 🤖</th>
-              <th>Duolingo 🦉</th>
-              <th>Clases Tradicionales 🏫</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Soporte Multilingüe Activo</td>
-              <td class="highlight-cell"><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Sí (8 Idiomas)</td>
-              <td><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Sí</td>
-              <td><span class="check-no"><i class="fa-solid fa-circle-xmark"></i></span> Solo un idioma por curso</td>
-            </tr>
-            <tr>
-              <td>Conversación 100% Libre</td>
-              <td class="highlight-cell"><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Sí, adaptada a ti</td>
-              <td><span class="check-no"><i class="fa-solid fa-circle-xmark"></i></span> No (Ejercicios pre-armados)</td>
-              <td><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Sí, pero limitada</td>
-            </tr>
-            <tr>
-              <td>Transpiler de Audio Instantáneo</td>
-              <td class="highlight-cell"><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Sí (Groq Whisper en memoria)</td>
-              <td><span class="check-no"><i class="fa-solid fa-circle-xmark"></i></span> No</td>
-              <td><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Sí</td>
-            </tr>
-            <tr>
-              <td>Memoria Histórica de Errores</td>
-              <td class="highlight-cell"><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Sí (ChromaDB vectorial)</td>
-              <td><span class="check-no"><i class="fa-solid fa-circle-xmark"></i></span> No</td>
-              <td><span class="check-no"><i class="fa-solid fa-circle-xmark"></i></span> No</td>
-            </tr>
-            <tr>
-              <td>Costo Mensual</td>
-              <td class="highlight-cell"><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Gratis / Open Source</td>
-              <td><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Gratis (con anuncios)</td>
-              <td><span class="check-no"><i class="fa-solid fa-circle-xmark"></i></span> Muy Caro ($$$)</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- PLAN DE ESTUDIOS SECTION -->
-  <section class="levels" id="niveles">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title" id="read-levels-title">Plan de Estudios Multilingüe</h2>
-        <p class="section-desc">Diseñamos 100 niveles dinámicos basados en el Marco Común Europeo de Referencia (MCER) para cada idioma.</p>
-      </div>
-
-      <div class="levels-grid">
-        <!-- Bloque 1 -->
-        <div class="level-card" id="read-level-card-1">
-          <div class="level-badge">Inicial (Niveles 1 - 30)</div>
-          <div class="level-card-num">A1 - A2</div>
-          <h3 class="level-card-title">Supervivencia y Saludos</h3>
-          <p class="level-card-desc">Domina presentaciones, verbos auxiliares, solicitudes, vocabulario en restaurantes y rutinas básicas en cualquiera de los 8 idiomas.</p>
-        </div>
-        <!-- Bloque 2 -->
-        <div class="level-card" id="read-level-card-2">
-          <div class="level-badge">Intermedio (Niveles 31 - 70)</div>
-          <div class="level-card-num">B1 - B2</div>
-          <h3 class="level-card-title">Autonomía y Expresión</h3>
-          <p class="level-card-desc">Aprende a narrar eventos en pasado y futuro, expresar hipótesis complejas, redactar argumentos de debate y entablar charlas de trabajo fluidas.</p>
-        </div>
-        <!-- Bloque 3 -->
-        <div class="level-card" id="read-level-card-3">
-          <div class="level-badge">Avanzado (Niveles 71 - 100)</div>
-          <div class="level-card-num">C1 - C2</div>
-          <h3 class="level-card-title">Fluidez Profesional</h3>
-          <p class="level-card-desc">Adquiere modismos culturales finos, terminología corporativa avanzada, ironía y matices conversacionales con total naturalidad.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURES -->
-  <section class="features">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title" id="read-features-title">Tecnología de última generación</h2>
-        <p class="section-desc">Un ecosistema informático robusto diseñado exclusivamente para acelerar tu bilingüismo.</p>
+        <h2 class="section-title" data-en="Why learning with Noah feels like magic" data-es="Por qué aprender con Noah se siente mágico">Por qué aprender con Noah se siente mágico</h2>
+        <p class="section-desc" data-en="We eliminated everything you hate about traditional schools and gamified apps." data-es="Eliminamos todo lo que odias de las escuelas tradicionales y las apps de adivinanzas.">Eliminamos todo lo que odias de las escuelas tradicionales y las apps de adivinanzas.</p>
       </div>
 
       <div class="grid">
         <!-- Feature 1 -->
-        <div class="card" id="read-feat-1">
-          <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
-          <h3 class="card-title">Typing Streaming</h3>
-          <p class="card-text">Las respuestas del tutor se transmiten en tiempo real letra a letra, recreando perfectamente la interacción humana instantánea en Telegram.</p>
+        <div class="card">
+          <div class="card-icon"><i class="fa-solid fa-masks-theater"></i></div>
+          <h3 class="card-title" data-en="Roleplay Micro-scenarios" data-es="Micro-escenarios de Roleplay">Micro-escenarios de Roleplay</h3>
+          <p class="card-text" data-en="Instead of repeating 'The apple is red', you will practice ordering a coffee, nailing a job interview, or flirting in Paris. Context creates memory." data-es="En lugar de repetir 'La manzana es roja', practicarás cómo pedir un café, pasar una entrevista de trabajo o ligar en París. El contexto crea la memoria.">En lugar de repetir 'La manzana es roja', practicarás cómo pedir un café, pasar una entrevista de trabajo o ligar en París. El contexto crea la memoria.</p>
         </div>
 
         <!-- Feature 2 -->
-        <div class="card" id="read-feat-2">
-          <div class="card-icon"><i class="fa-solid fa-database"></i></div>
-          <h3 class="card-title">Base de Datos Híbrida</h3>
-          <p class="card-text">Integración perfecta entre SQLite local de ultra alta velocidad y MongoDB Atlas remoto para un escalado sin fricciones en Vercel.</p>
+        <div class="card">
+          <div class="card-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+          <h3 class="card-title" data-en="Zero Pressure Feedback" data-es="Feedback Sin Presión">Feedback Sin Presión</h3>
+          <p class="card-text" data-en="Noah never interrupts you to yell 'Wrong!'. We use the 'Sandwich Method': we celebrate your attempt, give you the native correction, and keep the conversation flowing." data-es="Noah nunca te interrumpe para gritarte '¡Equivocado!'. Usamos el Método Sándwich: celebramos tu intento, te damos la corrección nativa y seguimos la conversación con fluidez.">Noah nunca te interrumpe para gritarte '¡Equivocado!'. Usamos el Método Sándwich: celebramos tu intento, te damos la corrección nativa y seguimos la conversación con fluidez.</p>
         </div>
 
         <!-- Feature 3 -->
-        <div class="card" id="read-feat-3">
+        <div class="card">
           <div class="card-icon"><i class="fa-solid fa-microphone-lines"></i></div>
-          <h3 class="card-title">Whisper en Memoria</h3>
-          <p class="card-text">Procesamos notas de voz directamente desde streams en memoria (Buffers) sin archivos temporales, logrando transcripciones de velocidad récord.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ SECTION -->
-  <section class="faq" id="faq">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title" id="read-faq-title">Preguntas Frecuentes</h2>
-        <p class="section-desc">Resolvemos todas tus dudas antes de iniciar tu aventura multilingüe.</p>
-      </div>
-
-      <div class="faq-container">
-        <!-- FAQ 1 -->
-        <div class="faq-item">
-          <div class="faq-header" onclick="toggleFaq(this)">
-            <h3>¿Cuáles son los 8 idiomas que enseña Noah?</h3>
-            <i class="fa-solid fa-chevron-down faq-icon"></i>
-          </div>
-          <div class="faq-content">
-            <p>Noah enseña Inglés, Ruso, Francés, Alemán, Italiano, Portugués, Japonés y Coreano. Puedes cambiar libremente de idioma en cualquier momento usando el comando /language sin miedo a perder el progreso del idioma anterior.</p>
-          </div>
-        </div>
-
-        <!-- FAQ 2 -->
-        <div class="faq-item">
-          <div class="faq-header" onclick="toggleFaq(this)">
-            <h3>¿Cómo se sube de nivel con los 5 ejercicios?</h3>
-            <i class="fa-solid fa-chevron-down faq-icon"></i>
-          </div>
-          <div class="faq-content">
-            <p>El bot te guiará de forma súper limpia y concisa por 5 retos conversacionales por nivel. Tan pronto como completas y dominas las 5 pruebas de un nivel, el sistema evalúa tu progreso de forma automática y te sube inmediatamente de nivel al instante.</p>
-          </div>
-        </div>
-
-        <!-- FAQ 3 -->
-        <div class="faq-item">
-          <div class="faq-header" onclick="toggleFaq(this)">
-            <h3>¿Cómo funciona la transcripción de voz en el bot?</h3>
-            <i class="fa-solid fa-chevron-down faq-icon"></i>
-          </div>
-          <div class="faq-content">
-            <p>Presionando el botón de notas de voz en Telegram, puedes hablar directamente. Noah recibe tu audio, lo traduce/transcribe usando el procesador neuronal Whisper y te responde en base a lo que hablaste, evaluando además tu coherencia.</p>
-          </div>
+          <h3 class="card-title" data-en="Real-time Voice Dictation" data-es="Habla. No escribas.">Habla. No escribas.</h3>
+          <p class="card-text" data-en="Powered by Groq Whisper STT. Send voice notes in Telegram. Noah will transcribe them instantly and evaluate your pronunciation without writing a single word." data-es="Potenciado por Groq Whisper STT. Envía notas de voz por Telegram. Noah las transcribe al instante y evalúa tu pronunciación sin que tengas que teclear una sola palabra.">Potenciado por Groq Whisper STT. Envía notas de voz por Telegram. Noah las transcribe al instante y evalúa tu pronunciación sin que tengas que teclear una sola palabra.</p>
         </div>
       </div>
     </div>
@@ -1529,10 +996,10 @@ Toca uno de los ejemplos o haz clic en el 🎤 para **transcribir tu voz en tiem
   <!-- CALL TO ACTION -->
   <section class="cta-block">
     <div class="container">
-      <h2 class="cta-block-title" id="read-cta-title">¿Listo para hablar sin límites?</h2>
-      <p class="cta-block-desc">Inicia tu tutoría gratuita con Noah en Telegram. Aprende a tu ritmo, 100% libre de presiones.</p>
-      <a href="https://t.me/NoahLanguageBot" target="_blank" class="cta-btn">
-        <i class="fa-brands fa-telegram"></i> Empezar en Telegram Gratis
+      <h2 class="cta-block-title" data-en="Ready to lose your fear of speaking?" data-es="¿Listo para perder el miedo a hablar?">¿Listo para perder el miedo a hablar?</h2>
+      <p class="cta-block-desc" data-en="Start chatting with Noah in Telegram. 100% free. No credit cards. No weird subscriptions." data-es="Empieza a conversar con Noah en Telegram. 100% gratis. Sin tarjetas de crédito. Sin suscripciones raras.">Empieza a conversar con Noah en Telegram. 100% gratis. Sin tarjetas de crédito. Sin suscripciones raras.</p>
+      <a href="https://t.me/NoahLanguageBot" target="_blank" class="cta-btn" data-en="<i class='fa-brands fa-telegram'></i> Talk to Noah Now" data-es="<i class='fa-brands fa-telegram'></i> Hablar con Noah Ahora">
+        <i class="fa-brands fa-telegram"></i> Hablar con Noah Ahora
       </a>
     </div>
   </section>
@@ -1540,57 +1007,40 @@ Toca uno de los ejemplos o haz clic en el 🎤 para **transcribir tu voz en tiem
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <p>&copy; 2026 Noah Language Project. Creado para revolucionar la pedagogía con Inteligencia Artificial.</p>
-      <p>¿Quieres aprender ahora? <a href="https://t.me/NoahLanguageBot" target="_blank">Conversa con Noah en Telegram</a></p>
+      <p data-en="&copy; 2026 Noah Language AI. Built to revolutionize education." data-es="&copy; 2026 Noah Language AI. Creado para revolucionar la educación.">&copy; 2026 Noah Language AI. Creado para revolucionar la educación.</p>
     </div>
   </footer>
 
-  <!-- NARRATOR DASHBOARD PANEL -->
-  <div class="narrator-panel" id="narratorPanel">
-    <div class="narrator-header">
-      <div class="narrator-title">
-        <i class="fa-solid fa-circle-nodes"></i> Narrador de Página IA
-      </div>
-      <button onclick="toggleNarrator()" style="cursor: pointer;">&times;</button>
-    </div>
-    <div class="narrator-body">
-      <p id="narratorStatus">Listo para leer los bloques de texto de esta página.</p>
-      <div class="narrator-controls">
-        <button id="narratorPlayBtn" onclick="startNarration()" class="control-action-btn"><i class="fa-solid fa-play"></i> Leer Página</button>
-        <button id="narratorStopBtn" onclick="stopNarration()" class="control-action-btn stop" disabled><i class="fa-solid fa-stop"></i> Detener</button>
-      </div>
-      <div class="narrator-lang-select">
-        <label for="narratorLang">Idioma de la lectura:</label>
-        <select id="narratorLang" onchange="changeNarratorLang()">
-          <option value="es-ES">🇪🇸 Español (Nativo)</option>
-          <option value="en-US">🇺🇸 Inglés (English)</option>
-          <option value="fr-FR">🇫🇷 Francés (Français)</option>
-          <option value="de-DE">🇩🇪 Alemán (Deutsch)</option>
-          <option value="it-IT">🇮🇹 Italiano (Italiano)</option>
-          <option value="pt-PT">🇵🇹 Portugués (Português)</option>
-          <option value="ru-RU">🇷🇺 Ruso (Русский)</option>
-          <option value="ja-JP">🇯🇵 Japonés (日本語)</option>
-          <option value="ko-KR">🇰🇷 Coreano (한국어)</option>
-        </select>
-      </div>
-    </div>
-  </div>
-
-  <!-- INTERACTIVE WEB CHAT, SPEECH-TO-TEXT AND ACCESSIBILITY SCRIPTS -->
+  <!-- SCRIPTS -->
   <script>
+    /* ─── LANGUAGE SWITCHER EN/ES ────────────────────────────────────────── */
+    let currentLang = 'es';
+
+    function toggleLanguage() {
+      const btn = document.getElementById('langToggleBtn');
+      currentLang = currentLang === 'es' ? 'en' : 'es';
+      
+      // Update Button Label
+      btn.innerHTML = currentLang === 'es' ? '🇺🇸 EN' : '🇪🇸 ES';
+
+      // Update all data attributes
+      document.querySelectorAll('[data-es]').forEach(el => {
+        el.innerHTML = el.getAttribute(`data-${currentLang}`);
+      });
+
+      // Update placeholder
+      const input = document.getElementById('chatInput');
+      input.placeholder = input.getAttribute(`data-${currentLang}-placeholder`);
+    }
+
     /* ─── DARK/LIGHT THEME SWITCHER ──────────────────────────────────────── */
     function toggleTheme() {
       const html = document.documentElement;
       const themeBtn = document.getElementById('themeToggleBtn');
-      const currentTheme = html.getAttribute('data-theme') || 'dark';
+      const isDark = html.getAttribute('data-theme') === 'dark';
       
-      if (currentTheme === 'dark') {
-        html.setAttribute('data-theme', 'light');
-        themeBtn.innerHTML = '<i class="fa-solid fa-sun" style="color: #ea580c;"></i>';
-      } else {
-        html.setAttribute('data-theme', 'dark');
-        themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
-      }
+      html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      themeBtn.innerHTML = isDark ? '<i class="fa-solid fa-sun" style="color: #ea580c;"></i>' : '<i class="fa-solid fa-moon"></i>';
     }
 
     /* ─── MULTILINGUAL MOCK CHAT ENGINE ──────────────────────────────────── */
@@ -1598,78 +1048,64 @@ Toca uno de los ejemplos o haz clic en el 🎤 para **transcribir tu voz en tiem
     const chatInput = document.getElementById('chatInput');
     let isTyping = false;
 
+    // We keep the bot replies primarily in Spanish for the showcase, 
+    // but the interaction is highly engaging to show the Sandwich method and Roleplay.
     const MOCK_BOT_RESPONSES = {
       en: {
-        user: 'Yesterday I go to the cinema with my friends.',
-        feedback: '¡Excelente intento! Has cometido un pequeño error con el tiempo pasado.',
-        transition: '¡Sigamos aprendiendo! Aquí tienes la versión corregida:',
-        correction: 'Yesterday I went to the cinema with my friends.',
-        explanation: 'El verbo "go" es irregular, por lo que su pasado es "went".',
-        targetLang: 'en-US',
-        exercise: '1. Introduce yourself and tell me what you did yesterday.'
+        user: 'I wants coffee',
+        feedback: '¡Excelente intento! Te hiciste entender perfectamente.',
+        transition: 'Solo un pequeño detalle: con "I" no usamos la "s" al final del verbo.',
+        correction: 'I want coffee.',
+        exercise: 'Imagina que soy el mesero y acabo de llegar a tu mesa. Pídeme un café. (Imagine I am the waiter. Order a coffee.)'
       },
       fr: {
-        user: 'Je es mexicain et je parler français.',
-        feedback: '¡Muy buen intento! Tienes pequeños detalles de conjugación.',
-        transition: '¡Sigamos con el aprendizaje! Aquí está tu frase corregida:',
-        correction: 'Je suis mexicain et je parle français.',
-        explanation: 'Usamos "suis" para la primera persona del verbo être (ser) y "parle" para la conjugación del presente del verbo parler.',
-        targetLang: 'fr-FR',
-        exercise: '2. Présentez-vous et dites votre nationalité.'
+        user: 'Je es mexicain',
+        feedback: '¡Muy bien! Estás conectando muy bien las palabras.',
+        transition: 'Recuerda que para "Yo soy" en francés usamos "suis" en lugar de "es".',
+        correction: 'Je suis mexicain.',
+        exercise: 'Imagina que nos acabamos de conocer en París. Dime tu nacionalidad.'
       },
       ru: {
-        user: 'Я хотеть кофе, пожалуйста.',
-        feedback: '🇷🇺 ¡Отлично! Se entiende perfectamente, pero conjuguemos el verbo.',
-        transition: '¡Aquí tienes la frase natural corregida:',
-        correction: 'Я хочу кофе, пожалуйста.',
-        explanation: 'Para decir "yo quiero", conjugamos хотеть en primera persona (хочу).',
-        targetLang: 'ru-RU',
-        exercise: '3. Скажи, что ты хочешь выпить (Say what you want to drink).'
+        user: 'Я хотеть',
+        feedback: '🇷🇺 ¡Fabuloso! La raíz del verbo es correcta.',
+        transition: 'Para decir "yo quiero", conjugamos el verbo de esta forma:',
+        correction: 'Я хочу (Ya khochu).',
+        exercise: 'Imagina que estás en un bar en Moscú. Dime que quieres agua.'
       },
       ja: {
-        user: '私は日本に行く。',
-        feedback: '🇯🇵 ¡Excelente intento! Aprendamos a expresar intenciones de manera más cortés.',
-        transition: '¡Sigamos practicando con el siguiente reto:',
-        correction: '私は日本に行くつもりです。',
-        explanation: 'Usamos la forma diccionario + tsumori desu para expresar intenciones formales.',
-        targetLang: 'ja-JP',
-        exercise: '4. 日本のどこに行きたいですか？ (Where in Japan do you want to go?)'
+        user: 'こんにちは',
+        feedback: '🇯🇵 ¡Perfecto! Tu saludo es muy natural y educado.',
+        transition: '¡Sigamos fluyendo con la conversación!',
+        correction: 'こんにちは (Konnichiwa).',
+        exercise: 'Ahora, imagina que soy tu nuevo compañero de clase. Preséntate y dime tu nombre.'
       },
       de: {
-        user: 'Ich habe ein Auto.',
-        feedback: '🇩🇪 ¡Excelente! Tu gramática es perfecta y muy natural.',
-        transition: '¡Pasemos al siguiente nivel del ejercicio:',
-        correction: 'Ich habe ein Auto und ich fahre gern.',
-        explanation: 'Construcción perfecta usando el acusativo "ein Auto".',
-        targetLang: 'de-DE',
-        exercise: '5. Beschreibe dein Traumauto (Describe your dream car).'
+        user: 'Ich bin',
+        feedback: '🇩🇪 ¡Excelente comienzo! El verbo está conjugado perfectamente.',
+        transition: '¡Completemos la frase para ganar confianza!',
+        correction: 'Ich bin [Dein Name].',
+        exercise: 'Imagina que llegas a un hotel en Berlín. Preséntate en la recepción.'
       },
       ko: {
-        user: '나는 사과 먹어요.',
-        feedback: '🇰🇷 ¡Espectacular! Se entiende, pero agreguemos la partícula correcta.',
-        transition: '¡Continuemos con tu aprendizaje diario:',
-        correction: '나는 사과를 먹어요.',
-        explanation: 'El uso de la partícula de objeto "를" hace que la frase suene mucho más gramatical e impecable.',
-        targetLang: 'ko-KR',
-        exercise: '1. 좋아하는 과일이 무엇인지 말해보세요 (Tell me what your favorite fruit is).'
+        user: '안녕',
+        feedback: '🇰🇷 ¡Muy bien! Es un saludo súper natural entre amigos.',
+        transition: 'Si quisieras ser más formal con un desconocido, diríamos:',
+        correction: '안녕하세요 (Annyeong haseyo).',
+        exercise: 'Salúdame como si fuera tu nuevo jefe en la oficina.'
       },
       it: {
-        user: 'Mi piace pizza.',
-        feedback: '🇮🇹 ¡Fantastico! Sin embargo, recuerda usar el artículo definido.',
-        transition: '¡Pasemos al siguiente paso interactivo:',
-        correction: 'Mi piace molto la pizza.',
-        explanation: 'En italiano decimos "la pizza" con el artículo definido al expresar gustos generales.',
-        targetLang: 'it-IT',
-        exercise: '2. Racconta qual è il tuo piatto preferito (Tell me what your favorite dish is).'
+        user: 'Mi piace',
+        feedback: '🇮🇹 ¡Fantastico! Estás usando los pronombres italianos perfectamente.',
+        transition: '¡Sigamos practicando tus gustos!',
+        correction: 'Mi piace...',
+        exercise: 'Imagina que estamos pidiendo comida en Roma. Dime cuál es tu plato favorito.'
       },
       pt: {
-        user: 'Eu gosto aprender línguas.',
-        feedback: '🇵🇹 ¡Maravilhoso! Solo recuerda que después del verbo gostar requerimos preposición.',
-        transition: '¡Sigamos adelante con el siguiente paso:',
-        correction: 'Eu gosto de aprender línguas no Telegram.',
-        explanation: 'La preposición "de" después del verbo gostar es obligatoria ante un verbo o sustantivo.',
-        targetLang: 'pt-PT',
-        exercise: '3. Diga quais línguas você quer aprender (Say which languages you want to learn).'
+        user: 'Eu gosto',
+        feedback: '🇵🇹 ¡Maravilhoso! La base está perfecta.',
+        transition: 'Recuerda que en portugués siempre agregamos "de" después del verbo gostar.',
+        correction: 'Eu gosto de...',
+        exercise: 'Imagina que estamos en Río de Janeiro. Dime qué música te gusta escuchar.'
       }
     };
 
@@ -1683,23 +1119,17 @@ Toca uno de los ejemplos o haz clic en el 🎤 para **transcribir tu voz en tiem
       chatContainer.scrollTop = chatContainer.scrollHeight;
 
       const typing = appendTypingIndicator();
-      await new Promise(r => setTimeout(r, 1600));
+      await new Promise(r => setTimeout(r, 1200));
       typing.remove();
 
       const botHTML = `
         <p>${data.feedback}</p>
         <p>${data.transition}</p>
         <div class="correction-box">
-          ✗ <i>${data.user}</i><br>
           ✓ <b>${data.correction}</b>
-          <button onclick="speakText('${data.correction.replace(/'/g, "\\'")}', '${data.targetLang}')" style="background:none; border:none; color:var(--primary); cursor:pointer; font-size:14px; margin-left:8px; display:inline-flex; align-items:center; vertical-align:middle;" title="Escuchar pronunciación">
-            <i class="fa-solid fa-volume-high"></i>
-          </button>
         </div>
-        <p>💡 <b>Explicación:</b> ${data.explanation}</p>
-        
         📝
-        ${data.exercise}
+        1. ${data.exercise}
       `;
 
       appendMessage(botHTML, 'bot');
@@ -1707,7 +1137,7 @@ Toca uno de los ejemplos o haz clic en el 🎤 para **transcribir tu voz en tiem
       isTyping = false;
     }
 
-    /* ─── SPEECH TO TEXT DICTATION (TRANSCRIBIR CON UN BOTÓN) ────────────── */
+    /* ─── SPEECH TO TEXT DICTATION ───────────────────────────────────────── */
     let recognition = null;
     let isListening = false;
 
@@ -1716,52 +1146,35 @@ Toca uno de los ejemplos o haz clic en el 🎤 para **transcribir tu voz en tiem
       recognition = new SpeechRecognition();
       recognition.continuous = false;
       recognition.interimResults = false;
-      recognition.lang = 'es-ES'; // Default dictation language
+      recognition.lang = 'es-ES';
 
       recognition.onstart = () => {
         isListening = true;
         document.getElementById('micBtn').classList.add('listening');
-        chatInput.placeholder = "Escuchando tu voz...";
+        chatInput.placeholder = currentLang === 'es' ? "Escuchando..." : "Listening...";
       };
 
       recognition.onresult = (event) => {
-        const text = event.results[0][0].transcript;
-        chatInput.value = text;
+        chatInput.value = event.results[0][0].transcript;
       };
 
-      recognition.onerror = (event) => {
-        console.error("Speech Recognition Error:", event.error);
-        stopListeningState();
-      };
-
-      recognition.onend = () => {
-        stopListeningState();
-      };
+      recognition.onerror = () => stopListeningState();
+      recognition.onend = () => stopListeningState();
     }
 
     function stopListeningState() {
       isListening = false;
       document.getElementById('micBtn').classList.remove('listening');
-      chatInput.placeholder = "Escribe tu mensaje o dictalo...";
+      chatInput.placeholder = chatInput.getAttribute(`data-${currentLang}-placeholder`);
     }
 
     function toggleSpeechRecognition() {
-      if (!recognition) {
-        alert("Tu navegador no soporta el reconocimiento de voz para transcripción.");
-        return;
-      }
-
-      if (isListening) {
-        recognition.stop();
-      } else {
-        recognition.start();
-      }
+      if (!recognition) return alert("Browser not supported.");
+      isListening ? recognition.stop() : recognition.start();
     }
 
     function handleKeyPress(e) {
-      if (e.key === 'Enter') {
-        submitCustomMessage();
-      }
+      if (e.key === 'Enter') submitCustomMessage();
     }
 
     async function submitCustomMessage() {
@@ -1774,43 +1187,10 @@ Toca uno de los ejemplos o haz clic en el 🎤 para **transcribir tu voz en tiem
 
       isTyping = true;
       const typing = appendTypingIndicator();
-      await new Promise(r => setTimeout(r, 1500));
+      await new Promise(r => setTimeout(r, 1200));
       typing.remove();
 
-      // Analizador inteligente interactivo simulado
-      let responseText = "";
-      const cleaned = text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-
-      if (cleaned.includes("go to") && (cleaned.includes("yesterday") || cleaned.includes("last"))) {
-        responseText = `¡Excelente intento! Has cometido un pequeño desliz con el tiempo pasado.
-
-¡Sigamos aprendiendo! Aquí tienes la frase corregida:
-
-📝
-1. Speak in past tense correctly: "Yesterday I went to the cinema." (El pasado de go es went).`;
-      } else if (cleaned.includes("je es") || cleaned.includes("je parler")) {
-        responseText = `¡Muy buen intento en francés! Tienes pequeños detalles de conjugación de verbos.
-
-¡Sigamos con el aprendizaje! Aquí está tu frase corregida:
-
-📝
-2. Dites votre nationalité correctement: "Je suis mexicain et je parle français." (Usamos suis para ser y conjugamos parler en presente).`;
-      } else if (cleaned.includes("хотеть")) {
-        responseText = `🇷🇺 ¡Excelente! Se entiende perfectamente, pero conjuguemos el verbo.
-
-¡Aquí tienes la frase natural corregida:
-
-📝
-3. Скажи, что ты хочешь выпить: "Я хочу кофе." (El infinitivo хотеть se conjuga como хочу para la primera persona).`;
-      } else {
-        // Respuesta genérica inteligente
-        responseText = `¡Fabuloso! Tu mensaje ha sido recibido perfectamente. He guardado tu interacción y he validado tus estructuras conversacionales.
-
-¡Continuemos con la clase de hoy!
-
-📝
-1. Describe your favorite learning experience in the language you are practicing.`;
-      }
+      const responseText = `¡Excelente! Te hiciste entender perfectamente. He guardado tu interacción.\n\n📝\n1. Sigue platicando conmigo. Imagina que estamos en un avión y pregúntame a dónde viajo.`;
 
       appendMessage(responseText, 'bot');
       chatContainer.scrollTop = chatContainer.scrollHeight;
@@ -1820,7 +1200,7 @@ Toca uno de los ejemplos o haz clic en el 🎤 para **transcribir tu voz en tiem
     function appendMessage(content, sender) {
       const msgDiv = document.createElement('div');
       msgDiv.classList.add('msg', sender);
-      msgDiv.innerHTML = content.replace(/\n/g, '<br>');
+      msgDiv.innerHTML = content;
       chatContainer.appendChild(msgDiv);
       return msgDiv;
     }
@@ -1831,150 +1211,6 @@ Toca uno de los ejemplos o haz clic en el 🎤 para **transcribir tu voz en tiem
       typingDiv.innerHTML = '<div class="dot"></div><div class="dot"></div><div class="dot"></div>';
       chatContainer.appendChild(typingDiv);
       return typingDiv;
-    }
-
-    function speakText(text, lang) {
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = lang;
-        utterance.pitch = 1.0;
-        utterance.rate = 0.85;
-        window.speechSynthesis.speak(utterance);
-      } else {
-        alert('Tu dispositivo no soporta síntesis de voz.');
-      }
-    }
-
-    /* ─── FAQ ACCORDION TOGGLE ───────────────────────────────────────────── */
-    function toggleFaq(header) {
-      const item = header.parentElement;
-      const content = item.querySelector('.faq-content');
-      const isActive = item.classList.contains('active');
-
-      document.querySelectorAll('.faq-item').forEach(el => {
-        if (el !== item) {
-          el.classList.remove('active');
-          el.querySelector('.faq-content').style.maxHeight = null;
-        }
-      });
-
-      if (isActive) {
-        item.classList.remove('active');
-        content.style.maxHeight = null;
-      } else {
-        item.classList.add('active');
-        content.style.maxHeight = content.scrollHeight + "px";
-      }
-    }
-
-    /* ─── WEB NARRATOR / TRANSCRIBER IA CONTROL PANEL (AUDIO CONTROLS) ───── */
-    let narratorSpeech = null;
-    let currentNarratorIndex = 0;
-    let narratorBlocks = [];
-    let isNarrating = false;
-
-    function toggleNarrator() {
-      const panel = document.getElementById('narratorPanel');
-      panel.classList.toggle('active');
-    }
-
-    function changeNarratorLang() {
-      if (isNarrating) {
-        stopNarration();
-      }
-    }
-
-    function closeNarratorPanel() {
-      document.getElementById('narratorPanel').classList.remove('active');
-      stopNarration();
-    }
-
-    function stopNarration() {
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-      }
-      isNarrating = false;
-      document.getElementById('narratorPlayBtn').innerHTML = '<i class="fa-solid fa-play"></i> Leer Página';
-      document.getElementById('narratorStopBtn').disabled = true;
-      document.getElementById('narratorStatus').innerText = "Narración detenida.";
-      
-      // Limpiar highlights
-      document.querySelectorAll('.narrating-highlight').forEach(el => {
-        el.classList.remove('narrating-highlight');
-      });
-    }
-
-    function startNarration() {
-      if (!('speechSynthesis' in window)) {
-        alert("Tu dispositivo no admite la síntesis de voz para leer la página.");
-        return;
-      }
-
-      if (isNarrating) {
-        // Pause/Stop toggle
-        stopNarration();
-        return;
-      }
-
-      // Collect reading blocks
-      narratorBlocks = [
-        { id: 'read-tagline', text: 'Tutor Inteligente de Inteligencia Artificial Multilingüe 24/7' },
-        { id: 'read-title', text: 'Domina 8 Idiomas conversando por Telegram' },
-        { id: 'read-desc', text: document.getElementById('read-desc').innerText },
-        { id: 'read-methodology-title', text: 'Metodología conversacional acelerada' },
-        { id: 'read-step-1', text: 'Paso 1: Práctica Activa. Tú conversas libremente mediante mensajes o notas de voz. Noah te guiará nivel a nivel a través de 5 ejercicios interactivos estructurados y súper concisos.' },
-        { id: 'read-step-2', text: 'Paso 2: Feedback Inmediato. Si cometes algún desliz de ortografía, pronunciación o gramática, el tutor IA te corregirá al instante en español explicándote el por qué de forma muy amigable.' },
-        { id: 'read-step-3', text: 'Paso 3: Consolidación en Memoria. Tus deslices se registran automáticamente en una base vectorial ChromaDB, de modo que Noah personalizará los retos futuros.' }
-      ];
-
-      isNarrating = true;
-      currentNarratorIndex = 0;
-      document.getElementById('narratorPlayBtn').innerHTML = '<i class="fa-solid fa-pause"></i> Detener';
-      document.getElementById('narratorStopBtn').disabled = false;
-      
-      speakNextBlock();
-    }
-
-    function speakNextBlock() {
-      if (!isNarrating || currentNarratorIndex >= narratorBlocks.length) {
-        stopNarration();
-        document.getElementById('narratorStatus').innerText = "Lectura de la página finalizada.";
-        return;
-      }
-
-      // Remover highlights anteriores
-      document.querySelectorAll('.narrating-highlight').forEach(el => {
-        el.classList.remove('narrating-highlight');
-      });
-
-      const block = narratorBlocks[currentNarratorIndex];
-      const targetElement = document.getElementById(block.id);
-      
-      if (targetElement) {
-        targetElement.classList.add('narrating-highlight');
-        targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-
-      document.getElementById('narratorStatus').innerText = `Leyendo sección ${currentNarratorIndex + 1} de ${narratorBlocks.length}...`;
-
-      const langSelect = document.getElementById('narratorLang').value;
-      const utterance = new SpeechSynthesisUtterance(block.text);
-      utterance.lang = langSelect;
-      utterance.rate = 0.9;
-      utterance.pitch = 1.0;
-
-      utterance.onend = () => {
-        currentNarratorIndex++;
-        speakNextBlock();
-      };
-
-      utterance.onerror = (e) => {
-        console.error("Synthesizer error:", e);
-        stopNarration();
-      };
-
-      window.speechSynthesis.speak(utterance);
     }
   </script>
 
