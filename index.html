@@ -6,7 +6,6 @@
   <title>Noah — Tu Tutor IA de Idiomas en Telegram</title>
   <meta name="description" content="Aprende a hablar 8 idiomas sin miedo. Practica con notas de voz en Telegram usando escenarios reales.">
   
-  <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
   
   <!-- Fonts -->
@@ -18,65 +17,48 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    /* ─── VARIABLES & DESIGN SYSTEM ──────────────────────────────────────── */
+    /* ─── VARIABLES & DESIGN SYSTEM (PURE GLASSMORPHISM) ─────────────────── */
     :root {
-      /* Dark Theme (Default) */
-      --bg-color: #05060b;
-      --card-bg: rgba(13, 17, 30, 0.6);
-      --card-border: rgba(255, 255, 255, 0.05);
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --header-bg: rgba(5, 6, 11, 0.75);
+      /* Dark Theme */
+      --bg-base: #02040a;
+      --glass-bg: rgba(255, 255, 255, 0.03);
+      --glass-bg-hover: rgba(255, 255, 255, 0.06);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --glass-border-light: rgba(255, 255, 255, 0.15);
       
-      --phone-bg: #0a0b12;
-      --phone-border: #1c1e2d;
-      --phone-header: #121422;
-      --chat-msg-bot: #181b2a;
-      --chat-msg-user: #3182ce;
-      --chat-msg-text-user: #fff;
-      --table-header: #0d0f1a;
-      --table-bg: rgba(13, 17, 30, 0.6);
+      --text-main: #ffffff;
+      --text-muted: #94a3b8;
       
       --primary: #00f2fe;
       --secondary: #4facfe;
-      --accent: #a18cd1;
-      --primary-gradient: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
-      --accent-gradient: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
-      --purple-glow: 0 0 25px rgba(161, 140, 209, 0.2);
-      --neon-glow: 0 0 30px rgba(0, 242, 254, 0.35);
+      --accent: #d946ef;
       
-      --glow-color-1: rgba(0, 242, 254, 0.08);
-      --glow-color-2: rgba(161, 140, 209, 0.05);
+      --primary-gradient: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+      --accent-gradient: linear-gradient(135deg, #a18cd1 0%, #d946ef 100%);
+      --mesh-1: #00f2fe;
+      --mesh-2: #8b5cf6;
+      --mesh-3: #d946ef;
     }
 
     [data-theme="light"] {
-      /* Premium Light Theme */
-      --bg-color: #f8fafc;
-      --card-bg: rgba(255, 255, 255, 0.9);
-      --card-border: rgba(0, 0, 0, 0.06);
+      --bg-base: #f4f4f9;
+      --glass-bg: rgba(255, 255, 255, 0.6);
+      --glass-bg-hover: rgba(255, 255, 255, 0.9);
+      --glass-border: rgba(0, 0, 0, 0.05);
+      --glass-border-light: rgba(0, 0, 0, 0.1);
+      
       --text-main: #0f172a;
       --text-muted: #475569;
-      --header-bg: rgba(248, 250, 252, 0.85);
-      
-      --phone-bg: #ffffff;
-      --phone-border: #e2e8f0;
-      --phone-header: #f1f5f9;
-      --chat-msg-bot: #f1f5f9;
-      --chat-msg-user: #2563eb;
-      --chat-msg-text-user: #fff;
-      --table-header: #e2e8f0;
-      --table-bg: rgba(255, 255, 255, 0.9);
       
       --primary: #0284c7;
       --secondary: #0ea5e9;
-      --accent: #7c3aed;
-      --primary-gradient: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
-      --accent-gradient: linear-gradient(135deg, #7c3aed 0%, #c084fc 100%);
-      --purple-glow: 0 4px 20px rgba(124, 58, 237, 0.1);
-      --neon-glow: 0 8px 30px rgba(14, 165, 233, 0.25);
+      --accent: #9333ea;
       
-      --glow-color-1: rgba(14, 165, 233, 0.05);
-      --glow-color-2: rgba(124, 58, 237, 0.04);
+      --primary-gradient: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+      --accent-gradient: linear-gradient(135deg, #9333ea 0%, #c084fc 100%);
+      --mesh-1: #38bdf8;
+      --mesh-2: #c084fc;
+      --mesh-3: #f472b6;
     }
 
     * {
@@ -84,53 +66,103 @@
       margin: 0;
       padding: 0;
       scroll-behavior: smooth;
-      transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+      transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
     }
 
     body {
       font-family: 'Inter', sans-serif;
-      background-color: var(--bg-color);
+      background-color: var(--bg-base);
       color: var(--text-main);
       overflow-x: hidden;
       line-height: 1.6;
+      position: relative;
     }
 
     h1, h2, h3, h4 {
       font-family: 'Outfit', sans-serif;
       font-weight: 800;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
     }
 
     ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: var(--bg-color); }
+    ::-webkit-scrollbar-track { background: var(--bg-base); }
     ::-webkit-scrollbar-thumb { background: rgba(128, 128, 128, 0.3); border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: var(--primary-gradient); }
 
-    /* ─── BACKGROUND GLOWS ────────────────────────────────────────────── */
-    .glow-bg {
-      position: absolute;
-      width: 800px;
-      height: 800px;
-      background: radial-gradient(circle, var(--glow-color-1) 0%, rgba(79, 172, 254, 0) 70%);
-      top: -15%;
-      right: -10%;
-      z-index: 0;
-      pointer-events: none;
+    /* ─── DYNAMIC MESH BACKGROUND ────────────────────────────────────────── */
+    .mesh-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      overflow: hidden;
+      background-color: var(--bg-base);
     }
 
-    .glow-bg-left {
+    .mesh-blob {
       position: absolute;
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle, var(--glow-color-2) 0%, rgba(251, 194, 235, 0) 70%);
-      top: 40%;
-      left: -15%;
-      z-index: 0;
-      pointer-events: none;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.4;
+      animation: float 20s infinite ease-in-out alternate;
+    }
+
+    [data-theme="light"] .mesh-blob {
+      opacity: 0.3;
+      filter: blur(90px);
+    }
+
+    .blob-1 {
+      top: -10%; left: -10%;
+      width: 600px; height: 600px;
+      background: var(--mesh-1);
+      animation-delay: 0s;
+    }
+
+    .blob-2 {
+      top: 40%; right: -10%;
+      width: 700px; height: 700px;
+      background: var(--mesh-2);
+      animation-delay: -5s;
+    }
+
+    .blob-3 {
+      bottom: -20%; left: 20%;
+      width: 800px; height: 800px;
+      background: var(--mesh-3);
+      animation-delay: -10s;
+    }
+
+    @keyframes float {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(5%, 10%) scale(1.1); }
+      100% { transform: translate(-5%, -10%) scale(0.9); }
+    }
+
+    /* ─── GLASSMORPHISM UTILITIES ────────────────────────────────────────── */
+    .glass-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid var(--glass-border);
+      border-top: 1px solid var(--glass-border-light);
+      border-left: 1px solid var(--glass-border-light);
+      border-radius: 30px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+    }
+
+    .glass-panel {
+      background: linear-gradient(135deg, var(--glass-bg) 0%, rgba(255,255,255,0) 100%);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 1250px;
       margin: 0 auto;
       padding: 0 24px;
       position: relative;
@@ -139,32 +171,46 @@
 
     /* ─── STICKY HEADER ──────────────────────────────────────────────────── */
     header {
-      padding: 20px 0;
+      padding: 16px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
-      top: 0;
+      top: 16px;
       z-index: 100;
-      backdrop-filter: blur(12px);
-      background: var(--header-bg);
-      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 40px;
+      width: 100%;
+    }
+
+    .header-glass {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 50px;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     }
 
     .logo {
       display: flex;
       align-items: center;
       gap: 12px;
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 900;
       font-family: 'Outfit', sans-serif;
-      background: var(--primary-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: var(--text-main);
+      text-decoration: none;
     }
 
     .logo i {
-      -webkit-text-fill-color: var(--primary);
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.4));
     }
 
@@ -177,90 +223,58 @@
     nav a {
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 14.5px;
-      font-weight: 500;
+      font-size: 14px;
+      font-weight: 600;
       transition: color 0.3s ease;
     }
 
-    nav a:hover { color: var(--primary); }
+    nav a:hover { color: var(--text-main); }
 
     .header-right {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
-    .nav-btn {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--card-border);
-      color: var(--text-main);
-      padding: 10px 20px;
-      border-radius: 50px;
-      font-size: 14px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .nav-btn:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(0, 242, 254, 0.3);
-      color: var(--primary);
-      transform: translateY(-1px);
-    }
-
-    [data-theme="light"] .nav-btn {
-      background: rgba(0, 0, 0, 0.03);
-      border-color: rgba(0, 0, 0, 0.08);
-    }
-
-    [data-theme="light"] .nav-btn:hover {
-      background: rgba(0, 0, 0, 0.06);
-    }
-
-    .btn-main {
-      background: var(--primary-gradient);
-      color: #ffffff !important;
-      border: none !important;
-      box-shadow: var(--neon-glow);
-    }
-    
-    [data-theme="dark"] .btn-main {
-      color: #05060b !important;
-    }
-
-    .btn-main:hover {
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 0 35px rgba(0, 242, 254, 0.45);
-    }
-
-    .icon-control-btn {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--card-border);
+    .icon-btn {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
       color: var(--text-muted);
-      width: 42px;
-      height: 42px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 15px;
       transition: all 0.3s ease;
     }
 
-    .icon-control-btn:hover {
-      color: var(--primary);
-      border-color: rgba(0, 242, 254, 0.2);
+    .icon-btn:hover {
+      background: var(--glass-bg-hover);
+      color: var(--text-main);
+      transform: translateY(-2px);
     }
 
-    [data-theme="light"] .icon-control-btn {
-      background: rgba(0, 0, 0, 0.03);
-      border-color: rgba(0, 0, 0, 0.08);
+    .btn-main {
+      background: var(--text-main);
+      color: var(--bg-base);
+      border: none;
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-main:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
 
     /* ─── HERO SECTION ───────────────────────────────────────────────────── */
@@ -268,43 +282,49 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 80px 0 100px 0;
-      gap: 60px;
+      padding: 40px 0 120px 0;
+      gap: 80px;
     }
 
     .hero-content {
-      flex: 1.2;
-      max-width: 650px;
+      flex: 1.1;
     }
 
     .tagline {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(0, 242, 254, 0.08);
-      border: 1px solid rgba(0, 242, 254, 0.15);
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(10px);
       padding: 8px 18px;
       border-radius: 50px;
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 700;
-      color: var(--primary);
+      color: var(--text-main);
       margin-bottom: 24px;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
     }
 
-    .hero-title {
-      font-size: 64px;
-      line-height: 1.05;
-      margin-bottom: 24px;
-      color: var(--text-main);
-    }
-
-    .hero-title span {
+    .tagline span {
       background: var(--primary-gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 40px rgba(0, 242, 254, 0.15);
+    }
+
+    .hero-title {
+      font-size: 72px;
+      line-height: 1.05;
+      margin-bottom: 24px;
+      color: var(--text-main);
+      text-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .hero-title span {
+      font-style: italic;
+      color: var(--text-muted);
+      font-weight: 400;
     }
 
     .hero-desc {
@@ -312,6 +332,7 @@
       color: var(--text-muted);
       margin-bottom: 40px;
       line-height: 1.6;
+      max-width: 90%;
     }
 
     .cta-container {
@@ -321,10 +342,10 @@
       margin-bottom: 48px;
     }
 
-    .cta-btn {
+    .btn-gradient {
       background: var(--primary-gradient);
       border: none;
-      color: #05060b;
+      color: #000;
       padding: 18px 40px;
       border-radius: 50px;
       font-size: 16px;
@@ -334,305 +355,203 @@
       align-items: center;
       gap: 12px;
       transition: all 0.3s ease;
-      box-shadow: var(--neon-glow);
+      box-shadow: 0 10px 30px rgba(0, 242, 254, 0.3);
     }
 
-    [data-theme="light"] .cta-btn {
-      color: #fff;
-    }
+    [data-theme="light"] .btn-gradient { color: #fff; }
 
-    .cta-btn:hover {
+    .btn-gradient:hover {
       transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 0 35px rgba(0, 242, 254, 0.45);
+      box-shadow: 0 15px 40px rgba(0, 242, 254, 0.5);
     }
 
-    .hero-stats {
-      display: flex;
-      gap: 40px;
-      border-top: 1px solid var(--card-border);
-      padding-top: 32px;
-    }
-
-    .hero-stat-item {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .hero-stat-val {
-      font-size: 32px;
-      font-weight: 800;
-      color: var(--text-main);
-      background: var(--primary-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-stat-lbl {
-      font-size: 13px;
-      color: var(--text-muted);
-      font-weight: 600;
-    }
-
-    /* ─── INTERACTIVE PHONE CHAT MOCKUP ──────────────────────────────────── */
+    /* ─── INTERACTIVE PHONE MOCKUP (GLASS) ───────────────────────────────── */
     .hero-visual {
       flex: 0.9;
       display: flex;
       justify-content: center;
       align-items: center;
-    }
-
-    .phone-wrapper {
-      position: relative;
-    }
-
-    .phone-wrapper::after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: var(--primary-gradient);
-      border-radius: 40px;
-      top: 12px;
-      left: 12px;
-      z-index: -1;
-      filter: blur(15px);
-      opacity: 0.25;
+      perspective: 1000px;
     }
 
     .phone-frame {
       width: 360px;
-      height: 640px;
-      background: var(--phone-bg);
-      border: 8px solid var(--phone-border);
-      border-radius: 38px;
-      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8);
+      height: 680px;
+      background: rgba(10, 10, 15, 0.4);
+      backdrop-filter: blur(40px);
+      -webkit-backdrop-filter: blur(40px);
+      border: 1px solid var(--glass-border-light);
+      border-top: 1px solid rgba(255,255,255,0.3);
+      border-left: 1px solid rgba(255,255,255,0.3);
+      border-radius: 44px;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(255,255,255,0.05);
       overflow: hidden;
       display: flex;
       flex-direction: column;
       position: relative;
+      transform: rotateY(-5deg) rotateX(2deg);
+      transition: transform 0.5s ease;
+    }
+    
+    [data-theme="light"] .phone-frame {
+      background: rgba(255, 255, 255, 0.4);
+      border: 1px solid rgba(255,255,255,0.6);
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.1), inset 0 0 20px rgba(255,255,255,0.5);
+    }
+
+    .phone-frame:hover {
+      transform: rotateY(0deg) rotateX(0deg);
     }
 
     .phone-header {
-      background: var(--phone-header);
-      padding: 16px;
+      background: var(--glass-bg);
+      border-bottom: 1px solid var(--glass-border);
+      padding: 20px 16px 16px 16px;
       display: flex;
       align-items: center;
       gap: 12px;
-      border-bottom: 1px solid var(--card-border);
+      backdrop-filter: blur(20px);
     }
 
     .phone-avatar {
-      width: 38px;
-      height: 38px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       background: var(--primary-gradient);
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 800;
-      color: #05060b;
+      color: #000;
       font-size: 18px;
     }
-    
-    [data-theme="light"] .phone-avatar {
-      color: #fff;
-    }
+    [data-theme="light"] .phone-avatar { color: #fff; }
 
-    .phone-user-info {
-      flex: 1;
-    }
+    .phone-user-info { flex: 1; }
 
     .phone-username {
       font-size: 15px;
-      font-weight: 700;
+      font-weight: 800;
       color: var(--text-main);
     }
 
     .phone-status {
-      font-size: 12px;
+      font-size: 11px;
       color: var(--primary);
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      font-weight: 500;
-    }
-
-    .phone-status::before {
-      content: '';
-      display: inline-block;
-      width: 6px;
-      height: 6px;
-      background-color: var(--primary);
-      border-radius: 50%;
-      box-shadow: 0 0 6px var(--primary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     .phone-chat {
       flex: 1;
-      padding: 16px;
+      padding: 20px 16px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 14px;
-      background: var(--phone-bg);
+      gap: 16px;
       scrollbar-width: none;
     }
     
-    .phone-chat::-webkit-scrollbar {
-      display: none;
-    }
+    .phone-chat::-webkit-scrollbar { display: none; }
 
     .msg {
       max-width: 85%;
-      padding: 14px 16px;
+      padding: 14px 18px;
       border-radius: 20px;
       font-size: 13.5px;
       line-height: 1.5;
-      animation: popIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation: popIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      backdrop-filter: blur(10px);
     }
 
     @keyframes popIn {
-      from { opacity: 0; transform: translateY(12px) scale(0.96); }
+      from { opacity: 0; transform: translateY(15px) scale(0.95); }
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     .msg.user {
       align-self: flex-end;
-      background: var(--chat-msg-user);
-      color: var(--chat-msg-text-user);
+      background: var(--primary-gradient);
+      color: #000;
       border-bottom-right-radius: 4px;
+      box-shadow: 0 10px 20px rgba(0, 242, 254, 0.2);
     }
+    [data-theme="light"] .msg.user { color: #fff; }
 
     .msg.bot {
       align-self: flex-start;
-      background: var(--chat-msg-bot);
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
       color: var(--text-main);
       border-bottom-left-radius: 4px;
-      border: 1px solid var(--card-border);
-      white-space: pre-wrap;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
     }
 
     .correction-box {
-      background: rgba(239, 68, 68, 0.08);
-      border-left: 3px solid #ef4444;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 8px;
-      font-size: 12.5px;
-    }
-
-    .success-box {
-      background: rgba(16, 185, 129, 0.08);
+      background: rgba(16, 185, 129, 0.1);
       border-left: 3px solid #10b981;
-      padding: 8px 10px;
-      margin: 10px 0;
+      padding: 10px 12px;
+      margin: 12px 0;
       border-radius: 8px;
       font-size: 12.5px;
-    }
-
-    .msg-typing {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      padding: 14px 22px;
-      background: var(--chat-msg-bot);
-      border-radius: 20px;
-      align-self: flex-start;
-      border-bottom-left-radius: 4px;
-      width: 75px;
-      justify-content: center;
-      border: 1px solid var(--card-border);
-    }
-
-    .dot {
-      width: 6px;
-      height: 6px;
-      background: var(--text-muted);
-      border-radius: 50%;
-      animation: bounce 1.4s infinite ease-in-out both;
-    }
-
-    .dot:nth-child(1) { animation-delay: -0.32s; }
-    .dot:nth-child(2) { animation-delay: -0.16s; }
-
-    @keyframes bounce {
-      0%, 80%, 100% { transform: scale(0); }
-      40% { transform: scale(1.0); }
     }
 
     .phone-footer {
-      background: var(--phone-header);
-      padding: 14px;
-      border-top: 1px solid var(--card-border);
+      background: var(--glass-bg);
+      border-top: 1px solid var(--glass-border);
+      padding: 16px;
+      backdrop-filter: blur(20px);
     }
 
     .phone-suggestions-title {
-      font-size: 11px;
+      font-size: 10.5px;
       color: var(--text-muted);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.1em;
       text-align: center;
-      font-weight: 700;
+      font-weight: 800;
     }
 
     .pills-container {
       display: flex;
       gap: 8px;
       overflow-x: auto;
-      padding: 4px 8px;
+      padding-bottom: 12px;
       scrollbar-width: none;
-      justify-content: flex-start;
-      align-items: center;
-      width: 100%;
-      margin-bottom: 12px;
     }
-
-    .pills-container::-webkit-scrollbar {
-      display: none;
-    }
+    .pills-container::-webkit-scrollbar { display: none; }
 
     .pill-btn {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--card-border);
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
       color: var(--text-main);
-      padding: 10px 14px;
+      padding: 10px 16px;
       border-radius: 50px;
-      font-size: 12px;
+      font-size: 12.5px;
       cursor: pointer;
       flex-shrink: 0;
       font-weight: 600;
-      transition: all 0.2s ease;
-    }
-
-    [data-theme="light"] .pill-btn {
-      background: #ffffff;
+      transition: all 0.3s ease;
     }
 
     .pill-btn:hover {
       background: var(--primary-gradient);
-      color: #fff;
+      color: #000;
       border-color: transparent;
       transform: translateY(-2px);
     }
-    
-    [data-theme="dark"] .pill-btn:hover {
-      color: #05060b;
-    }
+    [data-theme="light"] .pill-btn:hover { color: #fff; }
 
-    /* Phone Input dictation bar */
     .phone-input-bar {
       display: flex;
       gap: 10px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid var(--card-border);
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
       border-radius: 50px;
-      padding: 6px 8px 6px 16px;
+      padding: 6px 8px 6px 18px;
       align-items: center;
-    }
-
-    [data-theme="light"] .phone-input-bar {
-      background: #ffffff;
     }
 
     .phone-input-bar input {
@@ -645,65 +564,39 @@
       font-family: inherit;
     }
 
-    .phone-input-bar input::placeholder {
-      color: var(--text-muted);
-    }
+    .phone-input-bar input::placeholder { color: var(--text-muted); }
 
     .phone-input-bar button {
       background: none;
       border: none;
       outline: none;
       cursor: pointer;
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--text-muted);
-      transition: all 0.2s ease;
-      font-size: 14px;
+      transition: all 0.3s ease;
+      font-size: 15px;
+      background: var(--glass-bg);
     }
 
     .phone-input-bar button:hover {
-      background: rgba(255, 255, 255, 0.1);
-      color: var(--primary);
-    }
-
-    [data-theme="light"] .phone-input-bar button:hover {
-      background: rgba(0, 0, 0, 0.05);
+      color: var(--text-main);
+      background: var(--glass-bg-hover);
     }
 
     .phone-input-bar button#sendBtn {
-      background: var(--primary-gradient);
-      color: #fff;
+      background: var(--text-main);
+      color: var(--bg-base);
     }
 
-    [data-theme="dark"] .phone-input-bar button#sendBtn {
-      color: #05060b;
-    }
-
-    .phone-input-bar button#sendBtn:hover {
-      transform: scale(1.05);
-      box-shadow: var(--neon-glow);
-    }
-
-    .phone-input-bar button#micBtn.listening {
-      background: #ef4444 !important;
-      color: #fff !important;
-      animation: pulseMic 1.2s infinite ease-in-out;
-    }
-
-    @keyframes pulseMic {
-      0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
-      70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
-    }
-
-    /* ─── VALUE PROPOSITION SECTION ────────────────────────────────────── */
-    .features {
-      padding: 100px 0;
-      border-top: 1px solid var(--card-border);
+    /* ─── INFO GRIDS & FEATURES (GLASS CARDS) ────────────────────────────── */
+    .section-spacing {
+      padding: 120px 0;
+      position: relative;
     }
 
     .section-header {
@@ -712,170 +605,161 @@
     }
 
     .section-title {
-      font-size: 48px;
+      font-size: 52px;
       margin-bottom: 20px;
       color: var(--text-main);
-      font-weight: 900;
     }
 
     .section-desc {
       font-size: 18px;
       color: var(--text-muted);
-      max-width: 650px;
+      max-width: 700px;
       margin: 0 auto;
     }
 
-    .grid {
+    .grid-3 {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 36px;
+      gap: 30px;
     }
 
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      padding: 44px 36px;
-      border-radius: 28px;
-      backdrop-filter: blur(10px);
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    .info-card {
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
 
-    .card:hover {
+    .info-card:hover {
       transform: translateY(-8px);
-      border-color: rgba(0, 242, 254, 0.3);
-      box-shadow: 0 25px 50px -15px rgba(0, 242, 254, 0.15);
+      border-color: var(--glass-border-light);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
     }
 
-    .card-icon {
-      width: 60px;
-      height: 60px;
-      background: rgba(0, 242, 254, 0.08);
-      border: 1px solid rgba(0, 242, 254, 0.2);
-      border-radius: 18px;
+    .info-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 26px;
-      color: var(--primary);
-      margin-bottom: 28px;
-      box-shadow: inset 0 0 20px rgba(0, 242, 254, 0.05);
+      color: var(--text-main);
+      margin-bottom: 30px;
+      box-shadow: inset 0 0 20px rgba(255,255,255,0.02);
     }
 
-    .card-title {
+    .info-card h3 {
       font-size: 24px;
-      margin-bottom: 14px;
-      color: var(--text-main);
+      margin-bottom: 16px;
     }
 
-    .card-text {
+    .info-card p {
+      color: var(--text-muted);
       font-size: 15.5px;
-      color: var(--text-muted);
-      line-height: 1.6;
     }
 
-    /* ─── CALL TO ACTION SECTION ────────────────────────────────────────── */
-    .cta-block {
-      padding: 120px 0;
-      text-align: center;
-      background: radial-gradient(circle at 50% 50%, rgba(0, 242, 254, 0.06) 0%, var(--bg-color) 70%);
-      border-top: 1px solid var(--card-border);
+    /* ─── LANGUAGES MARQUEE ──────────────────────────────────────────────── */
+    .languages-banner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 50px;
     }
 
-    .cta-block-title {
-      font-size: 56px;
-      margin-bottom: 24px;
+    .lang-pill {
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 700;
       color: var(--text-main);
-      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    .cta-block-desc {
+    /* ─── TECH STACK SECTION ─────────────────────────────────────────────── */
+    .tech-stack {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .tech-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .tech-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 24px;
+    }
+
+    .tech-item i {
+      font-size: 32px;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .tech-item h4 {
       font-size: 20px;
-      color: var(--text-muted);
-      max-width: 650px;
-      margin: 0 auto 48px auto;
+      margin-bottom: 8px;
     }
 
-    /* ─── FOOTER ─────────────────────────────────────────────────────────── */
-    footer {
-      padding: 60px 0;
-      border-top: 1px solid var(--card-border);
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 15px;
-    }
-
-    footer p {
-      margin-bottom: 12px;
-    }
-
-    footer a {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    /* ─── RESPONSIVENESS ──────────────────────────────────────────────────── */
+    /* ─── RESPONSIVENESS ─────────────────────────────────────────────────── */
     @media (max-width: 968px) {
-      .hero {
-        flex-direction: column;
-        text-align: center;
-        padding-bottom: 60px;
-      }
-      
-      .hero-content {
-        max-width: 100%;
-      }
-
-      .hero-title {
-        font-size: 46px;
-      }
-
-      .cta-container {
-        justify-content: center;
-      }
-
-      .hero-stats {
-        justify-content: center;
-      }
-
-      .hero-visual {
-        margin-top: 40px;
-      }
-
-      nav {
-        display: none;
-      }
+      .hero { flex-direction: column; text-align: center; gap: 60px; }
+      .hero-title { font-size: 48px; }
+      .cta-container { justify-content: center; }
+      .tech-stack { grid-template-columns: 1fr; }
+      nav { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <div class="glow-bg"></div>
-  <div class="glow-bg-left"></div>
+  <!-- DYNAMIC GLASS MESH BACKGROUND -->
+  <div class="mesh-container">
+    <div class="mesh-blob blob-1"></div>
+    <div class="mesh-blob blob-2"></div>
+    <div class="mesh-blob blob-3"></div>
+  </div>
 
-  <!-- HEADER -->
   <div class="container">
     <header>
-      <div class="logo">
-        <i class="fa-solid fa-graduation-cap"></i> NOAH
-      </div>
-      <nav>
-        <a href="#caracteristicas" data-en="Features" data-es="Características">Características</a>
-        <a href="#metodo" data-en="Our Method" data-es="El Método">El Método</a>
-        <a href="#idiomas" data-en="Languages" data-es="Idiomas">Idiomas</a>
-      </nav>
-      <div class="header-right">
-        <!-- EN/ES Toggle -->
-        <button id="langToggleBtn" onclick="toggleLanguage()" class="nav-btn" title="Switch Language">
-          🇺🇸 EN
-        </button>
-        <!-- Theme Toggle -->
-        <button id="themeToggleBtn" onclick="toggleTheme()" class="icon-control-btn" title="Cambiar Tema (Claro/Oscuro)">
-          <i class="fa-solid fa-moon"></i>
-        </button>
-        <a href="https://t.me/NoahLanguageBot" target="_blank" class="nav-btn btn-main" data-en="Open Telegram" data-es="Ir a Telegram">
-          <i class="fa-brands fa-telegram"></i> Ir a Telegram
+      <div class="header-glass">
+        <a href="#" class="logo">
+          <i class="fa-solid fa-graduation-cap"></i> NOAH
         </a>
+        <nav>
+          <a href="#metodo" data-en="Our Method" data-es="El Método">El Método</a>
+          <a href="#idiomas" data-en="Languages" data-es="Idiomas">Idiomas</a>
+          <a href="#tecnologia" data-en="Technology" data-es="Tecnología">Tecnología</a>
+        </nav>
+        <div class="header-right">
+          <!-- EN/ES Toggle -->
+          <button id="langToggleBtn" onclick="toggleLanguage()" class="icon-btn" title="Switch Language">
+            🇺🇸
+          </button>
+          <!-- Theme Toggle -->
+          <button id="themeToggleBtn" onclick="toggleTheme()" class="icon-btn" title="Cambiar Tema (Claro/Oscuro)">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+          <a href="https://t.me/NoahLanguageBot" target="_blank" class="btn-main" data-en="Open Telegram" data-es="Abrir Telegram">
+            Ir a Telegram <i class="fa-brands fa-telegram"></i>
+          </a>
+        </div>
       </div>
     </header>
   </div>
@@ -884,75 +768,55 @@
   <div class="container">
     <section class="hero">
       <div class="hero-content">
-        <div class="tagline" data-en="<i class='fa-solid fa-sparkles'></i> The Future of Language Learning" data-es="<i class='fa-solid fa-sparkles'></i> El Futuro del Aprendizaje">
-          <i class="fa-solid fa-sparkles"></i> El Futuro del Aprendizaje
+        <div class="tagline" data-en="<span><i class='fa-solid fa-sparkles'></i></span> AI Language Tutor" data-es="<span><i class='fa-solid fa-sparkles'></i></span> Tutor de Idiomas con IA">
+          <span><i class="fa-solid fa-sparkles"></i></span> Tutor de Idiomas con IA
         </div>
-        <h1 class="hero-title" data-en="Speak fluently. <span>Without studying grammar.</span>" data-es="Habla fluido. <span>Sin estudiar gramática.</span>">
-          Habla fluido. <span>Sin estudiar gramática.</span>
+        <h1 class="hero-title" data-en="Speak fluently. <br><span>Without studying.</span>" data-es="Habla fluido. <br><span>Sin estudiar.</span>">
+          Habla fluido. <br><span>Sin estudiar.</span>
         </h1>
-        <p class="hero-desc" data-en="Noah is your private AI tutor on Telegram. Stop repeating boring words. Practice real conversations with voice notes, lose your fear of speaking, and get instant native feedback." data-es="Noah es tu tutor de IA privado en Telegram. Deja de repetir frases robóticas. Practica conversaciones reales con notas de voz, pierde el miedo a hablar y recibe feedback instantáneo.">
-          Noah es tu tutor de IA privado en Telegram. Deja de repetir frases robóticas. Practica conversaciones reales con notas de voz, pierde el miedo a hablar y recibe feedback instantáneo.
+        <p class="hero-desc" data-en="Noah is your private AI tutor on Telegram. Stop memorizing rules. Practice real-life conversations with voice notes, lose your fear of speaking, and get instant native feedback." data-es="Noah es tu tutor de IA privado en Telegram. Deja de memorizar reglas. Practica conversaciones reales con notas de voz, pierde el miedo a hablar y recibe feedback instantáneo nativo.">
+          Noah es tu tutor de IA privado en Telegram. Deja de memorizar reglas. Practica conversaciones reales con notas de voz, pierde el miedo a hablar y recibe feedback instantáneo nativo.
         </p>
         <div class="cta-container">
-          <a href="https://t.me/NoahLanguageBot" target="_blank" class="cta-btn" data-en="<i class='fa-brands fa-telegram'></i> Try Noah for Free" data-es="<i class='fa-brands fa-telegram'></i> Probar Noah Gratis">
-            <i class="fa-brands fa-telegram"></i> Probar Noah Gratis
+          <a href="https://t.me/NoahLanguageBot" target="_blank" class="btn-gradient" data-en="Start Learning Free" data-es="Comenzar a Aprender Gratis">
+            Comenzar a Aprender Gratis <i class="fa-solid fa-arrow-right"></i>
           </a>
-        </div>
-        
-        <div class="hero-stats">
-          <div class="hero-stat-item">
-            <div class="hero-stat-val">8</div>
-            <div class="hero-stat-lbl" data-en="Languages" data-es="Idiomas Nativos">Idiomas Nativos</div>
-          </div>
-          <div class="hero-stat-item">
-            <div class="hero-stat-val">0</div>
-            <div class="hero-stat-lbl" data-en="Monthly Fees" data-es="Mensualidades">Mensualidades</div>
-          </div>
-          <div class="hero-stat-item">
-            <div class="hero-stat-val">24/7</div>
-            <div class="hero-stat-lbl" data-en="Availability" data-es="Disponibilidad">Disponibilidad</div>
-          </div>
         </div>
       </div>
 
-      <!-- INTERACTIVE MOBILE CHAT PREVIEW -->
+      <!-- INTERACTIVE PHONE MOCKUP -->
       <div class="hero-visual">
-        <div class="phone-wrapper">
-          <div class="phone-frame">
-            <div class="phone-header">
-              <div class="phone-avatar">N</div>
-              <div class="phone-user-info">
-                <div class="phone-username" data-en="Tutor Noah 🤖" data-es="Tutor Noah 🤖">Tutor Noah 🤖</div>
-                <div class="phone-status" data-en="online" data-es="en línea">en línea</div>
-              </div>
+        <div class="phone-frame">
+          <div class="phone-header">
+            <div class="phone-avatar">N</div>
+            <div class="phone-user-info">
+              <div class="phone-username" data-en="Tutor Noah" data-es="Tutor Noah">Tutor Noah</div>
+              <div class="phone-status" data-en="online" data-es="en línea">en línea</div>
             </div>
+            <i class="fa-solid fa-ellipsis-vertical" style="color: var(--text-muted);"></i>
+          </div>
 
-            <div class="phone-chat" id="chatContainer">
-              <div class="msg bot" data-en="👋 Hello! I am <b>Noah</b>. I teach you languages through real conversations, not boring tests. <br><br>Tap a button below or click the 🎤 to speak to me naturally!" data-es="👋 ¡Hola! Soy <b>Noah</b>. Te enseño idiomas conversando, sin cuestionarios aburridos.<br><br>¡Toca un botón abajo o presiona el 🎤 para hablarme naturalmente!">👋 ¡Hola! Soy <b>Noah</b>. Te enseño idiomas conversando, sin cuestionarios aburridos.<br><br>¡Toca un botón abajo o presiona el 🎤 para hablarme naturalmente!</div>
+          <div class="phone-chat" id="chatContainer">
+            <div class="msg bot" data-en="👋 Hello! I am <b>Noah</b>.<br><br>Tap a button below or click the 🎤 to speak to me naturally!" data-es="👋 ¡Hola! Soy <b>Noah</b>.<br><br>¡Toca un botón abajo o presiona el 🎤 para hablarme naturalmente!">👋 ¡Hola! Soy <b>Noah</b>.<br><br>¡Toca un botón abajo o presiona el 🎤 para hablarme naturalmente!</div>
+          </div>
+
+          <div class="phone-footer">
+            <div class="phone-suggestions-title" data-en="Try a mock interaction:" data-es="Prueba una interacción:">Prueba una interacción:</div>
+            <div class="pills-container">
+              <button class="pill-btn" onclick="sendMockMessage('en')">🇺🇸 I wants coffee</button>
+              <button class="pill-btn" onclick="sendMockMessage('fr')">🇫🇷 Je es mexicain</button>
+              <button class="pill-btn" onclick="sendMockMessage('ru')">🇷🇺 Я хотеть</button>
+              <button class="pill-btn" onclick="sendMockMessage('ja')">🇯🇵 こんにちは</button>
             </div>
-
-            <div class="phone-footer">
-              <div class="phone-suggestions-title" data-en="Swipe and tap to interact:" data-es="Desliza y toca para interactuar:">Desliza y toca para interactuar:</div>
-              <div class="pills-container">
-                <button class="pill-btn" onclick="sendMockMessage('en')">🇺🇸 I wants coffee</button>
-                <button class="pill-btn" onclick="sendMockMessage('fr')">🇫🇷 Je es mexicain</button>
-                <button class="pill-btn" onclick="sendMockMessage('ru')">🇷🇺 Я хотеть</button>
-                <button class="pill-btn" onclick="sendMockMessage('ja')">🇯🇵 こんにちは</button>
-                <button class="pill-btn" onclick="sendMockMessage('de')">🇩🇪 Ich bin</button>
-                <button class="pill-btn" onclick="sendMockMessage('ko')">🇰🇷 안녕</button>
-                <button class="pill-btn" onclick="sendMockMessage('it')">🇮🇹 Mi piace</button>
-                <button class="pill-btn" onclick="sendMockMessage('pt')">🇵🇹 Eu gosto</button>
-              </div>
-              
-              <div class="phone-input-bar">
-                <input type="text" id="chatInput" placeholder="Escribe o dicta..." onkeypress="handleKeyPress(event)" data-en-placeholder="Type or speak..." data-es-placeholder="Escribe o dicta...">
-                <button id="micBtn" onclick="toggleSpeechRecognition()" title="Dictate voice message">
-                  <i class="fa-solid fa-microphone"></i>
-                </button>
-                <button id="sendBtn" onclick="submitCustomMessage()">
-                  <i class="fa-solid fa-paper-plane"></i>
-                </button>
-              </div>
+            
+            <div class="phone-input-bar">
+              <input type="text" id="chatInput" placeholder="Escribe o dicta..." onkeypress="handleKeyPress(event)" data-en-placeholder="Type or speak..." data-es-placeholder="Escribe o dicta...">
+              <button id="micBtn" onclick="toggleSpeechRecognition()" title="Dictate voice message">
+                <i class="fa-solid fa-microphone"></i>
+              </button>
+              <button id="sendBtn" onclick="submitCustomMessage()">
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
             </div>
           </div>
         </div>
@@ -960,80 +824,123 @@
     </section>
   </div>
 
-  <!-- VALUE PROPOSITION / FEATURES SECTION -->
-  <section class="features" id="caracteristicas">
+  <!-- VALUE PROPOSITION (GLASS CARDS) -->
+  <section class="section-spacing" id="metodo">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title" data-en="Why learning with Noah feels like magic" data-es="Por qué aprender con Noah se siente mágico">Por qué aprender con Noah se siente mágico</h2>
-        <p class="section-desc" data-en="We eliminated everything you hate about traditional schools and gamified apps." data-es="Eliminamos todo lo que odias de las escuelas tradicionales y las apps de adivinanzas.">Eliminamos todo lo que odias de las escuelas tradicionales y las apps de adivinanzas.</p>
+        <h2 class="section-title" data-en="Why Noah is different" data-es="Por qué Noah es diferente">Por qué Noah es diferente</h2>
+        <p class="section-desc" data-en="We use the Praktika model: immersive roleplay scenarios, zero-pressure feedback, and dynamic scaffolding." data-es="Utilizamos inmersión por escenarios (Roleplay), corrección sin presión y andamiaje dinámico adaptativo.">Utilizamos inmersión por escenarios (Roleplay), corrección sin presión y andamiaje dinámico adaptativo.</p>
       </div>
 
-      <div class="grid">
-        <!-- Feature 1 -->
-        <div class="card">
-          <div class="card-icon"><i class="fa-solid fa-masks-theater"></i></div>
-          <h3 class="card-title" data-en="Roleplay Micro-scenarios" data-es="Micro-escenarios de Roleplay">Micro-escenarios de Roleplay</h3>
-          <p class="card-text" data-en="Instead of repeating 'The apple is red', you will practice ordering a coffee, nailing a job interview, or flirting in Paris. Context creates memory." data-es="En lugar de repetir 'La manzana es roja', practicarás cómo pedir un café, pasar una entrevista de trabajo o ligar en París. El contexto crea la memoria.">En lugar de repetir 'La manzana es roja', practicarás cómo pedir un café, pasar una entrevista de trabajo o ligar en París. El contexto crea la memoria.</p>
+      <div class="grid-3">
+        <div class="glass-card info-card">
+          <div class="info-icon"><i class="fa-solid fa-masks-theater"></i></div>
+          <h3 data-en="Roleplay Micro-scenarios" data-es="Micro-escenarios de Roleplay">Micro-escenarios de Roleplay</h3>
+          <p data-en="Instead of repeating 'The apple is red', you will practice ordering a coffee, nailing a job interview, or flirting in Paris. Context creates memory." data-es="En lugar de traducir frases abstractas, practicarás pidiendo un café, en una entrevista de trabajo o ligando. El contexto genera retención.">En lugar de traducir frases abstractas, practicarás pidiendo un café, en una entrevista de trabajo o ligando. El contexto genera retención.</p>
         </div>
 
-        <!-- Feature 2 -->
-        <div class="card">
-          <div class="card-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
-          <h3 class="card-title" data-en="Zero Pressure Feedback" data-es="Feedback Sin Presión">Feedback Sin Presión</h3>
-          <p class="card-text" data-en="Noah never interrupts you to yell 'Wrong!'. We use the 'Sandwich Method': we celebrate your attempt, give you the native correction, and keep the conversation flowing." data-es="Noah nunca te interrumpe para gritarte '¡Equivocado!'. Usamos el Método Sándwich: celebramos tu intento, te damos la corrección nativa y seguimos la conversación con fluidez.">Noah nunca te interrumpe para gritarte '¡Equivocado!'. Usamos el Método Sándwich: celebramos tu intento, te damos la corrección nativa y seguimos la conversación con fluidez.</p>
+        <div class="glass-card info-card">
+          <div class="info-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+          <h3 data-en="The Sandwich Method" data-es="El Método Sándwich">El Método Sándwich</h3>
+          <p data-en="We never interrupt you to yell 'Wrong!'. We validate your attempt, give you the native correction, and keep the conversation flowing smoothly." data-es="Noah nunca te interrumpe bruscamente. Celebramos tu intento comunicativo, te damos la corrección nativa y seguimos la conversación con fluidez.">Noah nunca te interrumpe bruscamente. Celebramos tu intento comunicativo, te damos la corrección nativa y seguimos la conversación con fluidez.</p>
         </div>
 
-        <!-- Feature 3 -->
-        <div class="card">
-          <div class="card-icon"><i class="fa-solid fa-microphone-lines"></i></div>
-          <h3 class="card-title" data-en="Real-time Voice Dictation" data-es="Habla. No escribas.">Habla. No escribas.</h3>
-          <p class="card-text" data-en="Powered by Groq Whisper STT. Send voice notes in Telegram. Noah will transcribe them instantly and evaluate your pronunciation without writing a single word." data-es="Potenciado por Groq Whisper STT. Envía notas de voz por Telegram. Noah las transcribe al instante y evalúa tu pronunciación sin que tengas que teclear una sola palabra.">Potenciado por Groq Whisper STT. Envía notas de voz por Telegram. Noah las transcribe al instante y evalúa tu pronunciación sin que tengas que teclear una sola palabra.</p>
+        <div class="glass-card info-card">
+          <div class="info-icon"><i class="fa-solid fa-stairs"></i></div>
+          <h3 data-en="100-Level Curriculum" data-es="100 Niveles de Progresión">100 Niveles de Progresión</h3>
+          <p data-en="From Absolute Beginner (A1) to Mastery (C2). Every language has a structured, CEFR-aligned path consisting of 5 conversational micro-missions per level." data-es="Desde Principiante Absoluto (A1) hasta Maestría (C2). Cada idioma tiene un camino estructurado de 100 niveles con 5 misiones por nivel.">Desde Principiante Absoluto (A1) hasta Maestría (C2). Cada idioma tiene un camino estructurado de 100 niveles con 5 misiones por nivel.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CALL TO ACTION -->
-  <section class="cta-block">
+  <!-- LANGUAGES SECTION -->
+  <section class="section-spacing" id="idiomas">
     <div class="container">
-      <h2 class="cta-block-title" data-en="Ready to lose your fear of speaking?" data-es="¿Listo para perder el miedo a hablar?">¿Listo para perder el miedo a hablar?</h2>
-      <p class="cta-block-desc" data-en="Start chatting with Noah in Telegram. 100% free. No credit cards. No weird subscriptions." data-es="Empieza a conversar con Noah en Telegram. 100% gratis. Sin tarjetas de crédito. Sin suscripciones raras.">Empieza a conversar con Noah en Telegram. 100% gratis. Sin tarjetas de crédito. Sin suscripciones raras.</p>
-      <a href="https://t.me/NoahLanguageBot" target="_blank" class="cta-btn" data-en="<i class='fa-brands fa-telegram'></i> Talk to Noah Now" data-es="<i class='fa-brands fa-telegram'></i> Hablar con Noah Ahora">
-        <i class="fa-brands fa-telegram"></i> Hablar con Noah Ahora
+      <div class="section-header">
+        <h2 class="section-title" data-en="8 Languages. 1 Tutor." data-es="8 Idiomas. 1 Tutor.">8 Idiomas. 1 Tutor.</h2>
+        <p class="section-desc" data-en="Switch between languages anytime with the /language command without losing your progress in any of them." data-es="Cambia de idioma en cualquier momento con el comando /language sin perder tu progreso en ninguno de ellos.">Cambia de idioma en cualquier momento con el comando /language sin perder tu progreso en ninguno de ellos.</p>
+      </div>
+      
+      <div class="languages-banner">
+        <div class="lang-pill">🇺🇸 Inglés</div>
+        <div class="lang-pill">🇫🇷 Francés</div>
+        <div class="lang-pill">🇩🇪 Alemán</div>
+        <div class="lang-pill">🇮🇹 Italiano</div>
+        <div class="lang-pill">🇵🇹 Portugués</div>
+        <div class="lang-pill">🇷🇺 Ruso</div>
+        <div class="lang-pill">🇯🇵 Japonés</div>
+        <div class="lang-pill">🇰🇷 Coreano</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNOLOGY DEEP DIVE -->
+  <section class="section-spacing" id="tecnologia">
+    <div class="container">
+      <div class="tech-stack">
+        <div>
+          <h2 class="section-title" style="text-align: left; margin-bottom: 24px;" data-en="Under the Hood" data-es="Bajo el Capó">Bajo el Capó</h2>
+          <p class="section-desc" style="text-align: left; margin: 0; margin-bottom: 40px;" data-en="Noah is built with a highly robust AI architecture designed to deliver a latency-free immersive experience." data-es="Noah está construido con una arquitectura de Inteligencia Artificial altamente robusta para entregar una experiencia sin latencia.">Noah está construido con una arquitectura de Inteligencia Artificial altamente robusta para entregar una experiencia sin latencia.</p>
+        </div>
+
+        <div class="tech-list">
+          <div class="glass-panel tech-item">
+            <i class="fa-solid fa-microphone-lines"></i>
+            <div>
+              <h4 data-en="Groq Whisper STT" data-es="Groq Whisper STT">Groq Whisper STT</h4>
+              <p style="color: var(--text-muted); font-size: 14.5px;" data-en="Lightning-fast voice transcription directly from Telegram buffers. Speak naturally, we'll understand." data-es="Transcripción de voz ultra rápida procesada en memoria directamente desde Telegram. Habla natural, te entenderemos.">Transcripción de voz ultra rápida procesada en memoria directamente desde Telegram. Habla natural, te entenderemos.</p>
+            </div>
+          </div>
+
+          <div class="glass-panel tech-item">
+            <i class="fa-solid fa-brain"></i>
+            <div>
+              <h4 data-en="ChromaDB Vector Memory" data-es="Memoria Vectorial ChromaDB">Memoria Vectorial ChromaDB</h4>
+              <p style="color: var(--text-muted); font-size: 14.5px;" data-en="Noah remembers your past mistakes, vocabulary struggles, and semantic errors using deep vector embeddings to personalize your future lessons." data-es="Noah recuerda tus deslices ortográficos y errores semánticos pasados usando embeddings vectoriales para repasar tus puntos débiles.">Noah recuerda tus deslices ortográficos y errores semánticos pasados usando embeddings vectoriales para repasar tus puntos débiles.</p>
+            </div>
+          </div>
+          
+          <div class="glass-panel tech-item">
+            <i class="fa-solid fa-bolt"></i>
+            <div>
+              <h4 data-en="Vercel Serverless" data-es="Vercel Serverless">Vercel Serverless</h4>
+              <p style="color: var(--text-muted); font-size: 14.5px;" data-en="Deployed on Edge infrastructure with MongoDB Atlas state synchronization for infinite scalability." data-es="Desplegado en infraestructura Serverless con sincronización de estado en MongoDB Atlas para escalabilidad infinita.">Desplegado en infraestructura Serverless con sincronización de estado en MongoDB Atlas para escalabilidad infinita.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-spacing" style="text-align: center; border-top: 1px solid var(--glass-border);">
+    <div class="container">
+      <h2 class="section-title" data-en="Stop studying. Start speaking." data-es="Deja de estudiar. Empieza a hablar.">Deja de estudiar. Empieza a hablar.</h2>
+      <br>
+      <a href="https://t.me/NoahLanguageBot" target="_blank" class="btn-gradient" data-en="Open Telegram Bot" data-es="Abrir Bot de Telegram">
+        Abrir Bot de Telegram <i class="fa-brands fa-telegram"></i>
       </a>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="container">
-      <p data-en="&copy; 2026 Noah Language AI. Built to revolutionize education." data-es="&copy; 2026 Noah Language AI. Creado para revolucionar la educación.">&copy; 2026 Noah Language AI. Creado para revolucionar la educación.</p>
-    </div>
-  </footer>
-
   <!-- SCRIPTS -->
   <script>
-    /* ─── LANGUAGE SWITCHER EN/ES ────────────────────────────────────────── */
     let currentLang = 'es';
 
     function toggleLanguage() {
       const btn = document.getElementById('langToggleBtn');
       currentLang = currentLang === 'es' ? 'en' : 'es';
-      
-      // Update Button Label
-      btn.innerHTML = currentLang === 'es' ? '🇺🇸 EN' : '🇪🇸 ES';
+      btn.innerHTML = currentLang === 'es' ? '🇺🇸' : '🇪🇸';
 
-      // Update all data attributes
       document.querySelectorAll('[data-es]').forEach(el => {
         el.innerHTML = el.getAttribute(`data-${currentLang}`);
       });
 
-      // Update placeholder
       const input = document.getElementById('chatInput');
       input.placeholder = input.getAttribute(`data-${currentLang}-placeholder`);
     }
 
-    /* ─── DARK/LIGHT THEME SWITCHER ──────────────────────────────────────── */
     function toggleTheme() {
       const html = document.documentElement;
       const themeBtn = document.getElementById('themeToggleBtn');
@@ -1043,69 +950,35 @@
       themeBtn.innerHTML = isDark ? '<i class="fa-solid fa-sun" style="color: #ea580c;"></i>' : '<i class="fa-solid fa-moon"></i>';
     }
 
-    /* ─── MULTILINGUAL MOCK CHAT ENGINE ──────────────────────────────────── */
+    /* MOCK CHAT */
     const chatContainer = document.getElementById('chatContainer');
     const chatInput = document.getElementById('chatInput');
     let isTyping = false;
 
-    // We keep the bot replies primarily in Spanish for the showcase, 
-    // but the interaction is highly engaging to show the Sandwich method and Roleplay.
     const MOCK_BOT_RESPONSES = {
       en: {
         user: 'I wants coffee',
-        feedback: '¡Excelente intento! Te hiciste entender perfectamente.',
-        transition: 'Solo un pequeño detalle: con "I" no usamos la "s" al final del verbo.',
+        feedback: '¡Excelente intento! Te hiciste entender.',
         correction: 'I want coffee.',
         exercise: 'Imagina que soy el mesero y acabo de llegar a tu mesa. Pídeme un café. (Imagine I am the waiter. Order a coffee.)'
       },
       fr: {
         user: 'Je es mexicain',
         feedback: '¡Muy bien! Estás conectando muy bien las palabras.',
-        transition: 'Recuerda que para "Yo soy" en francés usamos "suis" en lugar de "es".',
         correction: 'Je suis mexicain.',
         exercise: 'Imagina que nos acabamos de conocer en París. Dime tu nacionalidad.'
       },
       ru: {
         user: 'Я хотеть',
         feedback: '🇷🇺 ¡Fabuloso! La raíz del verbo es correcta.',
-        transition: 'Para decir "yo quiero", conjugamos el verbo de esta forma:',
         correction: 'Я хочу (Ya khochu).',
         exercise: 'Imagina que estás en un bar en Moscú. Dime que quieres agua.'
       },
       ja: {
         user: 'こんにちは',
-        feedback: '🇯🇵 ¡Perfecto! Tu saludo es muy natural y educado.',
-        transition: '¡Sigamos fluyendo con la conversación!',
+        feedback: '🇯🇵 ¡Perfecto! Tu saludo es muy natural.',
         correction: 'こんにちは (Konnichiwa).',
         exercise: 'Ahora, imagina que soy tu nuevo compañero de clase. Preséntate y dime tu nombre.'
-      },
-      de: {
-        user: 'Ich bin',
-        feedback: '🇩🇪 ¡Excelente comienzo! El verbo está conjugado perfectamente.',
-        transition: '¡Completemos la frase para ganar confianza!',
-        correction: 'Ich bin [Dein Name].',
-        exercise: 'Imagina que llegas a un hotel en Berlín. Preséntate en la recepción.'
-      },
-      ko: {
-        user: '안녕',
-        feedback: '🇰🇷 ¡Muy bien! Es un saludo súper natural entre amigos.',
-        transition: 'Si quisieras ser más formal con un desconocido, diríamos:',
-        correction: '안녕하세요 (Annyeong haseyo).',
-        exercise: 'Salúdame como si fuera tu nuevo jefe en la oficina.'
-      },
-      it: {
-        user: 'Mi piace',
-        feedback: '🇮🇹 ¡Fantastico! Estás usando los pronombres italianos perfectamente.',
-        transition: '¡Sigamos practicando tus gustos!',
-        correction: 'Mi piace...',
-        exercise: 'Imagina que estamos pidiendo comida en Roma. Dime cuál es tu plato favorito.'
-      },
-      pt: {
-        user: 'Eu gosto',
-        feedback: '🇵🇹 ¡Maravilhoso! La base está perfecta.',
-        transition: 'Recuerda que en portugués siempre agregamos "de" después del verbo gostar.',
-        correction: 'Eu gosto de...',
-        exercise: 'Imagina que estamos en Río de Janeiro. Dime qué música te gusta escuchar.'
       }
     };
 
@@ -1124,12 +997,8 @@
 
       const botHTML = `
         <p>${data.feedback}</p>
-        <p>${data.transition}</p>
-        <div class="correction-box">
-          ✓ <b>${data.correction}</b>
-        </div>
-        📝
-        1. ${data.exercise}
+        <div class="correction-box">✓ <b>${data.correction}</b></div>
+        📝<br>1. ${data.exercise}
       `;
 
       appendMessage(botHTML, 'bot');
@@ -1137,7 +1006,7 @@
       isTyping = false;
     }
 
-    /* ─── SPEECH TO TEXT DICTATION ───────────────────────────────────────── */
+    /* SPEECH RECOGNITION */
     let recognition = null;
     let isListening = false;
 
@@ -1190,7 +1059,7 @@
       await new Promise(r => setTimeout(r, 1200));
       typing.remove();
 
-      const responseText = `¡Excelente! Te hiciste entender perfectamente. He guardado tu interacción.\n\n📝\n1. Sigue platicando conmigo. Imagina que estamos en un avión y pregúntame a dónde viajo.`;
+      const responseText = `¡Excelente! Te hiciste entender perfectamente.\n\n📝\n1. Sigue platicando conmigo. Imagina que estamos en un avión y pregúntame a dónde viajo.`;
 
       appendMessage(responseText, 'bot');
       chatContainer.scrollTop = chatContainer.scrollHeight;
