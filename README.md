@@ -1,10 +1,10 @@
 <div align="center">
-  <img src="https://socialify.git.ci/swbasmx/Noah/image?description=Tutor+Inteligente+de+Idiomas+en+Telegram+con+Memoria+vectorial+y+Voz&font=Inter&language=1&name=1&owner=1&pattern=Circuit+Board&theme=Dark" alt="Noah Socialify" width="600"/>
+  <img src="https://socialify.git.ci/swbasmx/Noah/image?description=Tutor+Inteligente+de+Idiomas+con+Memoria+Vectorial%2C+Transcripci%C3%B3n+de+Voz+y+Soporte+para+8+Idiomas&font=Inter&language=1&name=1&owner=1&pattern=Circuit+Board&theme=Dark" alt="Noah Socialify" width="600"/>
 </div>
 
 # ⚡ NOAH
 
-> Un tutor inteligente de idiomas (Inglés y Ruso) para Telegram con soporte de notas de voz en tiempo real con Groq Whisper, base de datos vectorial ChromaDB para memoria contextual a largo plazo, streaming de respuestas letra por letra (throttling de 800ms) y landing page interactiva premium.
+> Un tutor de idiomas inteligente, conversacional e interactivo para Telegram con soporte para **8 idiomas** (Inglés, Ruso, Francés, Alemán, Italiano, Portugués, Japonés y Coreano), notas de voz en tiempo real con Groq Whisper, memoria contextual a largo plazo con ChromaDB, progresión interactiva de 5 ejercicios dinámicos y una Landing Page premium con transcripción de voz (STT), narrador integrado y modo claro/oscuro.
 
 [![GitHub license](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![NodeJS](https://img.shields.io/badge/Node.js-6DA55F?style=flat&logo=node.js&logoColor=white)](https://nodejs.org/)
@@ -12,18 +12,25 @@
 [![MongoDB Atlas](https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white)](https://www.mongodb.com/cloud/atlas)
 [![ChromaDB](https://img.shields.io/badge/ChromaDB-fc8019?style=flat&logo=database&logoColor=white)](https://trychroma.com)
 
-## 🎥 Project Demo
-👉 **[Ver Landing Page Interactiva](https://noah-bot.vercel.app/)**
+## 🎥 Project Demo & Web Portal
+👉 **[Visita la Landing Page Interactiva en Vercel](https://noah-flame.vercel.app/)**
 
-## ✨ Features
+---
 
-- **Doble Idioma Nativo (Inglés y Ruso) 🇺🇸 🇷🇺:** Currículos pedagógicos completos de 100 niveles progresivos basados en el Marco Común Europeo de Referencia (MCER / CEFR) desde A1 hasta C2.
-- **Audio en Memoria Real-time (Groq Whisper) 🎙️:** Transcripción ultra veloz de notas de voz capturadas directo desde Telegram, procesadas 100% en buffers de lectura sin escribir archivos físicos locales en el disco (lo que lo hace 100% compatible con la arquitectura serverless de Vercel).
-- **Memoria a Largo Plazo (ChromaDB) 🧠:** Base de datos vectorial confidencial que almacena y busca los deslices gramaticales, vocabulario y giros semánticos de los alumnos en sesiones previas para repasarlos de forma inteligente en futuras interacciones.
-- **Streaming Throttled (OpenAI) 💬:** Respuestas que se editan dinámicamente letra por letra a una frecuencia controlada de 800ms para evitar los rate limits de la API de Telegram, ocultando limpiamente las marcas internas de evaluación pedagógica.
-- **Adaptador Dinámico de Base de Datos 🔌:** Detección automática del entorno. Si detecta la variable `MONGODB_URI` se conecta de forma segura a MongoDB Atlas en producción; si no, realiza un fallback transparente a una base de datos local SQLite.
-- **Blindaje Resiliente de Procesos 🛡️:** Error boundaries integrados (`bot.catch`, `uncaughtException`, `unhandledRejection`) para asegurar que el bot jamás se apague ni sufra caídas ante fallos de conexión a internet o saturación de APIs externas.
-- **Landing Page Interactiva Premium 🎨:** Sitio web cosmos-dark mode con glassmorphism y un simulador de chat interactivo que incluye **pronunciación con voz en vivo en el navegador (Web Speech API)**.
+## ✨ Key Features
+
+- **8 Idiomas de Aprendizaje 🇺🇸 🇷🇺 🇫🇷 🇩🇪 🇮🇹 🇵🇹 🇯🇵 🇰🇷:** Currículos pedagógicos completos de 100 niveles progresivos para cada uno de los idiomas, estructurados bajo el Marco Común Europeo de Referencia (MCER / CEFR) desde principiante (A1) hasta avanzado (C2).
+- **Audio en Memoria Real-time (Groq Whisper) 🎙️:** Transcripción ultra veloz de notas de voz enviadas por Telegram, procesadas al vuelo 100% en búferes de lectura sin escribir archivos físicos locales en el disco (arquitectura ideal para Serverless en Vercel).
+- **Memoria Contextual a Largo Plazo (ChromaDB) 🧠:** Base de datos vectorial confidencial que registra, analiza y recuerda los deslices gramaticales, ortográficos y fonéticos del alumno para repasar esos puntos débiles de forma personalizada en futuras sesiones.
+- **Formato Visual Ultra-Limpio (Inmersión Guiada) 📝:** Instrucciones cortas y comandos imperativos directos. Para idiomas no latinos (Japonés, Coreano, Ruso) incluye de forma inteligente su transcripción fonética (Romaji/Romaja) y traducción al español para evitar la frustración del estudiante.
+- **Flujo de Progresión Permanente y Estable 🎯:** Sistema inteligente de flujo y control de sesiones (`checkAndLevelUp`) que corrige deslices y bloqueos, manteniendo el progreso activo a lo largo de los 5 ejercicios por nivel hasta consolidar la subida de rango.
+- **Streaming Throttled (OpenAI) 💬:** Respuestas redactadas en Telegram en tiempo real mediante buffers controlados a 800ms para evitar los rate limits de la API, filtrando de forma transparente los metadatos de evaluación pedagógica interna.
+- **Landing Page Interactiva Premium con Accesibilidad 🎨:**
+  * **Modo Claro / Modo Oscuro Adaptativo**: Diseño vanguardista responsivo con glassmorphism y transiciones fluidas de color.
+  * **Transcriptor por Voz en Vivo (Speech to Text)**: Barra de mensajería interactiva con un botón de dictado por voz que utiliza el API de reconocimiento del navegador para transcribir lo que hablas.
+  * **Narrador de Página IA**: Consola flotante con lector de texto por voz multilingüe que resalta y desplaza de forma automática los párrafos de la página web a medida que se realiza la narración.
+
+---
 
 ## 💻 Installation Steps
 
@@ -60,16 +67,13 @@ TUTOR_NAME=Noah
 ```
 
 ### 4. Poblar las Colecciones de la Base de Datos (Seeding)
-Para sembrar los 100 niveles de inglés y ruso en tu base de datos (SQLite/MongoDB) y vectorizarlos en ChromaDB, ejecuta los scripts de siembra:
+Para sembrar los 100 niveles de los diferentes idiomas en tu base de datos activa (SQLite/MongoDB) y vectorizar el soporte pedagógico, ejecuta los scripts de siembra:
 ```bash
 # Limpiar colecciones de MongoDB si deseas un inicio fresco
 node scripts/clear_db.js
 
 # Poblar los niveles en tu base de datos activa
 node scripts/seed_levels.js
-
-# Subir e indexar de forma vectorial el currículo de Ruso en ChromaDB
-node scripts/generate_russian_levels.js
 ```
 
 ### 5. Iniciar la aplicación local
@@ -88,28 +92,28 @@ Este repositorio está configurado de forma nativa para desplegarse en **Vercel*
 3. Despliega el proyecto. Vercel construirá y servirá la Landing Page (`index.html`) en la raíz y expondrá el webhook en `https://tu-proyecto.vercel.app/api/bot`.
 4. Vincula el Webhook oficial con Telegram haciendo una petición POST de configuración:
    ```bash
-   curl -X POST "https://api.telegram.org/bot<TU_TELEGRAM_TOKEN>/setWebhook?url=https://tu-proyecto.vercel.app/api/bot"
+   curl -X POST "https://api.telegram.org/bot<TU_TELEGRAM_TOKEN>/setWebhook?url=https://noah-flame.vercel.app/api/bot"
    ```
 
 ---
 
 ## 🛠 Technologies Used
 
-- **Runtime & Framework:** Node.js (ESM), Telegraf (Telegram Bot Framework)
-- **Base de Datos:** MongoDB Atlas / SQLite (Sequelize)
-- **Base Vectorial:** ChromaDB Cloud API
-- **Modelos de IA:** OpenAI (`gpt-4o-mini` y embeddings `text-embedding-3-small`), Groq Whisper (`whisper-large-v3-turbo` en memoria)
-- **Despliegue Cloud:** Vercel (Serverless Server)
-- **Frontend Landing:** HTML5 Semántico, CSS3 Premium, Vanilla JavaScript (ES6+), HTML5 Web Speech API
+- **Runtime & Bot Core:** Node.js (ESM), Telegraf (Telegram Bot Framework)
+- **Base de Datos Híbrida:** MongoDB Atlas / SQLite (Sequelize)
+- **Base Vectorial a Largo Plazo:** ChromaDB Cloud API
+- **Modelos de IA Avanzados:** OpenAI (`gpt-4o-mini` y embeddings `text-embedding-3-small`), Groq Whisper (`whisper-large-v3-turbo` en memoria)
+- **Despliegue e Infraestructura:** Vercel (Serverless Functions)
+- **Frontend Dashboard:** HTML5 Semántico, CSS3 Premium variable, Vanilla JavaScript (ES6+), Web Speech Recognition API (Speech to Text) & Web Speech Synthesis API (Text to Speech).
 
 ---
 
 ## 🤝 Contribution Guidelines
 
-¡Las contribuciones son extremadamente bienvenidas! Si quieres proponer mejoras pedagógicas para los niveles, optimizaciones de red, o nuevos idiomas:
+¡Las contribuciones son sumamente bienvenidas! Si deseas proponer mejoras gramaticales para los niveles, traducciones adicionales, optimizaciones de red o integrar nuevos silabarios:
 1. Haz un Fork del proyecto.
 2. Crea tu rama de características (`git checkout -b feature/NuevoIdioma`).
-3. Haz un commit de tus cambios (`git commit -m 'Añadido currículo de Alemán'`).
+3. Haz un commit de tus cambios (`git commit -m 'Añadido soporte avanzado para Coreano'`).
 4. Haz push a la rama (`git push origin feature/NuevoIdioma`).
 5. Abre un Pull Request describiendo detalladamente tus aportes.
 
@@ -126,4 +130,3 @@ Este proyecto está bajo la Licencia MIT. Eres libre de usarlo, modificarlo y di
 > *"El código trabaja mientras tú duermes."* — MX
 
 Si encuentras algún bug o tienes una sugerencia de diseño, por favor abre un [Issue](https://github.com/swbasmx/Noah/issues) en este repositorio.
-# Noah
