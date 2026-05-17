@@ -142,9 +142,9 @@ export function registerOnboarding(bot) {
   for (const [action, lang] of Object.entries(TARGET_LANGS)) {
     bot.action(action, async (ctx) => {
       await ctx.answerCbQuery();
-      await updateUser(ctx.from.id, { idioma_objetivo: lang });
-      await setUserState(ctx.from.id, 'onboarding_level');
-
+      
+      const user = await getUser(ctx.from.id);
+      
       const flagMap = {
         'inglés': '🇺🇸',
         'ruso': '🇷🇺',
@@ -156,6 +156,20 @@ export function registerOnboarding(bot) {
         'italiano': '🇮🇹',
       };
       const flag = flagMap[lang] || '🌐';
+
+      if (user && user.idioma_objetivo === lang && !['onboarding', 'onboarding_native', 'onboarding_target'].includes(user.estado)) {
+        await setUserState(ctx.from.id, 'active');
+        return ctx.editMessageText(
+          `${flag} *¡Sigues aprendiendo ${lang}!*\n\n` +
+          `Mantienes tu *Nivel ${user.nivel_actual || 1}* y todo tu progreso intacto.\n\n` +
+          `✍️ Puedes enviarme un mensaje de texto o nota de voz en cualquier momento para continuar con tu lección.`,
+          { parse_mode: 'Markdown' }
+        );
+      }
+
+      await updateUser(ctx.from.id, { idioma_objetivo: lang });
+      await setUserState(ctx.from.id, 'onboarding_level');
+
       await ctx.editMessageText(
         `${flag} ¡Excelente elección! Aprenderás *${lang}*.\n\n` +
         `📊 ¿Cuál es tu nivel actual?`,
