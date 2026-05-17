@@ -33,6 +33,12 @@ const LANG_NAMES = {
 const TARGET_LANGS = {
   target_en: 'inglés',
   target_ru: 'ruso',
+  target_fr: 'francés',
+  target_ja: 'japonés',
+  target_ko: 'coreano',
+  target_pt: 'portugués',
+  target_de: 'alemán',
+  target_it: 'italiano',
 };
 
 // Mapa code → idioma nativo
@@ -139,7 +145,17 @@ export function registerOnboarding(bot) {
       await updateUser(ctx.from.id, { idioma_objetivo: lang });
       await setUserState(ctx.from.id, 'onboarding_level');
 
-      const flag = lang === 'ruso' ? '🇷🇺' : '🇺🇸';
+      const flagMap = {
+        'inglés': '🇺🇸',
+        'ruso': '🇷🇺',
+        'francés': '🇫🇷',
+        'japonés': '🇯🇵',
+        'coreano': '🇰🇷',
+        'portugués': '🇧🇷',
+        'alemán': '🇩🇪',
+        'italiano': '🇮🇹',
+      };
+      const flag = flagMap[lang] || '🌐';
       await ctx.editMessageText(
         `${flag} ¡Excelente elección! Aprenderás *${lang}*.\n\n` +
         `📊 ¿Cuál es tu nivel actual?`,

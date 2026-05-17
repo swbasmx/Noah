@@ -17,7 +17,17 @@ export function getLevelCard(nivel, idioma = 'inglés') {
   const langKey = (idioma || 'inglés').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   if (!levelsCache[langKey]) {
     try {
-      const folderName = langKey === 'ruso' ? 'russian' : 'english';
+      const folderMap = {
+        'ingles': 'english',
+        'ruso': 'russian',
+        'frances': 'french',
+        'japones': 'japanese',
+        'coreano': 'korean',
+        'portugues': 'portuguese',
+        'aleman': 'german',
+        'italiano': 'italian'
+      };
+      const folderName = folderMap[langKey] || 'english';
       const file = join(__dirname, `../levels/${folderName}/levels_1_100.json`);
       levelsCache[langKey] = JSON.parse(readFileSync(file, 'utf-8'));
     } catch (err) {

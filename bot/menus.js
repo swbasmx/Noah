@@ -39,6 +39,18 @@ export function targetLangKeyboard() {
     [
       Markup.button.callback('🇺🇸 Inglés', 'target_en'),
       Markup.button.callback('🇷🇺 Ruso', 'target_ru')
+    ],
+    [
+      Markup.button.callback('🇫🇷 Francés', 'target_fr'),
+      Markup.button.callback('🇯🇵 Japonés', 'target_ja')
+    ],
+    [
+      Markup.button.callback('🇰🇷 Coreano', 'target_ko'),
+      Markup.button.callback('🇧🇷 Portugués', 'target_pt')
+    ],
+    [
+      Markup.button.callback('🇩🇪 Alemán', 'target_de'),
+      Markup.button.callback('🇮🇹 Italiano', 'target_it')
     ]
   ]);
 }
