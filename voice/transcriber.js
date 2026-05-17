@@ -25,7 +25,17 @@ export async function transcribeVoice(ctx, fileId) {
   try {
     // 1. Obtener el usuario para ajustar el idioma de transcripción
     const user = await getUser(ctx.from.id);
-    const targetLang = user?.idioma_objetivo === 'ruso' ? 'ru' : 'en';
+    const langMap = {
+      'inglés': 'en',
+      'ruso': 'ru',
+      'francés': 'fr',
+      'japonés': 'ja',
+      'coreano': 'ko',
+      'portugués': 'pt',
+      'alemán': 'de',
+      'italiano': 'it',
+    };
+    const targetLang = langMap[user?.idioma_objetivo] || 'en';
 
     // 2. Obtener la URL del archivo de voz desde Telegram
     const fileInfo = await ctx.telegram.getFile(fileId);
