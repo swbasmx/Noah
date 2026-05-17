@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Noah — Tu Tutor Inteligente de Idiomas en Telegram</title>
-  <meta name="description" content="Aprende inglés y ruso de forma natural en Telegram con Noah, tu tutor IA de idiomas 24/7 con feedback interactivo, voz y base vectorial.">
+  <meta name="description" content="Aprende inglés, ruso, francés, alemán, italiano, portugués, japonés y coreano en Telegram con Noah, tu tutor IA de idiomas con voz y base vectorial.">
   
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
@@ -20,11 +20,22 @@
   <style>
     /* ─── VARIABLES & DESIGN SYSTEM ──────────────────────────────────────── */
     :root {
+      /* Dark Theme (Default) */
       --bg-color: #05060b;
       --card-bg: rgba(13, 17, 30, 0.6);
       --card-border: rgba(255, 255, 255, 0.05);
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
+      --header-bg: rgba(5, 6, 11, 0.75);
+      
+      --phone-bg: #0a0b12;
+      --phone-border: #1c1e2d;
+      --phone-header: #121422;
+      --chat-msg-bot: #181b2a;
+      --chat-msg-user: #3182ce;
+      --chat-msg-text-user: #fff;
+      --table-header: #0d0f1a;
+      --table-bg: rgba(13, 17, 30, 0.6);
       
       --primary: #00f2fe;
       --secondary: #4facfe;
@@ -33,6 +44,39 @@
       --accent-gradient: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
       --purple-glow: 0 0 25px rgba(161, 140, 209, 0.2);
       --neon-glow: 0 0 25px rgba(0, 242, 254, 0.25);
+      
+      --glow-color-1: rgba(0, 242, 254, 0.08);
+      --glow-color-2: rgba(161, 140, 209, 0.05);
+    }
+
+    [data-theme="light"] {
+      /* Premium Light Theme */
+      --bg-color: #f3f4f6;
+      --card-bg: rgba(255, 255, 255, 0.8);
+      --card-border: rgba(0, 0, 0, 0.06);
+      --text-main: #1f2937;
+      --text-muted: #6b7280;
+      --header-bg: rgba(243, 244, 246, 0.8);
+      
+      --phone-bg: #ffffff;
+      --phone-border: #e5e7eb;
+      --phone-header: #f9fafb;
+      --chat-msg-bot: #f3f4f6;
+      --chat-msg-user: #2563eb;
+      --chat-msg-text-user: #fff;
+      --table-header: #e5e7eb;
+      --table-bg: rgba(255, 255, 255, 0.9);
+      
+      --primary: #0284c7;
+      --secondary: #0ea5e9;
+      --accent: #7c3aed;
+      --primary-gradient: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+      --accent-gradient: linear-gradient(135deg, #7c3aed 0%, #c084fc 100%);
+      --purple-glow: 0 4px 20px rgba(124, 58, 237, 0.1);
+      --neon-glow: 0 4px 20px rgba(14, 165, 233, 0.15);
+      
+      --glow-color-1: rgba(14, 165, 233, 0.04);
+      --glow-color-2: rgba(124, 58, 237, 0.03);
     }
 
     * {
@@ -40,6 +84,7 @@
       margin: 0;
       padding: 0;
       scroll-behavior: smooth;
+      transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
     }
 
     body {
@@ -61,10 +106,10 @@
       width: 8px;
     }
     ::-webkit-scrollbar-track {
-      background: #05060b;
+      background: var(--bg-color);
     }
     ::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(128, 128, 128, 0.3);
       border-radius: 4px;
     }
     ::-webkit-scrollbar-thumb:hover {
@@ -76,7 +121,7 @@
       position: absolute;
       width: 800px;
       height: 800px;
-      background: radial-gradient(circle, rgba(0, 242, 254, 0.08) 0%, rgba(79, 172, 254, 0) 70%);
+      background: radial-gradient(circle, var(--glow-color-1) 0%, rgba(79, 172, 254, 0) 70%);
       top: -15%;
       right: -10%;
       z-index: 0;
@@ -87,7 +132,7 @@
       position: absolute;
       width: 700px;
       height: 700px;
-      background: radial-gradient(circle, rgba(161, 140, 209, 0.05) 0%, rgba(251, 194, 235, 0) 70%);
+      background: radial-gradient(circle, var(--glow-color-2) 0%, rgba(251, 194, 235, 0) 70%);
       top: 40%;
       left: -15%;
       z-index: 0;
@@ -98,7 +143,7 @@
       position: absolute;
       width: 800px;
       height: 800px;
-      background: radial-gradient(circle, rgba(0, 242, 254, 0.05) 0%, rgba(79, 172, 254, 0) 75%);
+      background: radial-gradient(circle, var(--glow-color-1) 0%, rgba(79, 172, 254, 0) 75%);
       bottom: -10%;
       right: -20%;
       z-index: 0;
@@ -123,9 +168,8 @@
       top: 0;
       z-index: 100;
       backdrop-filter: blur(12px);
-      background: rgba(5, 6, 11, 0.75);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.02);
-      transition: all 0.3s ease;
+      background: var(--header-bg);
+      border-bottom: 1px solid var(--card-border);
     }
 
     .logo {
@@ -163,6 +207,12 @@
       color: var(--primary);
     }
 
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
     .nav-btn {
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--card-border);
@@ -184,6 +234,29 @@
       border-color: transparent;
       transform: translateY(-2px);
       box-shadow: var(--neon-glow);
+    }
+
+    /* Theme & Narrator Control Buttons */
+    .icon-control-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .icon-control-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--primary);
+      border-color: rgba(0, 242, 254, 0.2);
+      transform: translateY(-1px);
     }
 
     /* ─── HERO SECTION ───────────────────────────────────────────────────── */
@@ -217,10 +290,10 @@
     }
 
     .hero-title {
-      font-size: 64px;
+      font-size: 58px;
       line-height: 1.05;
       margin-bottom: 24px;
-      color: #fff;
+      color: var(--text-main);
       font-weight: 900;
     }
 
@@ -266,11 +339,10 @@
       box-shadow: 0 0 35px rgba(0, 242, 254, 0.45);
     }
 
-    /* Hero Quick Stats */
     .hero-stats {
       display: flex;
       gap: 36px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-top: 1px solid var(--card-border);
       padding-top: 28px;
     }
 
@@ -282,7 +354,7 @@
     .hero-stat-val {
       font-size: 28px;
       font-weight: 800;
-      color: #fff;
+      color: var(--text-main);
       background: var(--primary-gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -322,9 +394,9 @@
 
     .phone-frame {
       width: 350px;
-      height: 610px;
-      background: #0a0b12;
-      border: 8px solid #1c1e2d;
+      height: 620px;
+      background: var(--phone-bg);
+      border: 8px solid var(--phone-border);
       border-radius: 38px;
       box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8);
       overflow: hidden;
@@ -333,14 +405,13 @@
       position: relative;
     }
 
-    /* Telegram header mock */
     .phone-header {
-      background: #121422;
+      background: var(--phone-header);
       padding: 16px;
       display: flex;
       align-items: center;
       gap: 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      border-bottom: 1px solid var(--card-border);
     }
 
     .phone-avatar {
@@ -363,7 +434,7 @@
     .phone-username {
       font-size: 14.5px;
       font-weight: 700;
-      color: #fff;
+      color: var(--text-main);
     }
 
     .phone-status {
@@ -385,7 +456,6 @@
       box-shadow: 0 0 6px var(--primary);
     }
 
-    /* Phone Chat Area */
     .phone-chat {
       flex: 1;
       padding: 16px;
@@ -393,11 +463,16 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
-      background: radial-gradient(circle at center, #0f111f 0%, #06070d 100%);
+      background: var(--phone-bg);
+      scrollbar-width: none;
+    }
+    
+    .phone-chat::-webkit-scrollbar {
+      display: none;
     }
 
     .msg {
-      max-width: 82%;
+      max-width: 85%;
       padding: 12px 14px;
       border-radius: 18px;
       font-size: 13px;
@@ -412,31 +487,24 @@
 
     .msg.user {
       align-self: flex-end;
-      background: #3182ce;
-      color: #fff;
+      background: var(--chat-msg-user);
+      color: var(--chat-msg-text-user);
       border-bottom-right-radius: 4px;
     }
 
     .msg.bot {
       align-self: flex-start;
-      background: #181b2a;
-      color: #f1f5f9;
+      background: var(--chat-msg-bot);
+      color: var(--text-main);
       border-bottom-left-radius: 4px;
-      border: 1px solid rgba(255, 255, 255, 0.04);
-    }
-
-    .msg.bot p {
-      margin-bottom: 6px;
-    }
-
-    .msg.bot p:last-child {
-      margin-bottom: 0;
+      border: 1px solid var(--card-border);
+      white-space: pre-wrap;
     }
 
     .correction-box {
       background: rgba(239, 68, 68, 0.08);
       border-left: 3px solid #ef4444;
-      padding: 6px 10px;
+      padding: 8px 10px;
       margin: 8px 0;
       border-radius: 6px;
       font-size: 12px;
@@ -456,12 +524,13 @@
       align-items: center;
       gap: 4px;
       padding: 12px 20px;
-      background: #181b2a;
+      background: var(--chat-msg-bot);
       border-radius: 18px;
       align-self: flex-start;
       border-bottom-left-radius: 4px;
       width: 70px;
       justify-content: center;
+      border: 1px solid var(--card-border);
     }
 
     .dot {
@@ -480,11 +549,10 @@
       40% { transform: scale(1.0); }
     }
 
-    /* Suggestion Pills at Bottom of phone */
     .phone-footer {
-      background: #121422;
+      background: var(--phone-header);
       padding: 12px;
-      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      border-top: 1px solid var(--card-border);
     }
 
     .phone-suggestions-title {
@@ -499,20 +567,29 @@
 
     .pills-container {
       display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      justify-content: center;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 4px 8px;
+      scrollbar-width: none;
+      justify-content: flex-start;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .pills-container::-webkit-scrollbar {
+      display: none;
     }
 
     .pill-btn {
       background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      color: #cbd5e1;
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
       padding: 8px 12px;
       border-radius: 50px;
       font-size: 11px;
       cursor: pointer;
-      transition: all 0.2s ease;
+      flex-shrink: 0;
       font-weight: 500;
     }
 
@@ -523,10 +600,72 @@
       transform: translateY(-1px);
     }
 
+    /* Phone Input dictation bar */
+    .phone-input-bar {
+      display: flex;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      border-radius: 50px;
+      padding: 4px 6px 4px 14px;
+      align-items: center;
+    }
+
+    .phone-input-bar input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text-main);
+      font-size: 12.5px;
+    }
+
+    .phone-input-bar button {
+      background: none;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      transition: all 0.2s ease;
+    }
+
+    .phone-input-bar button:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--primary);
+    }
+
+    .phone-input-bar button#sendBtn {
+      background: var(--primary-gradient);
+      color: #05060b;
+    }
+
+    .phone-input-bar button#sendBtn:hover {
+      transform: scale(1.05);
+      box-shadow: var(--neon-glow);
+    }
+
+    .phone-input-bar button#micBtn.listening {
+      background: #ef4444 !important;
+      color: #fff !important;
+      animation: pulseMic 1.2s infinite ease-in-out;
+    }
+
+    @keyframes pulseMic {
+      0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+      70% { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+    }
+
     /* ─── METHODOLOGY SECTION (PASOS) ────────────────────────────────────── */
     .methodology {
       padding: 100px 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.02);
+      border-top: 1px solid var(--card-border);
       position: relative;
     }
 
@@ -544,7 +683,6 @@
       padding: 40px 30px;
       border-radius: 24px;
       position: relative;
-      transition: all 0.3s ease;
     }
 
     .step-item:hover {
@@ -572,7 +710,7 @@
     .step-title {
       font-size: 22px;
       margin: 10px 0 12px 0;
-      color: #fff;
+      color: var(--text-main);
     }
 
     .step-desc {
@@ -584,7 +722,7 @@
     /* ─── COMPARATIVE TABLE ──────────────────────────────────────────────── */
     .compare-section {
       padding: 100px 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.02);
+      border-top: 1px solid var(--card-border);
     }
 
     .table-wrapper {
@@ -598,26 +736,26 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      background: var(--card-bg);
+      background: var(--table-bg);
       text-align: left;
     }
 
     th, td {
       padding: 22px 28px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid var(--card-border);
       font-size: 14.5px;
     }
 
     th {
-      background: #0d0f1a;
-      color: #fff;
+      background: var(--table-header);
+      color: var(--text-main);
       font-weight: 700;
       font-size: 16px;
     }
 
     td:first-child {
       font-weight: 600;
-      color: #fff;
+      color: var(--text-main);
     }
 
     tr:last-child td {
@@ -645,7 +783,7 @@
     /* ─── LEVELS SECTION ─────────────────────────────────────────────────── */
     .levels {
       padding: 100px 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.02);
+      border-top: 1px solid var(--card-border);
     }
 
     .levels-grid {
@@ -661,7 +799,6 @@
       border-radius: 24px;
       padding: 40px 30px;
       text-align: center;
-      transition: all 0.3s ease;
     }
 
     .level-card:hover {
@@ -697,14 +834,14 @@
     .level-card-num {
       font-size: 40px;
       font-weight: 900;
-      color: #fff;
+      color: var(--text-main);
       margin-bottom: 12px;
     }
 
     .level-card-title {
       font-size: 20px;
       margin-bottom: 12px;
-      color: #fff;
+      color: var(--text-main);
     }
 
     .level-card-desc {
@@ -716,7 +853,7 @@
     /* ─── FEATURES SECTION ────────────────────────────────────────────────── */
     .features {
       padding: 100px 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.02);
+      border-top: 1px solid var(--card-border);
     }
 
     .section-header {
@@ -727,7 +864,7 @@
     .section-title {
       font-size: 44px;
       margin-bottom: 16px;
-      color: #fff;
+      color: var(--text-main);
       font-weight: 800;
     }
 
@@ -749,7 +886,6 @@
       border: 1px solid var(--card-border);
       padding: 40px 30px;
       border-radius: 24px;
-      transition: all 0.3s ease;
       backdrop-filter: blur(10px);
     }
 
@@ -776,7 +912,7 @@
     .card-title {
       font-size: 20px;
       margin-bottom: 12px;
-      color: #fff;
+      color: var(--text-main);
     }
 
     .card-text {
@@ -788,7 +924,7 @@
     /* ─── FAQ SECTION ────────────────────────────────────────────────────── */
     .faq {
       padding: 100px 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.02);
+      border-top: 1px solid var(--card-border);
     }
 
     .faq-container {
@@ -804,7 +940,6 @@
       border: 1px solid var(--card-border);
       border-radius: 16px;
       overflow: hidden;
-      transition: all 0.3s ease;
     }
 
     .faq-header {
@@ -819,7 +954,7 @@
     .faq-header h3 {
       font-size: 16.5px;
       font-weight: 600;
-      color: #fff;
+      color: var(--text-main);
     }
 
     .faq-icon {
@@ -851,18 +986,155 @@
       transform: rotate(180deg);
     }
 
+    /* ─── NARRATOR CONTROL PANEL ─────────────────────────────────────────── */
+    .narrator-panel {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 320px;
+      background: rgba(10, 12, 22, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(20px);
+      z-index: 9999;
+      transform: translateY(120%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow: hidden;
+    }
+
+    .narrator-panel.active {
+      transform: translateY(0);
+    }
+
+    [data-theme="light"] .narrator-panel {
+      background: rgba(255, 255, 255, 0.95);
+      border-color: rgba(0, 0, 0, 0.08);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .narrator-header {
+      padding: 16px 20px;
+      background: rgba(255, 255, 255, 0.02);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    [data-theme="light"] .narrator-header {
+      background: rgba(0, 0, 0, 0.02);
+      border-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .narrator-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .narrator-header button {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .narrator-body {
+      padding: 20px;
+    }
+
+    .narrator-body p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    .narrator-controls {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .control-action-btn {
+      flex: 1;
+      padding: 10px 16px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      background: var(--primary-gradient);
+      color: #05060b;
+    }
+
+    .control-action-btn.stop {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-main);
+      border: 1px solid var(--card-border);
+    }
+
+    .control-action-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .narrator-lang-select {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .narrator-lang-select label {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .narrator-lang-select select {
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      font-size: 13px;
+      outline: none;
+    }
+
+    [data-theme="light"] .narrator-lang-select select {
+      background: #ffffff;
+    }
+
+    .narrating-highlight {
+      background-color: rgba(0, 242, 254, 0.18) !important;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+    }
+
     /* ─── CALL TO ACTION SECTION ────────────────────────────────────────── */
     .cta-block {
       padding: 100px 0;
       text-align: center;
-      background: radial-gradient(circle at 50% 50%, rgba(0, 242, 254, 0.05) 0%, rgba(5, 6, 11, 1) 70%);
-      border-top: 1px solid rgba(255, 255, 255, 0.02);
+      background: radial-gradient(circle at 50% 50%, rgba(0, 242, 254, 0.05) 0%, var(--bg-color) 70%);
+      border-top: 1px solid var(--card-border);
     }
 
     .cta-block-title {
       font-size: 48px;
       margin-bottom: 20px;
-      color: #fff;
+      color: var(--text-main);
     }
 
     .cta-block-desc {
@@ -875,7 +1147,7 @@
     /* ─── FOOTER ─────────────────────────────────────────────────────────── */
     footer {
       padding: 60px 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.02);
+      border-top: 1px solid var(--card-border);
       text-align: center;
       color: var(--text-muted);
       font-size: 14px;
@@ -903,7 +1175,7 @@
       }
 
       .hero-title {
-        font-size: 44px;
+        font-size: 40px;
       }
 
       .cta-container {
@@ -951,9 +1223,19 @@
         <a href="#niveles">Plan de Estudios</a>
         <a href="#faq">Preguntas Frecuentes</a>
       </nav>
-      <a href="https://t.me/NoahLanguageBot" target="_blank" class="nav-btn">
-        <i class="fa-brands fa-telegram"></i> Ir al Bot
-      </a>
+      <div class="header-right">
+        <!-- Theme Toggle -->
+        <button id="themeToggleBtn" onclick="toggleTheme()" class="icon-control-btn" title="Cambiar Tema (Claro/Oscuro)">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <!-- Website Transcriber / Voice Narrator -->
+        <button id="narratorBtn" onclick="toggleNarrator()" class="icon-control-btn" title="Activar Narrador de Página">
+          <i class="fa-solid fa-volume-high"></i>
+        </button>
+        <a href="https://t.me/NoahLanguageBot" target="_blank" class="nav-btn">
+          <i class="fa-brands fa-telegram"></i> Ir al Bot
+        </a>
+      </div>
     </header>
   </div>
 
@@ -961,14 +1243,14 @@
   <div class="container">
     <section class="hero">
       <div class="hero-content">
-        <div class="tagline">
-          <i class="fa-solid fa-sparkles"></i> Tutor Inteligente IA 24/7
+        <div class="tagline" id="read-tagline">
+          <i class="fa-solid fa-sparkles"></i> Tutor Inteligente IA Multilingüe 24/7
         </div>
-        <h1 class="hero-title">
-          Domina el <span>Inglés</span> y <span>Ruso</span> hablando por Telegram
+        <h1 class="hero-title" id="read-title">
+          Domina <span>8 Idiomas</span> conversando por Telegram
         </h1>
-        <p class="hero-desc">
-          Noah es el compañero de aprendizaje definitivo. Un tutor inteligente interactivo con el que conversas de forma natural por texto o notas de voz, recibiendo explicaciones pedagógicas en español y correcciones en tiempo real.
+        <p class="hero-desc" id="read-desc">
+          Noah es tu tutor de bolsillo definitivo. Conversa de forma natural en inglés, ruso, francés, alemán, italiano, portugués, japonés o coreano por texto o notas de voz, recibiendo explicaciones pedagógicas detalladas en español y correcciones en tiempo real.
         </p>
         <div class="cta-container">
           <a href="https://t.me/NoahLanguageBot" target="_blank" class="cta-btn">
@@ -978,16 +1260,16 @@
         
         <div class="hero-stats">
           <div class="hero-stat-item">
+            <div class="hero-stat-val">8</div>
+            <div class="hero-stat-lbl">Idiomas Disponibles</div>
+          </div>
+          <div class="hero-stat-item">
             <div class="hero-stat-val">100</div>
             <div class="hero-stat-lbl">Niveles Adaptativos</div>
           </div>
           <div class="hero-stat-item">
             <div class="hero-stat-val">24/7</div>
-            <div class="hero-stat-lbl">Disponibilidad</div>
-          </div>
-          <div class="hero-stat-item">
-            <div class="hero-stat-val">0</div>
-            <div class="hero-stat-lbl">Juicios o Vergüenza</div>
+            <div class="hero-stat-lbl">Clases personalizadas</div>
           </div>
         </div>
       </div>
@@ -1009,18 +1291,35 @@
 
             <div class="phone-chat" id="chatContainer">
               <!-- Initial Bot Welcome Message -->
-              <div class="msg bot">
-                <p>👋 ¡Hola! Soy <b>Noah</b>, tu tutor personal de idiomas.</p>
-                <p>Escribe una frase en inglés o ruso para practicar, o haz clic en uno de los ejemplos de abajo y mira cómo te corrijo al instante en español. 🚀</p>
-              </div>
+              <div class="msg bot">👋 ¡Hola! Soy <b>Noah</b>, tu tutor personal de idiomas.
+
+Hoy cuento con soporte completo para **8 idiomas**.
+
+Toca uno de los ejemplos o haz clic en el 🎤 para **transcribir tu voz en tiempo real** y hablarme directamente. ¡Verás cómo te corrijo al instante! 🚀</div>
             </div>
 
             <div class="phone-footer">
-              <div class="phone-suggestions-title">Toca un ejemplo para interactuar:</div>
+              <div class="phone-suggestions-title">Desliza y toca un ejemplo para probar:</div>
               <div class="pills-container">
-                <button class="pill-btn" onclick="sendMockMessage('yesterday')">🇺🇸 Yesterday I go to cinema</button>
-                <button class="pill-btn" onclick="sendMockMessage('russian')">🇷🇺 Я хотеть кофе</button>
-                <button class="pill-btn" onclick="sendMockMessage('status')">📊 /infot (Mi Progreso)</button>
+                <button class="pill-btn" onclick="sendMockMessage('en')">🇺🇸 Inglés (go/went)</button>
+                <button class="pill-btn" onclick="sendMockMessage('fr')">🇫🇷 Francés (suis/es)</button>
+                <button class="pill-btn" onclick="sendMockMessage('ru')">🇷🇺 Ruso (хочу/хотеть)</button>
+                <button class="pill-btn" onclick="sendMockMessage('ja')">🇯🇵 Japonés (Intenciones)</button>
+                <button class="pill-btn" onclick="sendMockMessage('de')">🇩🇪 Alemán (Gustos)</button>
+                <button class="pill-btn" onclick="sendMockMessage('ko')">🇰🇷 Coreano (Partículas)</button>
+                <button class="pill-btn" onclick="sendMockMessage('it')">🇮🇹 Italiano (Gustos)</button>
+                <button class="pill-btn" onclick="sendMockMessage('pt')">🇵🇹 Portugués (Gostar)</button>
+              </div>
+              
+              <!-- Custom Dictation & Keyboard Bar -->
+              <div class="phone-input-bar">
+                <input type="text" id="chatInput" placeholder="Escribe tu mensaje o dictalo..." onkeypress="handleKeyPress(event)">
+                <button id="micBtn" onclick="toggleSpeechRecognition()" title="Transcribir voz con un botón">
+                  <i class="fa-solid fa-microphone"></i>
+                </button>
+                <button id="sendBtn" onclick="submitCustomMessage()">
+                  <i class="fa-solid fa-paper-plane"></i>
+                </button>
               </div>
             </div>
           </div>
@@ -1033,28 +1332,28 @@
   <section class="methodology" id="metodologia">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">¿Cómo funciona la metodología Noah?</h2>
-        <p class="section-desc">Nos basamos en la adquisición natural y práctica del idioma, imitando la manera en la que los niños aprenden: conversando y asociando conceptos.</p>
+        <h2 class="section-title" id="read-methodology-title">Metodología conversacional acelerada</h2>
+        <p class="section-desc">Nos enfocamos en la asimilación natural, combinando interactividad y tecnología de punta.</p>
       </div>
 
       <div class="steps-container">
         <!-- Paso 1 -->
-        <div class="step-item">
+        <div class="step-item" id="read-step-1">
           <div class="step-num">1</div>
-          <h3 class="step-title">Charla Natural</h3>
-          <p class="step-desc">Tú inicias la conversación por texto o enviando notas de voz. Noah te planteará dinámicas de conversación ajustadas exactamente al tema y vocabulario de tu nivel actual.</p>
+          <h3 class="step-title">Práctica Activa</h3>
+          <p class="step-desc">Tú conversas libremente mediante mensajes o notas de voz. Noah te guiará nivel a nivel a través de 5 ejercicios interactivos estructurados y súper concisos.</p>
         </div>
         <!-- Paso 2 -->
-        <div class="step-item">
+        <div class="step-item" id="read-step-2">
           <div class="step-num">2</div>
           <h3 class="step-title">Feedback Inmediato</h3>
-          <p class="step-desc">Si cometes un desliz ortográfico o de pronunciación, la IA detecta tu error y te responde explicándote detalladamente en español el por qué de la corrección.</p>
+          <p class="step-desc">Si cometes algún desliz de ortografía, pronunciación o gramática, el tutor IA te corregirá al instante en español explicándote el por qué de forma muy amigable.</p>
         </div>
         <!-- Paso 3 -->
-        <div class="step-item">
+        <div class="step-item" id="read-step-3">
           <div class="step-num">3</div>
-          <h3 class="step-title">Memoria a Largo Plazo</h3>
-          <p class="step-desc">El error corregido no se olvida. Se registra en una base de datos vectorial para que, en futuras sesiones, Noah traiga a colación ese mismo tema y consolides el aprendizaje.</p>
+          <h3 class="step-title">Consolidación en Memoria</h3>
+          <p class="step-desc">Tus deslices se registran automáticamente en una base vectorial (ChromaDB), de modo que Noah personalizará los retos futuros para garantizar que domines tus puntos débiles.</p>
         </div>
       </div>
     </div>
@@ -1064,8 +1363,8 @@
   <section class="compare-section" id="comparativa">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Noah vs. Otras Alternativas</h2>
-        <p class="section-desc">Descubre por qué Noah ofrece una experiencia educativa inigualable frente a métodos tradicionales y aplicaciones de gamificación.</p>
+        <h2 class="section-title" id="read-compare-title">Noah frente a los métodos tradicionales</h2>
+        <p class="section-desc">Descubre por qué Noah revoluciona tu aprendizaje en comparación con otras alternativas del mercado.</p>
       </div>
 
       <div class="table-wrapper">
@@ -1080,33 +1379,33 @@
           </thead>
           <tbody>
             <tr>
+              <td>Soporte Multilingüe Activo</td>
+              <td class="highlight-cell"><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Sí (8 Idiomas)</td>
+              <td><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Sí</td>
+              <td><span class="check-no"><i class="fa-solid fa-circle-xmark"></i></span> Solo un idioma por curso</td>
+            </tr>
+            <tr>
               <td>Conversación 100% Libre</td>
-              <td class="highlight-cell"><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Sí, sin límites</td>
-              <td><span class="check-no"><i class="fa-solid fa-circle-xmark"></i></span> No (Frases fijas)</td>
+              <td class="highlight-cell"><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Sí, adaptada a ti</td>
+              <td><span class="check-no"><i class="fa-solid fa-circle-xmark"></i></span> No (Ejercicios pre-armados)</td>
               <td><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Sí, pero limitada</td>
             </tr>
             <tr>
-              <td>Entendimiento de Notas de Voz</td>
-              <td class="highlight-cell"><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Sí, con IA Groq Whisper</td>
-              <td><span class="check-no"><i class="fa-solid fa-circle-xmark"></i></span> No (Solo repetición simple)</td>
-              <td><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Sí, con el docente</td>
-            </tr>
-            <tr>
-              <td>Correcciones explicadas en Español</td>
-              <td class="highlight-cell"><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Sí, análisis gramatical</td>
-              <td><span class="check-no"><i class="fa-solid fa-circle-xmark"></i></span> No (Solo correcto/incorrecto)</td>
+              <td>Transpiler de Audio Instantáneo</td>
+              <td class="highlight-cell"><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Sí (Groq Whisper en memoria)</td>
+              <td><span class="check-no"><i class="fa-solid fa-circle-xmark"></i></span> No</td>
               <td><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Sí</td>
             </tr>
             <tr>
-              <td>Memoria Histórica de tus Errores</td>
-              <td class="highlight-cell"><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Sí (Base vectorial ChromaDB)</td>
+              <td>Memoria Histórica de Errores</td>
+              <td class="highlight-cell"><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Sí (ChromaDB vectorial)</td>
               <td><span class="check-no"><i class="fa-solid fa-circle-xmark"></i></span> No</td>
-              <td><span class="check-no"><i class="fa-solid fa-circle-xmark"></i></span> Solo si el docente se acuerda</td>
+              <td><span class="check-no"><i class="fa-solid fa-circle-xmark"></i></span> No</td>
             </tr>
             <tr>
               <td>Costo Mensual</td>
-              <td class="highlight-cell"><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Gratis / Ultra Bajo costo</td>
-              <td><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Gratis (con anuncios molestos)</td>
+              <td class="highlight-cell"><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Gratis / Open Source</td>
+              <td><span class="check-yes"><i class="fa-solid fa-circle-check"></i></span> Gratis (con anuncios)</td>
               <td><span class="check-no"><i class="fa-solid fa-circle-xmark"></i></span> Muy Caro ($$$)</td>
             </tr>
           </tbody>
@@ -1119,31 +1418,31 @@
   <section class="levels" id="niveles">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Plan de Estudios: 100 Niveles</h2>
-        <p class="section-desc">Tu progreso se mide bajo el Marco Común Europeo de Referencia (MCER). Avanzas desbloqueando temáticas especializadas a tu propio ritmo.</p>
+        <h2 class="section-title" id="read-levels-title">Plan de Estudios Multilingüe</h2>
+        <p class="section-desc">Diseñamos 100 niveles dinámicos basados en el Marco Común Europeo de Referencia (MCER) para cada idioma.</p>
       </div>
 
       <div class="levels-grid">
         <!-- Bloque 1 -->
-        <div class="level-card">
-          <div class="level-badge">Principiante (A1 - A2)</div>
-          <div class="level-card-num">1 - 30</div>
-          <h3 class="level-card-title">Supervivencia y Rutina</h3>
-          <p class="level-card-desc">Aprende a presentarte, pedir en un restaurante, comprar ropa, dar direcciones y hablar de tus hobbies. Diseñado para perder el miedo a hablar.</p>
+        <div class="level-card" id="read-level-card-1">
+          <div class="level-badge">Inicial (Niveles 1 - 30)</div>
+          <div class="level-card-num">A1 - A2</div>
+          <h3 class="level-card-title">Supervivencia y Saludos</h3>
+          <p class="level-card-desc">Domina presentaciones, verbos auxiliares, solicitudes, vocabulario en restaurantes y rutinas básicas en cualquiera de los 8 idiomas.</p>
         </div>
         <!-- Bloque 2 -->
-        <div class="level-card">
-          <div class="level-badge">Intermedio (B1 - B2)</div>
-          <div class="level-card-num">31 - 70</div>
-          <h3 class="level-card-title">Autonomía y Debate</h3>
-          <p class="level-card-desc">Domina narraciones en pasado y futuro, redacta opiniones sobre películas, debates sobre tecnología, mantén conversaciones de trabajo y expresa hipótesis complejas.</p>
+        <div class="level-card" id="read-level-card-2">
+          <div class="level-badge">Intermedio (Niveles 31 - 70)</div>
+          <div class="level-card-num">B1 - B2</div>
+          <h3 class="level-card-title">Autonomía y Expresión</h3>
+          <p class="level-card-desc">Aprende a narrar eventos en pasado y futuro, expresar hipótesis complejas, redactar argumentos de debate y entablar charlas de trabajo fluidas.</p>
         </div>
         <!-- Bloque 3 -->
-        <div class="level-card">
-          <div class="level-badge">Avanzado (C1 - C2)</div>
-          <div class="level-card-num">71 - 100</div>
-          <h3 class="level-card-title">Fluidez y Maestría</h3>
-          <p class="level-card-desc">Vocabulario técnico y corporativo, modismos culturales complejos, ironía y matices emocionales en conversaciones de alta exigencia profesional.</p>
+        <div class="level-card" id="read-level-card-3">
+          <div class="level-badge">Avanzado (Niveles 71 - 100)</div>
+          <div class="level-card-num">C1 - C2</div>
+          <h3 class="level-card-title">Fluidez Profesional</h3>
+          <p class="level-card-desc">Adquiere modismos culturales finos, terminología corporativa avanzada, ironía y matices conversacionales con total naturalidad.</p>
         </div>
       </div>
     </div>
@@ -1153,30 +1452,30 @@
   <section class="features">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">El poder de la IA conversacional en tu bolsillo</h2>
-        <p class="section-desc">Un ecosistema tecnológico robusto diseñado exclusivamente para acelerar tu aprendizaje.</p>
+        <h2 class="section-title" id="read-features-title">Tecnología de última generación</h2>
+        <p class="section-desc">Un ecosistema informático robusto diseñado exclusivamente para acelerar tu bilingüismo.</p>
       </div>
 
       <div class="grid">
         <!-- Feature 1 -->
-        <div class="card">
-          <div class="card-icon"><i class="fa-solid fa-circle-play"></i></div>
+        <div class="card" id="read-feat-1">
+          <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
           <h3 class="card-title">Typing Streaming</h3>
-          <p class="card-text">Las respuestas del tutor se transmiten letra por letra en tiempo real en Telegram, emulando la sensación de chatear con un nativo en vivo.</p>
+          <p class="card-text">Las respuestas del tutor se transmiten en tiempo real letra a letra, recreando perfectamente la interacción humana instantánea en Telegram.</p>
         </div>
 
         <!-- Feature 2 -->
-        <div class="card">
-          <div class="card-icon"><i class="fa-solid fa-microphone"></i></div>
-          <h3 class="card-title">Audio en Memoria</h3>
-          <p class="card-text">Transcribe tus audios al instante usando Groq Whisper. Todo el procesamiento de audio ocurre en memoria sin escribir en disco, lo que da una velocidad insólita.</p>
+        <div class="card" id="read-feat-2">
+          <div class="card-icon"><i class="fa-solid fa-database"></i></div>
+          <h3 class="card-title">Base de Datos Híbrida</h3>
+          <p class="card-text">Integración perfecta entre SQLite local de ultra alta velocidad y MongoDB Atlas remoto para un escalado sin fricciones en Vercel.</p>
         </div>
 
         <!-- Feature 3 -->
-        <div class="card">
-          <div class="card-icon"><i class="fa-solid fa-id-card"></i></div>
-          <h3 class="card-title">Tarjetas de Rango Dinámicas</h3>
-          <p class="card-text">Cada vez que subes de nivel, Noah genera y te envía una imagen personalizada con tu nuevo rango, racha de días y tus estadísticas de estudio.</p>
+        <div class="card" id="read-feat-3">
+          <div class="card-icon"><i class="fa-solid fa-microphone-lines"></i></div>
+          <h3 class="card-title">Whisper en Memoria</h3>
+          <p class="card-text">Procesamos notas de voz directamente desde streams en memoria (Buffers) sin archivos temporales, logrando transcripciones de velocidad récord.</p>
         </div>
       </div>
     </div>
@@ -1186,52 +1485,41 @@
   <section class="faq" id="faq">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Preguntas Frecuentes</h2>
-        <p class="section-desc">Todo lo que necesitas saber antes de empezar a aprender con el tutor Noah.</p>
+        <h2 class="section-title" id="read-faq-title">Preguntas Frecuentes</h2>
+        <p class="section-desc">Resolvemos todas tus dudas antes de iniciar tu aventura multilingüe.</p>
       </div>
 
       <div class="faq-container">
         <!-- FAQ 1 -->
         <div class="faq-item">
           <div class="faq-header" onclick="toggleFaq(this)">
-            <h3>¿Cómo me evalúa Noah?</h3>
+            <h3>¿Cuáles son los 8 idiomas que enseña Noah?</h3>
             <i class="fa-solid fa-chevron-down faq-icon"></i>
           </div>
           <div class="faq-content">
-            <p>Noah evalúa de forma asíncrona cada uno de tus mensajes en segundo plano. Analiza tu ortografía, coherencia gramatical y el uso de vocabulario recomendado para tu nivel. Al final de cada sesión de conversación te informará si estás listo para subir de nivel.</p>
+            <p>Noah enseña Inglés, Ruso, Francés, Alemán, Italiano, Portugués, Japonés y Coreano. Puedes cambiar libremente de idioma en cualquier momento usando el comando /language sin miedo a perder el progreso del idioma anterior.</p>
           </div>
         </div>
 
         <!-- FAQ 2 -->
         <div class="faq-item">
           <div class="faq-header" onclick="toggleFaq(this)">
-            <h3>¿Qué idiomas puedo aprender?</h3>
+            <h3>¿Cómo se sube de nivel con los 5 ejercicios?</h3>
             <i class="fa-solid fa-chevron-down faq-icon"></i>
           </div>
           <div class="faq-content">
-            <p>Actualmente el bot está especializado en Inglés y Ruso. Para ruso, el tutor te proporciona los caracteres en cirílico seguidos de su transcripción fonética en español en paréntesis, para facilitar drásticamente la pronunciación.</p>
+            <p>El bot te guiará de forma súper limpia y concisa por 5 retos conversacionales por nivel. Tan pronto como completas y dominas las 5 pruebas de un nivel, el sistema evalúa tu progreso de forma automática y te sube inmediatamente de nivel al instante.</p>
           </div>
         </div>
 
         <!-- FAQ 3 -->
         <div class="faq-item">
           <div class="faq-header" onclick="toggleFaq(this)">
-            <h3>¿Cómo funciona el envío de audios?</h3>
+            <h3>¿Cómo funciona la transcripción de voz en el bot?</h3>
             <i class="fa-solid fa-chevron-down faq-icon"></i>
           </div>
           <div class="faq-content">
-            <p>Puedes pulsar el botón de micrófono en Telegram y enviar una nota de voz de forma natural. Noah la transcribirá mediante el motor ultra rápido Groq Whisper y procesará el texto tal como si hubieses escrito, detectando también tu entonación.</p>
-          </div>
-        </div>
-
-        <!-- FAQ 4 -->
-        <div class="faq-item">
-          <div class="faq-header" onclick="toggleFaq(this)">
-            <h3>¿Pierdo mi progreso si detengo el bot?</h3>
-            <i class="fa-solid fa-chevron-down faq-icon"></i>
-          </div>
-          <div class="faq-content">
-            <p>No. Noah cuenta con una base de datos persistente dinámica. Cuando utilices el comando /start de nuevo, el sistema te dará la bienvenida y recordará exactamente en qué nivel estabas y cuál era tu historial, protegiendo todo tu esfuerzo.</p>
+            <p>Presionando el botón de notas de voz en Telegram, puedes hablar directamente. Noah recibe tu audio, lo traduce/transcribe usando el procesador neuronal Whisper y te responde en base a lo que hablaste, evaluando además tu coherencia.</p>
           </div>
         </div>
       </div>
@@ -1241,8 +1529,8 @@
   <!-- CALL TO ACTION -->
   <section class="cta-block">
     <div class="container">
-      <h2 class="cta-block-title">¿Listo para llevar tu bilingüismo al siguiente nivel?</h2>
-      <p class="cta-block-desc">Conversa con Noah hoy mismo. Sin cuotas de registro, sin exámenes estresantes. A tu propio ritmo.</p>
+      <h2 class="cta-block-title" id="read-cta-title">¿Listo para hablar sin límites?</h2>
+      <p class="cta-block-desc">Inicia tu tutoría gratuita con Noah en Telegram. Aprende a tu ritmo, 100% libre de presiones.</p>
       <a href="https://t.me/NoahLanguageBot" target="_blank" class="cta-btn">
         <i class="fa-brands fa-telegram"></i> Empezar en Telegram Gratis
       </a>
@@ -1252,105 +1540,287 @@
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <p>&copy; 2026 Noah Language Project. Desarrollado con 💖 para revolucionar el aprendizaje de idiomas.</p>
-      <p>¿Tienes dudas? <a href="https://t.me/NoahLanguageBot" target="_blank">Escríbele a Noah en Telegram</a></p>
+      <p>&copy; 2026 Noah Language Project. Creado para revolucionar la pedagogía con Inteligencia Artificial.</p>
+      <p>¿Quieres aprender ahora? <a href="https://t.me/NoahLanguageBot" target="_blank">Conversa con Noah en Telegram</a></p>
     </div>
   </footer>
 
-  <!-- INTERACTIVE WEB CHAT & FAQ SCRIPTS -->
+  <!-- NARRATOR DASHBOARD PANEL -->
+  <div class="narrator-panel" id="narratorPanel">
+    <div class="narrator-header">
+      <div class="narrator-title">
+        <i class="fa-solid fa-circle-nodes"></i> Narrador de Página IA
+      </div>
+      <button onclick="toggleNarrator()" style="cursor: pointer;">&times;</button>
+    </div>
+    <div class="narrator-body">
+      <p id="narratorStatus">Listo para leer los bloques de texto de esta página.</p>
+      <div class="narrator-controls">
+        <button id="narratorPlayBtn" onclick="startNarration()" class="control-action-btn"><i class="fa-solid fa-play"></i> Leer Página</button>
+        <button id="narratorStopBtn" onclick="stopNarration()" class="control-action-btn stop" disabled><i class="fa-solid fa-stop"></i> Detener</button>
+      </div>
+      <div class="narrator-lang-select">
+        <label for="narratorLang">Idioma de la lectura:</label>
+        <select id="narratorLang" onchange="changeNarratorLang()">
+          <option value="es-ES">🇪🇸 Español (Nativo)</option>
+          <option value="en-US">🇺🇸 Inglés (English)</option>
+          <option value="fr-FR">🇫🇷 Francés (Français)</option>
+          <option value="de-DE">🇩🇪 Alemán (Deutsch)</option>
+          <option value="it-IT">🇮🇹 Italiano (Italiano)</option>
+          <option value="pt-PT">🇵🇹 Portugués (Português)</option>
+          <option value="ru-RU">🇷🇺 Ruso (Русский)</option>
+          <option value="ja-JP">🇯🇵 Japonés (日本語)</option>
+          <option value="ko-KR">🇰🇷 Coreano (한국어)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE WEB CHAT, SPEECH-TO-TEXT AND ACCESSIBILITY SCRIPTS -->
   <script>
+    /* ─── DARK/LIGHT THEME SWITCHER ──────────────────────────────────────── */
+    function toggleTheme() {
+      const html = document.documentElement;
+      const themeBtn = document.getElementById('themeToggleBtn');
+      const currentTheme = html.getAttribute('data-theme') || 'dark';
+      
+      if (currentTheme === 'dark') {
+        html.setAttribute('data-theme', 'light');
+        themeBtn.innerHTML = '<i class="fa-solid fa-sun" style="color: #ea580c;"></i>';
+      } else {
+        html.setAttribute('data-theme', 'dark');
+        themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+      }
+    }
+
+    /* ─── MULTILINGUAL MOCK CHAT ENGINE ──────────────────────────────────── */
     const chatContainer = document.getElementById('chatContainer');
+    const chatInput = document.getElementById('chatInput');
     let isTyping = false;
 
-    async function sendMockMessage(type) {
-      if (isTyping) return;
-      isTyping = true;
-
-      // 1. Mostrar mensaje del usuario
-      let userText = '';
-      if (type === 'yesterday') userText = 'Yesterday I go to the cinema with my friends';
-      else if (type === 'russian') userText = 'Привет! Я хотеть кофе, пожалуйста';
-      else if (type === 'status') userText = '/infot';
-
-      appendMessage(userText, 'user');
-
-      // Desplazar al final
-      chatContainer.scrollTop = chatContainer.scrollHeight;
-
-      // 2. Mostrar "Tutor escribiendo..."
-      const typingIndicator = appendTypingIndicator();
-      chatContainer.scrollTop = chatContainer.scrollHeight;
-
-      // Delay interactivo simulando red
-      await new Promise(r => setTimeout(r, 1500));
-
-      // Quitar indicador de escritura
-      typingIndicator.remove();
-
-      // 3. Generar y mostrar respuesta del bot
-      let botResponse = '';
-      if (type === 'yesterday') {
-        botResponse = `
-          <p>✍️ <b>¡Buen intento!</b> Has cometido un pequeño desliz con el tiempo pasado.</p>
-          <div class="correction-box">
-            ✗ <i>Yesterday I go...</i><br>
-            ✓ <b>Yesterday I went to the cinema with my friends.</b> 
-            <button onclick="speakText('Yesterday I went to the cinema with my friends', 'en')" style="background:none; border:none; color:var(--primary); cursor:pointer; font-size:14px; margin-left:8px; display:inline-flex; align-items:center; vertical-align:middle;" title="Escuchar pronunciación">
-              <i class="fa-solid fa-volume-high"></i>
-            </button>
-          </div>
-          <p>💡 <b>Explicación:</b> El verbo <i>"go"</i> es irregular, por lo que su pasado es <b>"went"</b>. ¿Qué película fuiste a ver? ¡Respóndeme en inglés! 😊</p>
-        `;
-      } else if (type === 'russian') {
-        botResponse = `
-          <p>🇷🇺 <b>¡Отлично! (¡Excelente!)</b> Se entiende perfectamente lo que quieres decir, pero podemos hacerlo sonar más natural.</p>
-          <div class="correction-box">
-            ✗ <i>Я хотеть кофе...</i> (Estás usando el verbo en infinitivo "querer")<br>
-            ✓ <b>Я хочу кофе, пожалуйста.</b>
-            <button onclick="speakText('Я хочу кофе, пожалуйста', 'ru')" style="background:none; border:none; color:var(--primary); cursor:pointer; font-size:14px; margin-left:8px; display:inline-flex; align-items:center; vertical-align:middle;" title="Слушать произношение">
-              <i class="fa-solid fa-volume-high"></i>
-            </button>
-          </div>
-          <p>💡 <b>Explicación:</b> Para decir "yo quiero", conjugamos el verbo <i>хотеть</i> en primera persona del singular, convirtiéndose en <b>"хочу"</b>. ¡Vas muy bien con el ruso! ☕</p>
-        `;
-      } else if (type === 'status') {
-        botResponse = `
-          <p>📊 <b>Estadísticas de Estudio — Alumno</b><br>
-          ━━━━━━━━━━━━━━━━━━━━<br>
-          🎯 Nivel actual: <b>Nivel 14 — En el Restaurante (A2)</b><br>
-          🔥 Racha activa: <b>5 día(s) seguidos</b><br>
-          📚 Vocabulario aprendido: <b>78 palabras</b><br>
-          💬 Clases completadas: <b>8 sesiones</b><br>
-          ⚠️ Errores corregidos: <b>12 frecuentes</b></p>
-          <div class="success-box">
-            🎉 ¡Estás a solo 1 lección de subir al Nivel 15! ¡Sigue practicando!
-          </div>
-        `;
+    const MOCK_BOT_RESPONSES = {
+      en: {
+        user: 'Yesterday I go to the cinema with my friends.',
+        feedback: '¡Excelente intento! Has cometido un pequeño error con el tiempo pasado.',
+        transition: '¡Sigamos aprendiendo! Aquí tienes la versión corregida:',
+        correction: 'Yesterday I went to the cinema with my friends.',
+        explanation: 'El verbo "go" es irregular, por lo que su pasado es "went".',
+        targetLang: 'en-US',
+        exercise: '1. Introduce yourself and tell me what you did yesterday.'
+      },
+      fr: {
+        user: 'Je es mexicain et je parler français.',
+        feedback: '¡Muy buen intento! Tienes pequeños detalles de conjugación.',
+        transition: '¡Sigamos con el aprendizaje! Aquí está tu frase corregida:',
+        correction: 'Je suis mexicain et je parle français.',
+        explanation: 'Usamos "suis" para la primera persona del verbo être (ser) y "parle" para la conjugación del presente del verbo parler.',
+        targetLang: 'fr-FR',
+        exercise: '2. Présentez-vous et dites votre nationalité.'
+      },
+      ru: {
+        user: 'Я хотеть кофе, пожалуйста.',
+        feedback: '🇷🇺 ¡Отлично! Se entiende perfectamente, pero conjuguemos el verbo.',
+        transition: '¡Aquí tienes la frase natural corregida:',
+        correction: 'Я хочу кофе, пожалуйста.',
+        explanation: 'Para decir "yo quiero", conjugamos хотеть en primera persona (хочу).',
+        targetLang: 'ru-RU',
+        exercise: '3. Скажи, что ты хочешь выпить (Say what you want to drink).'
+      },
+      ja: {
+        user: '私は日本に行く。',
+        feedback: '🇯🇵 ¡Excelente intento! Aprendamos a expresar intenciones de manera más cortés.',
+        transition: '¡Sigamos practicando con el siguiente reto:',
+        correction: '私は日本に行くつもりです。',
+        explanation: 'Usamos la forma diccionario + tsumori desu para expresar intenciones formales.',
+        targetLang: 'ja-JP',
+        exercise: '4. 日本のどこに行きたいですか？ (Where in Japan do you want to go?)'
+      },
+      de: {
+        user: 'Ich habe ein Auto.',
+        feedback: '🇩🇪 ¡Excelente! Tu gramática es perfecta y muy natural.',
+        transition: '¡Pasemos al siguiente nivel del ejercicio:',
+        correction: 'Ich habe ein Auto und ich fahre gern.',
+        explanation: 'Construcción perfecta usando el acusativo "ein Auto".',
+        targetLang: 'de-DE',
+        exercise: '5. Beschreibe dein Traumauto (Describe your dream car).'
+      },
+      ko: {
+        user: '나는 사과 먹어요.',
+        feedback: '🇰🇷 ¡Espectacular! Se entiende, pero agreguemos la partícula correcta.',
+        transition: '¡Continuemos con tu aprendizaje diario:',
+        correction: '나는 사과를 먹어요.',
+        explanation: 'El uso de la partícula de objeto "를" hace que la frase suene mucho más gramatical e impecable.',
+        targetLang: 'ko-KR',
+        exercise: '1. 좋아하는 과일이 무엇인지 말해보세요 (Tell me what your favorite fruit is).'
+      },
+      it: {
+        user: 'Mi piace pizza.',
+        feedback: '🇮🇹 ¡Fantastico! Sin embargo, recuerda usar el artículo definido.',
+        transition: '¡Pasemos al siguiente paso interactivo:',
+        correction: 'Mi piace molto la pizza.',
+        explanation: 'En italiano decimos "la pizza" con el artículo definido al expresar gustos generales.',
+        targetLang: 'it-IT',
+        exercise: '2. Racconta qual è il tuo piatto preferito (Tell me what your favorite dish is).'
+      },
+      pt: {
+        user: 'Eu gosto aprender línguas.',
+        feedback: '🇵🇹 ¡Maravilhoso! Solo recuerda que después del verbo gostar requerimos preposición.',
+        transition: '¡Sigamos adelante con el siguiente paso:',
+        correction: 'Eu gosto de aprender línguas no Telegram.',
+        explanation: 'La preposición "de" después del verbo gostar es obligatoria ante un verbo o sustantivo.',
+        targetLang: 'pt-PT',
+        exercise: '3. Diga quais línguas você quer aprender (Say which languages you want to learn).'
       }
+    };
 
-      appendMessage(botResponse, 'bot');
+    async function sendMockMessage(langCode) {
+      if (isTyping) return;
+      const data = MOCK_BOT_RESPONSES[langCode];
+      if (!data) return;
+
+      isTyping = true;
+      appendMessage(data.user, 'user');
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+
+      const typing = appendTypingIndicator();
+      await new Promise(r => setTimeout(r, 1600));
+      typing.remove();
+
+      const botHTML = `
+        <p>${data.feedback}</p>
+        <p>${data.transition}</p>
+        <div class="correction-box">
+          ✗ <i>${data.user}</i><br>
+          ✓ <b>${data.correction}</b>
+          <button onclick="speakText('${data.correction.replace(/'/g, "\\'")}', '${data.targetLang}')" style="background:none; border:none; color:var(--primary); cursor:pointer; font-size:14px; margin-left:8px; display:inline-flex; align-items:center; vertical-align:middle;" title="Escuchar pronunciación">
+            <i class="fa-solid fa-volume-high"></i>
+          </button>
+        </div>
+        <p>💡 <b>Explicación:</b> ${data.explanation}</p>
+        
+        📝
+        ${data.exercise}
+      `;
+
+      appendMessage(botHTML, 'bot');
       chatContainer.scrollTop = chatContainer.scrollHeight;
       isTyping = false;
     }
 
-    // Función de síntesis de voz (Text to Speech) nativa del navegador
-    function speakText(text, lang) {
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel(); // Cancelar cualquier audio anterior
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = lang === 'ru' ? 'ru-RU' : 'en-US';
-        utterance.pitch = 1.0;
-        utterance.rate = 0.85; // Un ritmo ligeramente lento para fines pedagógicos
-        window.speechSynthesis.speak(utterance);
-      } else {
-        alert('Tu navegador o dispositivo no soporta la síntesis de voz para este idioma.');
+    /* ─── SPEECH TO TEXT DICTATION (TRANSCRIBIR CON UN BOTÓN) ────────────── */
+    let recognition = null;
+    let isListening = false;
+
+    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      recognition = new SpeechRecognition();
+      recognition.continuous = false;
+      recognition.interimResults = false;
+      recognition.lang = 'es-ES'; // Default dictation language
+
+      recognition.onstart = () => {
+        isListening = true;
+        document.getElementById('micBtn').classList.add('listening');
+        chatInput.placeholder = "Escuchando tu voz...";
+      };
+
+      recognition.onresult = (event) => {
+        const text = event.results[0][0].transcript;
+        chatInput.value = text;
+      };
+
+      recognition.onerror = (event) => {
+        console.error("Speech Recognition Error:", event.error);
+        stopListeningState();
+      };
+
+      recognition.onend = () => {
+        stopListeningState();
+      };
+    }
+
+    function stopListeningState() {
+      isListening = false;
+      document.getElementById('micBtn').classList.remove('listening');
+      chatInput.placeholder = "Escribe tu mensaje o dictalo...";
+    }
+
+    function toggleSpeechRecognition() {
+      if (!recognition) {
+        alert("Tu navegador no soporta el reconocimiento de voz para transcripción.");
+        return;
       }
+
+      if (isListening) {
+        recognition.stop();
+      } else {
+        recognition.start();
+      }
+    }
+
+    function handleKeyPress(e) {
+      if (e.key === 'Enter') {
+        submitCustomMessage();
+      }
+    }
+
+    async function submitCustomMessage() {
+      const text = chatInput.value.trim();
+      if (!text || isTyping) return;
+
+      chatInput.value = "";
+      appendMessage(text, 'user');
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+
+      isTyping = true;
+      const typing = appendTypingIndicator();
+      await new Promise(r => setTimeout(r, 1500));
+      typing.remove();
+
+      // Analizador inteligente interactivo simulado
+      let responseText = "";
+      const cleaned = text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+      if (cleaned.includes("go to") && (cleaned.includes("yesterday") || cleaned.includes("last"))) {
+        responseText = `¡Excelente intento! Has cometido un pequeño desliz con el tiempo pasado.
+
+¡Sigamos aprendiendo! Aquí tienes la frase corregida:
+
+📝
+1. Speak in past tense correctly: "Yesterday I went to the cinema." (El pasado de go es went).`;
+      } else if (cleaned.includes("je es") || cleaned.includes("je parler")) {
+        responseText = `¡Muy buen intento en francés! Tienes pequeños detalles de conjugación de verbos.
+
+¡Sigamos con el aprendizaje! Aquí está tu frase corregida:
+
+📝
+2. Dites votre nationalité correctement: "Je suis mexicain et je parle français." (Usamos suis para ser y conjugamos parler en presente).`;
+      } else if (cleaned.includes("хотеть")) {
+        responseText = `🇷🇺 ¡Excelente! Se entiende perfectamente, pero conjuguemos el verbo.
+
+¡Aquí tienes la frase natural corregida:
+
+📝
+3. Скажи, что ты хочешь выпить: "Я хочу кофе." (El infinitivo хотеть se conjuga como хочу para la primera persona).`;
+      } else {
+        // Respuesta genérica inteligente
+        responseText = `¡Fabuloso! Tu mensaje ha sido recibido perfectamente. He guardado tu interacción y he validado tus estructuras conversacionales.
+
+¡Continuemos con la clase de hoy!
+
+📝
+1. Describe your favorite learning experience in the language you are practicing.`;
+      }
+
+      appendMessage(responseText, 'bot');
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+      isTyping = false;
     }
 
     function appendMessage(content, sender) {
       const msgDiv = document.createElement('div');
       msgDiv.classList.add('msg', sender);
-      msgDiv.innerHTML = content;
+      msgDiv.innerHTML = content.replace(/\n/g, '<br>');
       chatContainer.appendChild(msgDiv);
       return msgDiv;
     }
@@ -1363,13 +1833,25 @@
       return typingDiv;
     }
 
-    // FAQ Accordion Toggle
+    function speakText(text, lang) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = lang;
+        utterance.pitch = 1.0;
+        utterance.rate = 0.85;
+        window.speechSynthesis.speak(utterance);
+      } else {
+        alert('Tu dispositivo no soporta síntesis de voz.');
+      }
+    }
+
+    /* ─── FAQ ACCORDION TOGGLE ───────────────────────────────────────────── */
     function toggleFaq(header) {
       const item = header.parentElement;
       const content = item.querySelector('.faq-content');
       const isActive = item.classList.contains('active');
 
-      // Cerrar otros abiertos
       document.querySelectorAll('.faq-item').forEach(el => {
         if (el !== item) {
           el.classList.remove('active');
@@ -1384,6 +1866,115 @@
         item.classList.add('active');
         content.style.maxHeight = content.scrollHeight + "px";
       }
+    }
+
+    /* ─── WEB NARRATOR / TRANSCRIBER IA CONTROL PANEL (AUDIO CONTROLS) ───── */
+    let narratorSpeech = null;
+    let currentNarratorIndex = 0;
+    let narratorBlocks = [];
+    let isNarrating = false;
+
+    function toggleNarrator() {
+      const panel = document.getElementById('narratorPanel');
+      panel.classList.toggle('active');
+    }
+
+    function changeNarratorLang() {
+      if (isNarrating) {
+        stopNarration();
+      }
+    }
+
+    function closeNarratorPanel() {
+      document.getElementById('narratorPanel').classList.remove('active');
+      stopNarration();
+    }
+
+    function stopNarration() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+      isNarrating = false;
+      document.getElementById('narratorPlayBtn').innerHTML = '<i class="fa-solid fa-play"></i> Leer Página';
+      document.getElementById('narratorStopBtn').disabled = true;
+      document.getElementById('narratorStatus').innerText = "Narración detenida.";
+      
+      // Limpiar highlights
+      document.querySelectorAll('.narrating-highlight').forEach(el => {
+        el.classList.remove('narrating-highlight');
+      });
+    }
+
+    function startNarration() {
+      if (!('speechSynthesis' in window)) {
+        alert("Tu dispositivo no admite la síntesis de voz para leer la página.");
+        return;
+      }
+
+      if (isNarrating) {
+        // Pause/Stop toggle
+        stopNarration();
+        return;
+      }
+
+      // Collect reading blocks
+      narratorBlocks = [
+        { id: 'read-tagline', text: 'Tutor Inteligente de Inteligencia Artificial Multilingüe 24/7' },
+        { id: 'read-title', text: 'Domina 8 Idiomas conversando por Telegram' },
+        { id: 'read-desc', text: document.getElementById('read-desc').innerText },
+        { id: 'read-methodology-title', text: 'Metodología conversacional acelerada' },
+        { id: 'read-step-1', text: 'Paso 1: Práctica Activa. Tú conversas libremente mediante mensajes o notas de voz. Noah te guiará nivel a nivel a través de 5 ejercicios interactivos estructurados y súper concisos.' },
+        { id: 'read-step-2', text: 'Paso 2: Feedback Inmediato. Si cometes algún desliz de ortografía, pronunciación o gramática, el tutor IA te corregirá al instante en español explicándote el por qué de forma muy amigable.' },
+        { id: 'read-step-3', text: 'Paso 3: Consolidación en Memoria. Tus deslices se registran automáticamente en una base vectorial ChromaDB, de modo que Noah personalizará los retos futuros.' }
+      ];
+
+      isNarrating = true;
+      currentNarratorIndex = 0;
+      document.getElementById('narratorPlayBtn').innerHTML = '<i class="fa-solid fa-pause"></i> Detener';
+      document.getElementById('narratorStopBtn').disabled = false;
+      
+      speakNextBlock();
+    }
+
+    function speakNextBlock() {
+      if (!isNarrating || currentNarratorIndex >= narratorBlocks.length) {
+        stopNarration();
+        document.getElementById('narratorStatus').innerText = "Lectura de la página finalizada.";
+        return;
+      }
+
+      // Remover highlights anteriores
+      document.querySelectorAll('.narrating-highlight').forEach(el => {
+        el.classList.remove('narrating-highlight');
+      });
+
+      const block = narratorBlocks[currentNarratorIndex];
+      const targetElement = document.getElementById(block.id);
+      
+      if (targetElement) {
+        targetElement.classList.add('narrating-highlight');
+        targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+
+      document.getElementById('narratorStatus').innerText = `Leyendo sección ${currentNarratorIndex + 1} de ${narratorBlocks.length}...`;
+
+      const langSelect = document.getElementById('narratorLang').value;
+      const utterance = new SpeechSynthesisUtterance(block.text);
+      utterance.lang = langSelect;
+      utterance.rate = 0.9;
+      utterance.pitch = 1.0;
+
+      utterance.onend = () => {
+        currentNarratorIndex++;
+        speakNextBlock();
+      };
+
+      utterance.onerror = (e) => {
+        console.error("Synthesizer error:", e);
+        stopNarration();
+      };
+
+      window.speechSynthesis.speak(utterance);
     }
   </script>
 
