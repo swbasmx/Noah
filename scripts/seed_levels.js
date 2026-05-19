@@ -17,7 +17,7 @@ import { getNivelesCollection } from '../database/vector/collections.js';
 config();
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const FILE_PATH = join(__dirname, '../levels/english/levels_1_100.json');
+const FILE_PATH = join(__dirname, '../levels/english/levels_1_30.json');
 
 async function main() {
   console.log('🌱 Noah — Cargando fichas de nivel en ChromaDB...');

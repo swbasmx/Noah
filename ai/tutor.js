@@ -6,7 +6,7 @@ import { settings } from '../config/settings.js';
 import { getRelevantHistory, getRelevantErrors } from '../database/vector/collections.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const LEVELS_FILE = join(__dirname, '../levels/english/levels_1_100.json');
+const LEVELS_FILE = join(__dirname, '../levels/english/levels_1_30.json');
 
 const levelsCache = {};
 
@@ -28,7 +28,8 @@ export function getLevelCard(nivel, idioma = 'inglés') {
         'italiano': 'italian'
       };
       const folderName = folderMap[langKey] || 'english';
-      const file = join(__dirname, `../levels/${folderName}/levels_1_100.json`);
+      const fileName = folderName === 'english' ? 'levels_1_30.json' : 'levels_1_100.json';
+      const file = join(__dirname, `../levels/${folderName}/${fileName}`);
       levelsCache[langKey] = JSON.parse(readFileSync(file, 'utf-8'));
     } catch (err) {
       console.error(`❌ Error cargando el archivo de niveles para ${idioma}:`, err.message);

@@ -1,0 +1,1892 @@
+[
+  {
+    "nivel": 1,
+    "nombre": "Presentaciones básicas",
+    "idioma": "inglés",
+    "cefr": "A1",
+    "bloque": "Supervivencia (Principiante)",
+    "descripcion": "El alumno aprenderá a presentarse y a saludar a otras personas.",
+    "lo_que_ya_sabe": [
+      "Saludos básicos",
+      "Nombres y nacionalidades"
+    ],
+    "vocabulario_funcional": [
+      "Hello",
+      "My name is...",
+      "I am from...",
+      "Nice to meet you",
+      "How are you?"
+    ],
+    "enfoque_conversacional": {
+      "objetivo_comunicativo": "El alumno podrá presentarse y hacer preguntas simples sobre la otra persona.",
+      "explicacion_amigable": "Para presentarte en inglés, usamos 'My name is...' seguido de tu nombre. Recuerda siempre usar 'Hello' para saludar. Esto es muy útil en cualquier situación social. ¡Practiquemos juntos!"
+    },
+    "ejercicios": [
+      {
+        "orden": 1,
+        "tipo": "roleplay_inicio",
+        "instruccion": "Imagínate que conoces a alguien nuevo en una fiesta. Di 'Hello' y presenta tu nombre."
+      },
+      {
+        "orden": 2,
+        "tipo": "roleplay_desarrollo",
+        "instruccion": "La otra persona responde con su nombre. Pregunta 'How are you?'."
+      },
+      {
+        "orden": 3,
+        "tipo": "roleplay_pregunta",
+        "instruccion": "Después de escuchar la respuesta, di 'Nice to meet you'."
+      },
+      {
+        "orden": 4,
+        "tipo": "roleplay_conflicto",
+        "instruccion": "La otra persona parece confundida. Pregunta 'Where are you from?'."
+      },
+      {
+        "orden": 5,
+        "tipo": "roleplay_cierre",
+        "instruccion": "Despídete diciendo 'Goodbye' y sonríe."
+      }
+    ],
+    "errores_comunes": [
+      {
+        "error": "Decir 'I am' sin el nombre",
+        "correccion": "'I am [tu nombre]'",
+        "explicacion_para_alumno": "Siempre necesitamos decir nuestro nombre después de 'I am'."
+      }
+    ],
+    "criterio_para_subir_de_nivel": {
+      "palabras_minimas_usadas": 4,
+      "frases_completas_sin_ayuda": 3,
+      "sesiones_minimas_en_nivel": 2,
+      "porcentaje_errores_maximo": 30
+    }
+  },
+  {
+    "nivel": 2,
+    "nombre": "Pedir ayuda",
+    "idioma": "inglés",
+    "cefr": "A1",
+    "bloque": "Supervivencia (Principiante)",
+    "descripcion": "El alumno aprenderá a pedir ayuda en situaciones cotidianas.",
+    "lo_que_ya_sabe": [
+      "Frases de presentación",
+      "Saludos"
+    ],
+    "vocabulario_funcional": [
+      "Can you help me?",
+      "I need help",
+      "Where is...?",
+      "Thank you",
+      "Excuse me"
+    ],
+    "enfoque_conversacional": {
+      "objetivo_comunicativo": "El alumno podrá pedir ayuda a otras personas en diferentes contextos.",
+      "explicacion_amigable": "Cuando necesitas ayuda, puedes usar la frase 'Can you help me?'. Es importante ser cortés. 'Excuse me' es una buena forma de llamar la atención antes de pedir ayuda."
+    },
+    "ejercicios": [
+      {
+        "orden": 1,
+        "tipo": "roleplay_inicio",
+        "instruccion": "Estás en una tienda. Acércate a un empleado y di 'Excuse me'."
+      },
+      {
+        "orden": 2,
+        "tipo": "roleplay_desarrollo",
+        "instruccion": "Pregunta 'Can you help me?' mostrando un producto."
+      },
+      {
+        "orden": 3,
+        "tipo": "roleplay_pregunta",
+        "instruccion": "El empleado te pregunta qué necesitas. Responde 'I need help with...'."
+      },
+      {
+        "orden": 4,
+        "tipo": "roleplay_conflicto",
+        "instruccion": "El empleado no entiende. Repite más despacio 'Can you help me with...?'."
+      },
+      {
+        "orden": 5,
+        "tipo": "roleplay_cierre",
+        "instruccion": "Agradece diciendo 'Thank you' al final."
+      }
+    ],
+    "errores_comunes": [
+      {
+        "error": "Olvidar usar 'please'",
+        "correccion": "'Can you help me, please?'",
+        "explicacion_para_alumno": "Usar 'please' hace que tu pedido sea más cortés."
+      }
+    ],
+    "criterio_para_subir_de_nivel": {
+      "palabras_minimas_usadas": 4,
+      "frases_completas_sin_ayuda": 3,
+      "sesiones_minimas_en_nivel": 2,
+      "porcentaje_errores_maximo": 30
+    }
+  },
+  {
+    "nivel": 3,
+    "nombre": "Direcciones simples",
+    "idioma": "inglés",
+    "cefr": "A1",
+    "bloque": "Supervivencia (Principiante)",
+    "descripcion": "El alumno aprenderá a preguntar y dar direcciones simples.",
+    "lo_que_ya_sabe": [
+      "Pedir ayuda",
+      "Saludos"
+    ],
+    "vocabulario_funcional": [
+      "Where is...?",
+      "Go straight",
+      "Turn left",
+      "Turn right",
+      "It's near"
+    ],
+    "enfoque_conversacional": {
+      "objetivo_comunicativo": "El alumno podrá preguntar y entender direcciones en inglés.",
+      "explicacion_amigable": "Cuando preguntas por direcciones, usa 'Where is...?'. Para dar direcciones, puedes usar frases como 'Go straight' o 'Turn left'. ¡Es fácil!"
+    },
+    "ejercicios": [
+      {
+        "orden": 1,
+        "tipo": "roleplay_inicio",
+        "instruccion": "Estás perdido. Pregunta a un transeúnte 'Where is the bank?'."
+      },
+      {
+        "orden": 2,
+        "tipo": "roleplay_desarrollo",
+        "instruccion": "El transeúnte responde con instrucciones. Escucha y pregunta 'Can you repeat?'."
+      },
+      {
+        "orden": 3,
+        "tipo": "roleplay_pregunta",
+        "instruccion": "Repite las direcciones: 'Go straight, then turn left'."
+      },
+      {
+        "orden": 4,
+        "tipo": "roleplay_conflicto",
+        "instruccion": "Confundes una dirección. Pregunta 'Is it near?'."
+      },
+      {
+        "orden": 5,
+        "tipo": "roleplay_cierre",
+        "instruccion": "Agradece con 'Thank you for your help!'."
+      }
+    ],
+    "errores_comunes": [
+      {
+        "error": "Usar 'where is' sin el lugar",
+        "correccion": "'Where is the train station?'",
+        "explicacion_para_alumno": "Siempre necesitas un lugar después de 'where is'."
+      }
+    ],
+    "criterio_para_subir_de_nivel": {
+      "palabras_minimas_usadas": 4,
+      "frases_completas_sin_ayuda": 3,
+      "sesiones_minimas_en_nivel": 2,
+      "porcentaje_errores_maximo": 30
+    }
+  },
+  {
+    "nivel": 4,
+    "nombre": "Compras simples",
+    "idioma": "inglés",
+    "cefr": "A1",
+    "bloque": "Supervivencia (Principiante)",
+    "descripcion": "El alumno aprenderá a comprar en tiendas y mercados.",
+    "lo_que_ya_sabe": [
+      "Direcciones simples",
+      "Pedir ayuda"
+    ],
+    "vocabulario_funcional": [
+      "How much is...?",
+      "I want this",
+      "Can I pay?",
+      "Please give me...",
+      "Thank you"
+    ],
+    "enfoque_conversacional": {
+      "objetivo_comunicativo": "El alumno podrá hacer compras y preguntar precios en inglés.",
+      "explicacion_amigable": "Para comprar algo, primero preguntas 'How much is...?'. Luego, puedes decir 'I want this' y pedirlo. Siempre recuerda agradecer con 'Thank you' al final."
+    },
+    "ejercicios": [
+      {
+        "orden": 1,
+        "tipo": "roleplay_inicio",
+        "instruccion": "Entra a una tienda. Pregunta al vendedor 'How much is this shirt?'."
+      },
+      {
+        "orden": 2,
+        "tipo": "roleplay_desarrollo",
+        "instruccion": "El vendedor responde. Di 'I want this shirt'."
+      },
+      {
+        "orden": 3,
+        "tipo": "roleplay_pregunta",
+        "instruccion": "Pregunta 'Can I pay with card?'."
+      },
+      {
+        "orden": 4,
+        "tipo": "roleplay_conflicto",
+        "instruccion": "El vendedor dice que no acepta tarjetas. Pregunta 'What can I do?'."
+      },
+      {
+        "orden": 5,
+        "tipo": "roleplay_cierre",
+        "instruccion": "Si compras, di 'Thank you' y sonríe."
+      }
+    ],
+    "errores_comunes": [
+      {
+        "error": "Olvidar preguntar el precio",
+        "correccion": "'How much is this?'",
+        "explicacion_para_alumno": "Siempre necesitas preguntar el precio antes de comprar."
+      }
+    ],
+    "criterio_para_subir_de_nivel": {
+      "palabras_minimas_usadas": 4,
+      "frases_completas_sin_ayuda": 3,
+      "sesiones_minimas_en_nivel": 2,
+      "porcentaje_errores_maximo": 30
+    }
+  },
+  {
+    "nivel": 5,
+    "nombre": "Manejo de emergencias",
+    "idioma": "inglés",
+    "cefr": "A1",
+    "bloque": "Supervivencia (Principiante)",
+    "descripcion": "El alumno aprenderá a manejar situaciones de emergencia y a pedir ayuda rápidamente.",
+    "lo_que_ya_sabe": [
+      "Compras simples",
+      "Direcciones simples"
+    ],
+    "vocabulario_funcional": [
+      "Help!",
+      "Call the police!",
+      "I need a doctor",
+      "Where is the hospital?",
+      "It's an emergency"
+    ],
+    "enfoque_conversacional": {
+      "objetivo_comunicativo": "El alumno podrá pedir ayuda en situaciones de emergencia.",
+      "explicacion_amigable": "En situaciones de emergencia, usa 'Help!' para llamar la atención. Siempre es importante ser claro y directo. Puedes decir 'I need a doctor' si alguien está herido."
+    },
+    "ejercicios": [
+      {
+        "orden": 1,
+        "tipo": "roleplay_inicio",
+        "instruccion": "Simula que ves a alguien caerse. Grita 'Help!'."
+      },
+      {
+        "orden": 2,
+        "tipo": "roleplay_desarrollo",
+        "instruccion": "Alguien se acerca. Pregunta 'Call the police!'."
+      },
+      {
+        "orden": 3,
+        "tipo": "roleplay_pregunta",
+        "instruccion": "Pregunta a la persona 'Where is the hospital?'."
+      },
+      {
+        "orden": 4,
+        "tipo": "roleplay_conflicto",
+        "instruccion": "La persona no entiende. Repite 'It's an emergency!'."
+      },
+      {
+        "orden": 5,
+        "tipo": "roleplay_cierre",
+        "instruccion": "Agradece a la persona que ayuda diciendo 'Thank you'."
+      }
+    ],
+    "errores_comunes": [
+      {
+        "error": "Usar frases largas",
+        "correccion": "'Help! I need a doctor!'",
+        "explicacion_para_alumno": "En emergencias, usa frases cortas y claras."
+      }
+    ],
+    "criterio_para_subir_de_nivel": {
+      "palabras_minimas_usadas": 4,
+      "frases_completas_sin_ayuda": 3,
+      "sesiones_minimas_en_nivel": 2,
+      "porcentaje_errores_maximo": 30
+    }
+  },
+  {
+    "nivel": 6,
+    "nombre": "Saludo y Presentación",
+    "idioma": "inglés",
+    "cefr": "A2",
+    "bloque": "Vida Cotidiana (Básico)",
+    "descripcion": "El alumno aprenderá a saludar y presentarse de manera sencilla.",
+    "lo_que_ya_sabe": [
+      "Frases básicas de saludo",
+      "Vocabulario sobre nombres y nacionalidades"
+    ],
+    "vocabulario_funcional": [
+      "Hello!",
+      "My name is...",
+      "Nice to meet you",
+      "Where are you from?",
+      "I am from..."
+    ],
+    "enfoque_conversacional": {
+      "objetivo_comunicativo": "Saludar a alguien y presentarse en una conversación informal.",
+      "explicacion_amigable": "¡Hola! Hoy vamos a aprender a saludarnos y a presentarnos. Usaremos 'Hello!' para iniciar, seguido de 'My name is...' para decir nuestro nombre. Recuerda que es importante preguntar a la otra persona: 'Where are you from?' para continuar la charla. Practicaremos juntos para que te sientas cómodo usando estas frases."
+    },
+    "ejercicios": [
+      {
+        "orden": 1,
+        "tipo": "roleplay_inicio",
+        "instruccion": "Te encuentras con un compañero en la escuela y lo saludas."
+      },
+      {
+        "orden": 2,
+        "tipo": "roleplay_desarrollo",
+        "instruccion": "Te presentas y preguntas el nombre de tu compañero."
+      },
+      {
+        "orden": 3,
+        "tipo": "roleplay_pregunta",
+        "instruccion": "Preguntas a tu compañero de dónde es."
+      },
+      {
+        "orden": 4,
+        "tipo": "roleplay_conflicto",
+        "instruccion": "Tu compañero no escucha bien tu nombre, repítelo."
+      },
+      {
+        "orden": 5,
+        "tipo": "roleplay_cierre",
+        "instruccion": "Te despides de tu compañero con un 'Nice to meet you'."
+      }
+    ],
+    "errores_comunes": [
+      {
+        "error": "Decir 'I am from the Mexico'",
+        "correccion": "Decir 'I am from Mexico'",
+        "explicacion_para_alumno": "No necesitamos 'the' antes de nombres de países."
+      }
+    ],
+    "criterio_para_subir_de_nivel": {
+      "palabras_minimas_usadas": 4,
+      "frases_completas_sin_ayuda": 3,
+      "sesiones_minimas_en_nivel": 2,
+      "porcentaje_errores_maximo": 30
+    }
+  },
+  {
+    "nivel": 7,
+    "nombre": "Hacer Compras",
+    "idioma": "inglés",
+    "cefr": "A2",
+    "bloque": "Vida Cotidiana (Básico)",
+    "descripcion": "El alumno aprenderá cómo pedir productos en una tienda.",
+    "lo_que_ya_sabe": [
+      "Frases de saludo",
+      "Nombres de objetos comunes"
+    ],
+    "vocabulario_funcional": [
+      "How much is this?",
+      "I would like...",
+      "Can I have...",
+      "Thank you!",
+      "That's too expensive!"
+    ],
+    "enfoque_conversacional": {
+      "objetivo_comunicativo": "Pedir un producto y gestionar el precio en una tienda.",
+      "explicacion_amigable": "Vamos a aprender a hacer compras. Cuando ves algo que te gusta, puedes decir 'I would like...' para pedirlo. Si quieres saber el precio, pregunta 'How much is this?'. Practicaremos cómo manejar diferentes situaciones, desde pedir hasta negociar precios."
+    },
+    "ejercicios": [
+      {
+        "orden": 1,
+        "tipo": "roleplay_inicio",
+        "instruccion": "Entres a una tienda y saludas al vendedor."
+      },
+      {
+        "orden": 2,
+        "tipo": "roleplay_desarrollo",
+        "instruccion": "Muestras un producto y preguntas 'How much is this?'."
+      },
+      {
+        "orden": 3,
+        "tipo": "roleplay_pregunta",
+        "instruccion": "Pides un producto que deseas comprar."
+      },
+      {
+        "orden": 4,
+        "tipo": "roleplay_conflicto",
+        "instruccion": "El vendedor te dice que el precio es alto, tú respondes que es muy caro."
+      },
+      {
+        "orden": 5,
+        "tipo": "roleplay_cierre",
+        "instruccion": "Finalizas la compra agradeciendo al vendedor."
+      }
+    ],
+    "errores_comunes": [
+      {
+        "error": "Decir 'I want this cheese'",
+        "correccion": "Decir 'I would like this cheese'",
+        "explicacion_para_alumno": "Usamos 'would like' para sonar más educados."
+      }
+    ],
+    "criterio_para_subir_de_nivel": {
+      "palabras_minimas_usadas": 4,
+      "frases_completas_sin_ayuda": 3,
+      "sesiones_minimas_en_nivel": 2,
+      "porcentaje_errores_maximo": 30
+    }
+  },
+  {
+    "nivel": 8,
+    "nombre": "Comida y Bebida",
+    "idioma": "inglés",
+    "cefr": "A2",
+    "bloque": "Vida Cotidiana (Básico)",
+    "descripcion": "El alumno aprenderá a hablar sobre sus comidas y bebidas favoritas.",
+    "lo_que_ya_sabe": [
+      "Nombres de comidas",
+      "Frases para pedir en un restaurante"
+    ],
+    "vocabulario_funcional": [
+      "I like...",
+      "My favorite food is...",
+      "I want to eat...",
+      "What do you want?",
+      "Let's order..."
+    ],
+    "enfoque_conversacional": {
+      "objetivo_comunicativo": "Hablar sobre gustos y pedir comida en un restaurante.",
+      "explicacion_amigable": "Hoy charlaremos sobre comida y bebida. Puedes expresar lo que te gusta con 'I like...' y hablar de tu comida favorita con 'My favorite food is...'. Recuerda que al pedir, puedes usar 'Let's order...'. ¡Vamos a practicar esto en un divertido escenario de restaurante!"
+    },
+    "ejercicios": [
+      {
+        "orden": 1,
+        "tipo": "roleplay_inicio",
+        "instruccion": "Te sientas en una mesa de un restaurante y saludas al mesero."
+      },
+      {
+        "orden": 2,
+        "tipo": "roleplay_desarrollo",
+        "instruccion": "Dices qué comida te gusta."
+      },
+      {
+        "orden": 3,
+        "tipo": "roleplay_pregunta",
+        "instruccion": "Preguntas al mesero qué recomienda."
+      },
+      {
+        "orden": 4,
+        "tipo": "roleplay_conflicto",
+        "instruccion": "El mesero te dice que no hay tu comida favorita, tú buscas otra opción."
+      },
+      {
+        "orden": 5,
+        "tipo": "roleplay_cierre",
+        "instruccion": "Agradeces al mesero y te despides."
+      }
+    ],
+    "errores_comunes": [
+      {
+        "error": "Decir 'I like the pizza'",
+        "correccion": "Decir 'I like pizza'",
+        "explicacion_para_alumno": "No necesitamos 'the' antes de comidas en general."
+      }
+    ],
+    "criterio_para_subir_de_nivel": {
+      "palabras_minimas_usadas": 4,
+      "frases_completas_sin_ayuda": 3,
+      "sesiones_minimas_en_nivel": 2,
+      "porcentaje_errores_maximo": 30
+    }
+  },
+  {
+    "nivel": 9,
+    "nombre": "Rutinas Diarias",
+    "idioma": "inglés",
+    "cefr": "A2",
+    "bloque": "Vida Cotidiana (Básico)",
+    "descripcion": "El alumno aprenderá a describir sus rutinas diarias.",
+    "lo_que_ya_sabe": [
+      "Vocabulario sobre actividades diarias",
+      "Frases simples sobre el tiempo"
+    ],
+    "vocabulario_funcional": [
+      "I wake up at...",
+      "I have breakfast...",
+      "I go to work...",
+      "I come home...",
+      "I go to bed..."
+    ],
+    "enfoque_conversacional": {
+      "objetivo_comunicativo": "Describir una rutina diaria a otra persona.",
+      "explicacion_amigable": "Hoy vamos a hablar de nuestras rutinas diarias. Comenzamos con 'I wake up at...' para decir a qué hora nos levantamos. Luego usamos 'I have breakfast...' para hablar de lo que comemos. ¡Vamos a practicar cómo narrar nuestro día!"
+    },
+    "ejercicios": [
+      {
+        "orden": 1,
+        "tipo": "roleplay_inicio",
+        "instruccion": "Te encuentras con un amigo y le preguntas sobre su día."
+      },
+      {
+        "orden": 2,
+        "tipo": "roleplay_desarrollo",
+        "instruccion": "Comienzas a describir tu rutina desde que te despiertas."
+      },
+      {
+        "orden": 3,
+        "tipo": "roleplay_pregunta",
+        "instruccion": "Le preguntas a tu amigo sobre su hora de despertar."
+      },
+      {
+        "orden": 4,
+        "tipo": "roleplay_conflicto",
+        "instruccion": "Tu amigo se olvida de una actividad importante, tú le ayudas a recordarla."
+      },
+      {
+        "orden": 5,
+        "tipo": "roleplay_cierre",
+        "instruccion": "Te despides y le agradeces por compartir su rutina."
+      }
+    ],
+    "errores_comunes": [
+      {
+        "error": "Decir 'I wake up in 7 o'clock'",
+        "correccion": "Decir 'I wake up at 7 o'clock'",
+        "explicacion_para_alumno": "Usamos 'at' para horas específicas."
+      }
+    ],
+    "criterio_para_subir_de_nivel": {
+      "palabras_minimas_usadas": 4,
+      "frases_completas_sin_ayuda": 3,
+      "sesiones_minimas_en_nivel": 2,
+      "porcentaje_errores_maximo": 30
+    }
+  },
+  {
+    "nivel": 10,
+    "nombre": "Tiempo Libre",
+    "idioma": "inglés",
+    "cefr": "A2",
+    "bloque": "Vida Cotidiana (Básico)",
+    "descripcion": "El alumno aprenderá a hablar sobre sus pasatiempos y actividades de ocio.",
+    "lo_que_ya_sabe": [
+      "Vocabulario de hobbies",
+      "Frases sobre gustos"
+    ],
+    "vocabulario_funcional": [
+      "I like to...",
+      "I enjoy...",
+      "I play...",
+      "I watch...",
+      "In my free time..."
+    ],
+    "enfoque_conversacional": {
+      "objetivo_comunicativo": "Describir sus pasatiempos y compartirlos con otros.",
+      "explicacion_amigable": "Hoy charlaremos sobre lo que hacemos en nuestro tiempo libre. Puedes usar 'I like to...' o 'I enjoy...' para contar sobre tus hobbies. Es genial compartir lo que nos gusta hacer. Practicaremos juntos para que puedas expresarte con confianza."
+    },
+    "ejercicios": [
+      {
+        "orden": 1,
+        "tipo": "roleplay_inicio",
+        "instruccion": "Te sientas con un grupo de amigos y comienzas la conversación."
+      },
+      {
+        "orden": 2,
+        "tipo": "roleplay_desarrollo",
+        "instruccion": "Dices qué te gusta hacer en tu tiempo libre."
+      },
+      {
+        "orden": 3,
+        "tipo": "roleplay_pregunta",
+        "instruccion": "Preguntas a tus amigos sobre sus pasatiempos."
+      },
+      {
+        "orden": 4,
+        "tipo": "roleplay_conflicto",
+        "instruccion": "Un amigo no está de acuerdo con tu pasatiempo, argumentas por qué te gusta."
+      },
+      {
+        "orden": 5,
+        "tipo": "roleplay_cierre",
+        "instruccion": "Agradeces a tus amigos por compartir y te despides."
+      }
+    ],
+    "errores_comunes": [
+      {
+        "error": "Decir 'I like to play footballs'",
+        "correccion": "Decir 'I like to play football'",
+        "explicacion_para_alumno": "No usamos plural en los deportes."
+      }
+    ],
+    "criterio_para_subir_de_nivel": {
+      "palabras_minimas_usadas": 4,
+      "frases_completas_sin_ayuda": 3,
+      "sesiones_minimas_en_nivel": 2,
+      "porcentaje_errores_maximo": 30
+    }
+  },
+  {
+    "nivel": 11,
+    "nombre": "Haciendo preguntas en situaciones cotidianas",
+    "idioma": "inglés",
+    "cefr": "B1",
+    "bloque": "Comunicación Fluida (Intermedio)",
+    "descripcion": "El alumno aprenderá a formular preguntas adecuadas en diversas situaciones cotidianas.",
+    "lo_que_ya_sabe": [
+      "Frases simples en inglés",
+      "Vocabulario básico sobre lugares"
+    ],
+    "vocabulario_funcional": [
+      "Where is the nearest bus stop?",
+      "Can you help me?",
+      "What time does it open?",
+      "How much does it cost?",
+      "Is this seat taken?"
+    ],
+    "enfoque_conversacional": {
+      "objetivo_comunicativo": "Pedir direcciones o información en la calle.",
+      "explicacion_amigable": "Hoy vamos a aprender a hacer preguntas. Las preguntas son como puertas que nos permiten obtener información. Recuerda que al hacer preguntas en inglés, muchas veces usamos la estructura 'Wh-' como en 'Where', 'What', 'When'. Practicaremos cómo formularlas correctamente y cómo responderlas."
+    },
+    "ejercicios": [
+      {
+        "orden": 1,
+        "tipo": "roleplay_inicio",
+        "instruccion": "Estás en una estación de tren y necesitas saber cómo llegar a un museo."
+      },
+      {
+        "orden": 2,
+        "tipo": "roleplay_desarrollo",
+        "instruccion": "Un extraño te responde y te da información sobre las opciones de transporte."
+      },
+      {
+        "orden": 3,
+        "tipo": "roleplay_pregunta",
+        "instruccion": "Pregunta sobre el horario del museo."
+      },
+      {
+        "orden": 4,
+        "tipo": "roleplay_conflicto",
+        "instruccion": "El extraño no conoce la respuesta. Intenta encontrar a otra persona para preguntar."
+      },
+      {
+        "orden": 5,
+        "tipo": "roleplay_cierre",
+        "instruccion": "Agradece a la persona que te ayudó y despídete."
+      }
+    ],
+    "errores_comunes": [
+      {
+        "error": "Confundir 'where' con 'what'",
+        "correccion": "'Where' se usa para lugares.",
+        "explicacion_para_alumno": "Recuerda, 'where' es para preguntar sobre ubicaciones, mientras que 'what' es para objetos o información."
+      }
+    ],
+    "criterio_para_subir_de_nivel": {
+      "palabras_minimas_usadas": 4,
+      "frases_completas_sin_ayuda": 3,
+      "sesiones_minimas_en_nivel": 2,
+      "porcentaje_errores_maximo": 30
+    }
+  },
+  {
+    "nivel": 12,
+    "nombre": "Describiendo actividades y planes",
+    "idioma": "inglés",
+    "cefr": "B1",
+    "bloque": "Comunicación Fluida (Intermedio)",
+    "descripcion": "El alumno podrá describir sus planes y actividades de manera clara.",
+    "lo_que_ya_sabe": [
+      "Vocabulario sobre actividades diarias",
+      "Uso básico de verbos en presente"
+    ],
+    "vocabulario_funcional": [
+      "I am going to the cinema.",
+      "We are having dinner at 7.",
+      "She usually plays soccer on weekends.",
+      "They like to travel.",
+      "I want to learn more."
+    ],
+    "enfoque_conversacional": {
+      "objetivo_comunicativo": "Hablar sobre tus planes y actividades diarias.",
+      "explicacion_amigable": "Hoy vamos a hablar de lo que hacemos en nuestra vida diaria. Usaremos la estructura 'I am going to' para hablar de planes futuros. Recuerda que también puedes usar el presente simple para rutinas diarias. Practicaremos cómo describir nuestros planes y lo que hacemos normalmente."
+    },
+    "ejercicios": [
+      {
+        "orden": 1,
+        "tipo": "roleplay_inicio",
+        "instruccion": "Te encuentras con un amigo y le preguntas qué planes tiene para el fin de semana."
+      },
+      {
+        "orden": 2,
+        "tipo": "roleplay_desarrollo",
+        "instruccion": "Tu amigo te cuenta sus planes, y tú compartes los tuyos."
+      },
+      {
+        "orden": 3,
+        "tipo": "roleplay_pregunta",
+        "instruccion": "Pregunta a tu amigo sobre su actividad favorita."
+      },
+      {
+        "orden": 4,
+        "tipo": "roleplay_conflicto",
+        "instruccion": "Tu amigo tiene un conflicto de horarios y necesita cambiar sus planes."
+      },
+      {
+        "orden": 5,
+        "tipo": "roleplay_cierre",
+        "instruccion": "Despídanse y acuerden un encuentro."
+      }
+    ],
+    "errores_comunes": [
+      {
+        "error": "Usar el presente en lugar del futuro",
+        "correccion": "Usa 'I am going to' para hablar de planes futuros.",
+        "explicacion_para_alumno": "Es importante diferenciar entre lo que hacemos normalmente y lo que planeamos hacer. Usa 'going to' para futuros."
+      }
+    ],
+    "criterio_para_subir_de_nivel": {
+      "palabras_minimas_usadas": 4,
+      "frases_completas_sin_ayuda": 3,
+      "sesiones_minimas_en_nivel": 2,
+      "porcentaje_errores_maximo": 30
+    }
+  },
+  {
+    "nivel": 13,
+    "nombre": "Conversaciones sobre gustos y preferencias",
+    "idioma": "inglés",
+    "cefr": "B1",
+    "bloque": "Comunicación Fluida (Intermedio)",
+    "descripcion": "El alumno aprenderá a expresar sus gustos y preferencias de forma clara.",
+    "lo_que_ya_sabe": [
+      "Vocabulario sobre comida y pasatiempos",
+      "Frases simples sobre preferencias"
+    ],
+    "vocabulario_funcional": [
+      "I like pizza.",
+      "She prefers coffee.",
+      "Do you enjoy reading?",
+      "My favorite hobby is painting.",
+      "They love playing video games."
+    ],
+    "enfoque_conversacional": {
+      "objetivo_comunicativo": "Conversar sobre tus gustos y preferencias personales.",
+      "explicacion_amigable": "Hoy vamos a aprender a expresar lo que nos gusta. Usaremos frases como 'I like' y 'I prefer'. Es fácil recordar que 'like' es para cosas que disfrutamos, y 'prefer' es para lo que elegimos sobre otra cosa. Practicaremos cómo compartir nuestros gustos y aprender de los demás."
+    },
+    "ejercicios": [
+      {
+        "orden": 1,
+        "tipo": "roleplay_inicio",
+        "instruccion": "Te encuentras en una fiesta y saludas a un nuevo amigo."
+      },
+      {
+        "orden": 2,
+        "tipo": "roleplay_desarrollo",
+        "instruccion": "Pregúntale sobre su comida favorita y comparte la tuya."
+      },
+      {
+        "orden": 3,
+        "tipo": "roleplay_pregunta",
+        "instruccion": "Pregunta si le gusta algún pasatiempo."
+      },
+      {
+        "orden": 4,
+        "tipo": "roleplay_conflicto",
+        "instruccion": "Descubres que tienen gustos muy diferentes y discuten amistosamente."
+      },
+      {
+        "orden": 5,
+        "tipo": "roleplay_cierre",
+        "instruccion": "Agradece la conversación y despídete."
+      }
+    ],
+    "errores_comunes": [
+      {
+        "error": "Confundir 'like' con 'love'",
+        "correccion": "'Love' es para algo que disfrutas mucho.",
+        "explicacion_para_alumno": "Recuerda que 'like' es más general, mientras que 'love' es más fuerte. Usa 'love' para tus pasiones."
+      }
+    ],
+    "criterio_para_subir_de_nivel": {
+      "palabras_minimas_usadas": 4,
+      "frases_completas_sin_ayuda": 3,
+      "sesiones_minimas_en_nivel": 2,
+      "porcentaje_errores_maximo": 30
+    }
+  },
+  {
+    "nivel": 14,
+    "nombre": "Contando historias cortas",
+    "idioma": "inglés",
+    "cefr": "B1",
+    "bloque": "Comunicación Fluida (Intermedio)",
+    "descripcion": "El alumno podrá narrar historias cortas y sencillas de manera efectiva.",
+    "lo_que_ya_sabe": [
+      "Estructura básica de una historia",
+      "Vocabulario descriptivo"
+    ],
+    "vocabulario_funcional": [
+      "Once upon a time...",
+      "The main character is...",
+      "Then, something happened.",
+      "In the end...",
+      "They lived happily ever after."
+    ],
+    "enfoque_conversacional": {
+      "objetivo_comunicativo": "Contar una historia corta a un amigo o grupo.",
+      "explicacion_amigable": "Hoy vamos a contar historias. Una buena historia tiene un comienzo, un desarrollo y un final. Usaremos frases para enlazar ideas y mantener el interés. Recuerda que las historias suelen empezar con 'Once upon a time'. Practicaremos cómo estructurar y contar nuestras propias historias."
+    },
+    "ejercicios": [
+      {
+        "orden": 1,
+        "tipo": "roleplay_inicio",
+        "instruccion": "Estás en un grupo de amigos y decides contar una historia divertida."
+      },
+      {
+        "orden": 2,
+        "tipo": "roleplay_desarrollo",
+        "instruccion": "Comienza tu historia y describe al personaje principal."
+      },
+      {
+        "orden": 3,
+        "tipo": "roleplay_pregunta",
+        "instruccion": "Pregunta a tus amigos qué creen que sucederá después."
+      },
+      {
+        "orden": 4,
+        "tipo": "roleplay_conflicto",
+        "instruccion": "Introduce un conflicto en la historia que el personaje debe resolver."
+      },
+      {
+        "orden": 5,
+        "tipo": "roleplay_cierre",
+        "instruccion": "Termina la historia y pregunta a tus amigos qué les pareció."
+      }
+    ],
+    "errores_comunes": [
+      {
+        "error": "No seguir una estructura de historia",
+        "correccion": "Asegúrate de tener un inicio, desarrollo y final.",
+        "explicacion_para_alumno": "Las historias necesitan una estructura clara para ser entendidas. Recuerda siempre incluir esos elementos."
+      }
+    ],
+    "criterio_para_subir_de_nivel": {
+      "palabras_minimas_usadas": 4,
+      "frases_completas_sin_ayuda": 3,
+      "sesiones_minimas_en_nivel": 2,
+      "porcentaje_errores_maximo": 30
+    }
+  },
+  {
+    "nivel": 15,
+    "nombre": "Debatiendo opiniones",
+    "idioma": "inglés",
+    "cefr": "B1",
+    "bloque": "Comunicación Fluida (Intermedio)",
+    "descripcion": "El alumno aprenderá a expresar y debatir sus opiniones sobre diferentes temas.",
+    "lo_que_ya_sabe": [
+      "Formular opiniones simples",
+      "Vocabulario sobre temas de actualidad"
+    ],
+    "vocabulario_funcional": [
+      "I think that...",
+      "In my opinion...",
+      "I agree with...",
+      "I disagree because...",
+      "What do you think?"
+    ],
+    "enfoque_conversacional": {
+      "objetivo_comunicativo": "Participar en un debate sobre un tema de actualidad.",
+      "explicacion_amigable": "Hoy vamos a aprender a compartir nuestras opiniones y debatir. Es importante usar frases como 'In my opinion' o 'I think that' para expresar lo que sentimos. Practicaremos cómo escuchar a los demás y responder respetuosamente, incluso si no estamos de acuerdo."
+    },
+    "ejercicios": [
+      {
+        "orden": 1,
+        "tipo": "roleplay_inicio",
+        "instruccion": "Te unes a una discusión sobre un tema de actualidad en un grupo."
+      },
+      {
+        "orden": 2,
+        "tipo": "roleplay_desarrollo",
+        "instruccion": "Expresas tu opinión sobre el tema en cuestión."
+      },
+      {
+        "orden": 3,
+        "tipo": "roleplay_pregunta",
+        "instruccion": "Pregunta a alguien su opinión para fomentar el debate."
+      },
+      {
+        "orden": 4,
+        "tipo": "roleplay_conflicto",
+        "instruccion": "Surge un desacuerdo y discuten respetuosamente."
+      },
+      {
+        "orden": 5,
+        "tipo": "roleplay_cierre",
+        "instruccion": "Agradece a todos por la conversación y despídete."
+      }
+    ],
+    "errores_comunes": [
+      {
+        "error": "No usar frases de opinión",
+        "correccion": "Recuerda usar 'I think that' o 'In my opinion'.",
+        "explicacion_para_alumno": "Es vital expresar tu opinión de manera clara. Estas frases te ayudarán a comunicarte mejor."
+      }
+    ],
+    "criterio_para_subir_de_nivel": {
+      "palabras_minimas_usadas": 4,
+      "frases_completas_sin_ayuda": 3,
+      "sesiones_minimas_en_nivel": 2,
+      "porcentaje_errores_maximo": 30
+    }
+  },
+  {
+    "nivel": 16,
+    "nombre": "Conversaciones cotidianas sobre hobbies",
+    "idioma": "inglés",
+    "cefr": "B2",
+    "bloque": "Expresión Espontánea (Intermedio Alto)",
+    "descripcion": "El alumno será capaz de hablar fluidamente sobre sus hobbies y pasatiempos.",
+    "lo_que_ya_sabe": [
+      "Vocabulario básico sobre actividades",
+      "Estructuras gramaticales simples"
+    ],
+    "vocabulario_funcional": [
+      "I enjoy",
+      "in my free time",
+      "I prefer",
+      "I usually",
+      "my favorite hobby"
+    ],
+    "enfoque_conversacional": {
+      "objetivo_comunicativo": "Describir sus pasatiempos y preferencias de manera natural.",
+      "explicacion_amigable": "Hoy vamos a hablar sobre nuestras pasiones. Recuerda que al usar 'I enjoy' seguido de un verbo en -ing, puedes expresar lo que te gusta hacer. Por ejemplo, 'I enjoy reading'. Utiliza 'I usually' para hablar de lo que haces regularmente, y 'my favorite hobby' para señalar tu actividad preferida. Practicaremos esto mediante conversaciones espontáneas."
+    },
+    "ejercicios": [
+      {
+        "orden": 1,
+        "tipo": "roleplay_inicio",
+        "instruccion": "Te encuentras con un amigo en un café y le preguntas qué le gusta hacer en su tiempo libre."
+      },
+      {
+        "orden": 2,
+        "tipo": "roleplay_desarrollo",
+        "instruccion": "El amigo te responde y comparte su pasatiempo favorito. Tú, a su vez, compartes el tuyo."
+      },
+      {
+        "orden": 3,
+        "tipo": "roleplay_pregunta",
+        "instruccion": "Pregúntale a tu amigo por qué le gusta esa actividad."
+      },
+      {
+        "orden": 4,
+        "tipo": "roleplay_conflicto",
+        "instruccion": "Tu amigo menciona que está pensando en dejar su hobby porque no tiene tiempo. Anímalo a continuar."
+      },
+      {
+        "orden": 5,
+        "tipo": "roleplay_cierre",
+        "instruccion": "Finaliza la conversación proponiendo hacer esa actividad juntos el fin de semana."
+      }
+    ],
+    "errores_comunes": [
+      {
+        "error": "Decir 'I like to play football' en vez de 'I enjoy playing football'",
+        "correccion": "I enjoy playing football",
+        "explicacion_para_alumno": "Usamos 'enjoy' con el gerundio para hablar de actividades que nos gustan."
+      }
+    ],
+    "criterio_para_subir_de_nivel": {
+      "palabras_minimas_usadas": 4,
+      "frases_completas_sin_ayuda": 3,
+      "sesiones_minimas_en_nivel": 2,
+      "porcentaje_errores_maximo": 30
+    }
+  },
+  {
+    "nivel": 17,
+    "nombre": "Conversaciones sobre viajes",
+    "idioma": "inglés",
+    "cefr": "B2",
+    "bloque": "Expresión Espontánea (Intermedio Alto)",
+    "descripcion": "El alumno podrá intercambiar experiencias de viaje y recomendar lugares.",
+    "lo_que_ya_sabe": [
+      "Vocabulario sobre destinos",
+      "Estructuras para hacer preguntas"
+    ],
+    "vocabulario_funcional": [
+      "I traveled to",
+      "I recommend",
+      "the best part was",
+      "I would love to visit",
+      "my favorite destination"
+    ],
+    "enfoque_conversacional": {
+      "objetivo_comunicativo": "Compartir experiencias de viaje y dar recomendaciones.",
+      "explicacion_amigable": "Hoy vamos a explorar nuestras aventuras viajeras. Cuando decimos 'I traveled to', seguimos con el destino, y 'I recommend' para sugerir lugares. No olvides usar 'the best part was' para hablar de lo que más disfrutaste. Esto hará que nuestra conversación sea más rica y atractiva."
+    },
+    "ejercicios": [
+      {
+        "orden": 1,
+        "tipo": "roleplay_inicio",
+        "instruccion": "Comienza la conversación preguntando a un compañero sobre su último viaje."
+      },
+      {
+        "orden": 2,
+        "tipo": "roleplay_desarrollo",
+        "instruccion": "Tu compañero comparte su experiencia. Luego, tú cuentas sobre tu viaje más reciente."
+      },
+      {
+        "orden": 3,
+        "tipo": "roleplay_pregunta",
+        "instruccion": "Pregunta a tu compañero cuál fue su parte favorita del viaje."
+      },
+      {
+        "orden": 4,
+        "tipo": "roleplay_conflicto",
+        "instruccion": "El compañero menciona que tuvo una mala experiencia. Escucha y ofrece recomendaciones para evitarlo en el futuro."
+      },
+      {
+        "orden": 5,
+        "tipo": "roleplay_cierre",
+        "instruccion": "Cierra la conversación sugiriendo un viaje juntos a un lugar nuevo."
+      }
+    ],
+    "errores_comunes": [
+      {
+        "error": "Decir 'I have been to Paris last year' en vez de 'I went to Paris last year'",
+        "correccion": "I went to Paris last year",
+        "explicacion_para_alumno": "Usamos el pasado simple para acciones completadas en un tiempo específico."
+      }
+    ],
+    "criterio_para_subir_de_nivel": {
+      "palabras_minimas_usadas": 4,
+      "frases_completas_sin_ayuda": 3,
+      "sesiones_minimas_en_nivel": 2,
+      "porcentaje_errores_maximo": 30
+    }
+  },
+  {
+    "nivel": 18,
+    "nombre": "Debates sobre temas actuales",
+    "idioma": "inglés",
+    "cefr": "B2",
+    "bloque": "Expresión Espontánea (Intermedio Alto)",
+    "descripcion": "El alumno podrá participar en discusiones sobre temas de actualidad.",
+    "lo_que_ya_sabe": [
+      "Vocabulario relacionado con la actualidad",
+      "Estructuras para expresar opiniones"
+    ],
+    "vocabulario_funcional": [
+      "In my opinion",
+      "I believe that",
+      "on the one hand",
+      "on the other hand",
+      "it's important to consider"
+    ],
+    "enfoque_conversacional": {
+      "objetivo_comunicativo": "Mantener una discusión sobre un tema de actualidad de manera argumentativa.",
+      "explicacion_amigable": "Hoy, vamos a aprender a debatir. Cuando dices 'In my opinion', estás introduciendo tu punto de vista. Usa 'on the one hand' y 'on the other hand' para presentar diferentes perspectivas. Esto te ayudará a ser más persuasivo en tus argumentos."
+    },
+    "ejercicios": [
+      {
+        "orden": 1,
+        "tipo": "roleplay_inicio",
+        "instruccion": "Inicia una conversación sobre un tema actual, como el cambio climático."
+      },
+      {
+        "orden": 2,
+        "tipo": "roleplay_desarrollo",
+        "instruccion": "Presenta tu opinión y pide a tu compañero que comparta la suya."
+      },
+      {
+        "orden": 3,
+        "tipo": "roleplay_pregunta",
+        "instruccion": "Pregunta a tu compañero qué piensa sobre las soluciones propuestas."
+      },
+      {
+        "orden": 4,
+        "tipo": "roleplay_conflicto",
+        "instruccion": "Tu compañero presenta una opinión contraria. Escucha y responde con argumentos."
+      },
+      {
+        "orden": 5,
+        "tipo": "roleplay_cierre",
+        "instruccion": "Cierra la conversación resumiendo los puntos discutidos y proponiendo una solución."
+      }
+    ],
+    "errores_comunes": [
+      {
+        "error": "Decir 'I think that is important' en vez de 'I think it is important'",
+        "correccion": "I think it is important",
+        "explicacion_para_alumno": "Recuerda que no necesitas 'that' en esta estructura."
+      }
+    ],
+    "criterio_para_subir_de_nivel": {
+      "palabras_minimas_usadas": 4,
+      "frases_completas_sin_ayuda": 3,
+      "sesiones_minimas_en_nivel": 2,
+      "porcentaje_errores_maximo": 30
+    }
+  },
+  {
+    "nivel": 19,
+    "nombre": "Narraciones de experiencias pasadas",
+    "idioma": "inglés",
+    "cefr": "B2",
+    "bloque": "Expresión Espontánea (Intermedio Alto)",
+    "descripcion": "El alumno podrá narrar experiencias pasadas de manera coherente.",
+    "lo_que_ya_sabe": [
+      "Vocabulario sobre eventos pasados",
+      "Estructuras de pasado simple"
+    ],
+    "vocabulario_funcional": [
+      "Last summer",
+      "I remember",
+      "it happened when",
+      "the moment I realized",
+      "after that"
+    ],
+    "enfoque_conversacional": {
+      "objetivo_comunicativo": "Contar una historia personal sobre un evento significativo.",
+      "explicacion_amigable": "Hoy, vamos a narrar historias. Usa 'Last summer' para establecer el tiempo y 'I remember' para comenzar. Incorporar frases como 'the moment I realized' te ayudará a construir tensión en tu relato, haciendo que sea más interesante. Práctica y conecta tus ideas como un narrador profesional."
+    },
+    "ejercicios": [
+      {
+        "orden": 1,
+        "tipo": "roleplay_inicio",
+        "instruccion": "Empieza la conversación preguntando a tu compañero sobre su mejor recuerdo."
+      },
+      {
+        "orden": 2,
+        "tipo": "roleplay_desarrollo",
+        "instruccion": "Tu compañero comparte su historia. Luego, tú cuentas la tuya."
+      },
+      {
+        "orden": 3,
+        "tipo": "roleplay_pregunta",
+        "instruccion": "Pregunta a tu compañero cómo se sintió durante ese momento."
+      },
+      {
+        "orden": 4,
+        "tipo": "roleplay_conflicto",
+        "instruccion": "Tu compañero menciona un desafío que enfrentó. Escucha y ofrece apoyo."
+      },
+      {
+        "orden": 5,
+        "tipo": "roleplay_cierre",
+        "instruccion": "Cierra la conversación reflexionando sobre lo que aprendiste de esa experiencia."
+      }
+    ],
+    "errores_comunes": [
+      {
+        "error": "Decir 'I was in the beach' en vez de 'I was at the beach'",
+        "correccion": "I was at the beach",
+        "explicacion_para_alumno": "Usamos 'at' para lugares definidos como playas."
+      }
+    ],
+    "criterio_para_subir_de_nivel": {
+      "palabras_minimas_usadas": 4,
+      "frases_completas_sin_ayuda": 3,
+      "sesiones_minimas_en_nivel": 2,
+      "porcentaje_errores_maximo": 30
+    }
+  },
+  {
+    "nivel": 20,
+    "nombre": "Expresiones de sentimientos y emociones",
+    "idioma": "inglés",
+    "cefr": "B2",
+    "bloque": "Expresión Espontánea (Intermedio Alto)",
+    "descripcion": "El alumno podrá expresar sus sentimientos y emociones de manera clara y efectiva.",
+    "lo_que_ya_sabe": [
+      "Vocabulario emocional básico",
+      "Estructuras para describir emociones"
+    ],
+    "vocabulario_funcional": [
+      "I feel",
+      "I am excited about",
+      "it makes me happy",
+      "I am worried about",
+      "it frustrates me"
+    ],
+    "enfoque_conversacional": {
+      "objetivo_comunicativo": "Comunicar sus emociones en diversas situaciones.",
+      "explicacion_amigable": "Hoy vamos a aprender a hablar sobre nuestras emociones. Al usar 'I feel', puedes iniciar describiendo tu estado emocional. Frases como 'it makes me happy' te ayudarán a compartir tus alegrías, mientras que 'I am worried' expresa inquietudes. Esto hará que tus conversaciones sean más profundas y auténticas."
+    },
+    "ejercicios": [
+      {
+        "orden": 1,
+        "tipo": "roleplay_inicio",
+        "instruccion": "Inicia la conversación preguntando a tu compañero cómo se siente hoy."
+      },
+      {
+        "orden": 2,
+        "tipo": "roleplay_desarrollo",
+        "instruccion": "Tu compañero comparte sus emociones. Luego, tú compartes las tuyas."
+      },
+      {
+        "orden": 3,
+        "tipo": "roleplay_pregunta",
+        "instruccion": "Pregunta a tu compañero qué situaciones le hacen sentir feliz."
+      },
+      {
+        "orden": 4,
+        "tipo": "roleplay_conflicto",
+        "instruccion": "Tu compañero menciona algo que le preocupa. Escucha y ofrece consejos."
+      },
+      {
+        "orden": 5,
+        "tipo": "roleplay_cierre",
+        "instruccion": "Cierra la conversación hablando sobre cómo manejar emociones difíciles."
+      }
+    ],
+    "errores_comunes": [
+      {
+        "error": "Decir 'I feel exciting' en vez de 'I feel excited'",
+        "correccion": "I feel excited",
+        "explicacion_para_alumno": "Recuerda que 'excited' describe tu estado, mientras que 'exciting' describe algo que causa emoción."
+      }
+    ],
+    "criterio_para_subir_de_nivel": {
+      "palabras_minimas_usadas": 4,
+      "frases_completas_sin_ayuda": 3,
+      "sesiones_minimas_en_nivel": 2,
+      "porcentaje_errores_maximo": 30
+    }
+  },
+  {
+    "nivel": 21,
+    "nombre": "Networking Efectivo en el Trabajo",
+    "idioma": "inglés",
+    "cefr": "C1",
+    "bloque": "Dominio Profesional (Avanzado)",
+    "descripcion": "El alumno aprenderá a establecer conexiones profesionales efectivas en entornos laborales.",
+    "lo_que_ya_sabe": [
+      "Conversaciones informales en eventos",
+      "Presentaciones personales breves"
+    ],
+    "vocabulario_funcional": [
+      "It was great to meet you",
+      "Let's keep in touch",
+      "I look forward to collaborating",
+      "What are your current projects?",
+      "Have you considered..."
+    ],
+    "enfoque_conversacional": {
+      "objetivo_comunicativo": "Iniciar y mantener conversaciones en eventos de networking.",
+      "explicacion_amigable": "En esta lección, vamos a explorar cómo iniciar una conversación en un entorno profesional. Usaremos frases clave que te ayudarán a romper el hielo y hacer que la otra persona se sienta cómoda. Recuerda, el objetivo es crear una conexión genuina, así que presta atención a las respuestas y sigue el hilo de la conversación."
+    },
+    "ejercicios": [
+      {
+        "orden": 1,
+        "tipo": "roleplay_inicio",
+        "instruccion": "Te encuentras en una conferencia y ves a alguien que te interesa. Inicia la conversación."
+      },
+      {
+        "orden": 2,
+        "tipo": "roleplay_desarrollo",
+        "instruccion": "La persona responde positivamente, pregunta sobre tu trabajo. Explica brevemente tu rol."
+      },
+      {
+        "orden": 3,
+        "tipo": "roleplay_pregunta",
+        "instruccion": "La persona te pregunta sobre tus proyectos actuales. Responde y plantea una pregunta de vuelta."
+      },
+      {
+        "orden": 4,
+        "tipo": "roleplay_conflicto",
+        "instruccion": "La otra persona menciona una diferencia en opiniones sobre un tema. Maneja la discrepancia de manera profesional."
+      },
+      {
+        "orden": 5,
+        "tipo": "roleplay_cierre",
+        "instruccion": "Concluye la conversación agradeciendo y sugiriendo mantener el contacto."
+      }
+    ],
+    "errores_comunes": [
+      {
+        "error": "Decir 'I hope to see you again soon'",
+        "correccion": "I look forward to seeing you again soon",
+        "explicacion_para_alumno": "La forma correcta sugiere una expectativa positiva sobre el futuro."
+      }
+    ],
+    "criterio_para_subir_de_nivel": {
+      "palabras_minimas_usadas": 4,
+      "frases_completas_sin_ayuda": 3,
+      "sesiones_minimas_en_nivel": 2,
+      "porcentaje_errores_maximo": 30
+    }
+  },
+  {
+    "nivel": 22,
+    "nombre": "Presentaciones Impactantes",
+    "idioma": "inglés",
+    "cefr": "C1",
+    "bloque": "Dominio Profesional (Avanzado)",
+    "descripcion": "El alumno desarrollará habilidades para crear y dar presentaciones efectivas en el entorno laboral.",
+    "lo_que_ya_sabe": [
+      "Estructura básica de una presentación",
+      "Uso de recursos visuales"
+    ],
+    "vocabulario_funcional": [
+      "Today, I will discuss...",
+      "Let's take a closer look at...",
+      "In summary...",
+      "Any questions so far?",
+      "To conclude..."
+    ],
+    "enfoque_conversacional": {
+      "objetivo_comunicativo": "Dar una presentación clara y convincente sobre un tema profesional.",
+      "explicacion_amigable": "Una buena presentación no solo informa, sino que también inspira. Vamos a ver cómo estructurar tu contenido, usar recursos visuales y, lo más importante, conectar emocionalmente con tu audiencia. Recuerda, practicar es clave para la confianza."
+    },
+    "ejercicios": [
+      {
+        "orden": 1,
+        "tipo": "roleplay_inicio",
+        "instruccion": "Inicia tu presentación ante un grupo de colegas."
+      },
+      {
+        "orden": 2,
+        "tipo": "roleplay_desarrollo",
+        "instruccion": "Desarrolla el primer punto de tu presentación con claridad."
+      },
+      {
+        "orden": 3,
+        "tipo": "roleplay_pregunta",
+        "instruccion": "Haz una pausa y pregunta si hay dudas sobre lo que has presentado."
+      },
+      {
+        "orden": 4,
+        "tipo": "roleplay_conflicto",
+        "instruccion": "Un colega plantea una objeción a tu argumento. Responde de manera constructiva."
+      },
+      {
+        "orden": 5,
+        "tipo": "roleplay_cierre",
+        "instruccion": "Finaliza la presentación agradeciendo a la audiencia y abriendo el piso a preguntas."
+      }
+    ],
+    "errores_comunes": [
+      {
+        "error": "Usar 'I'm going to talk about'",
+        "correccion": "Today, I will discuss",
+        "explicacion_para_alumno": "La forma correcta es más formal y adecuada para presentaciones."
+      }
+    ],
+    "criterio_para_subir_de_nivel": {
+      "palabras_minimas_usadas": 4,
+      "frases_completas_sin_ayuda": 3,
+      "sesiones_minimas_en_nivel": 2,
+      "porcentaje_errores_maximo": 30
+    }
+  },
+  {
+    "nivel": 23,
+    "nombre": "Negociaciones Efectivas",
+    "idioma": "inglés",
+    "cefr": "C1",
+    "bloque": "Dominio Profesional (Avanzado)",
+    "descripcion": "El alumno aprenderá a negociar condiciones y cerrar acuerdos de manera efectiva.",
+    "lo_que_ya_sabe": [
+      "Estrategias básicas de negociación",
+      "Términos comunes en negociaciones"
+    ],
+    "vocabulario_funcional": [
+      "What are your priorities?",
+      "I can offer...",
+      "Let's find a compromise",
+      "How about we...",
+      "I understand your concerns..."
+    ],
+    "enfoque_conversacional": {
+      "objetivo_comunicativo": "Negociar acuerdos y resolver conflictos en un contexto profesional.",
+      "explicacion_amigable": "Negociar puede parecer complicado, pero tiene mucho que ver con la comunicación efectiva y la empatía. Te enseñaremos a expresar tus necesidades y a escuchar las de la otra parte para encontrar soluciones que beneficien a ambos. Recuerda, la clave está en el compromiso."
+    },
+    "ejercicios": [
+      {
+        "orden": 1,
+        "tipo": "roleplay_inicio",
+        "instruccion": "Inicia una negociación sobre un contrato con un cliente."
+      },
+      {
+        "orden": 2,
+        "tipo": "roleplay_desarrollo",
+        "instruccion": "El cliente expresa sus expectativas. Responde y ofrece una propuesta."
+      },
+      {
+        "orden": 3,
+        "tipo": "roleplay_pregunta",
+        "instruccion": "Haz preguntas para clarificar las necesidades del cliente."
+      },
+      {
+        "orden": 4,
+        "tipo": "roleplay_conflicto",
+        "instruccion": "El cliente no está satisfecho con tu oferta. Busca un compromiso."
+      },
+      {
+        "orden": 5,
+        "tipo": "roleplay_cierre",
+        "instruccion": "Cierra la negociación confirmando los términos acordados."
+      }
+    ],
+    "errores_comunes": [
+      {
+        "error": "Decir 'I want to negotiate'",
+        "correccion": "I would like to discuss",
+        "explicacion_para_alumno": "La forma correcta es más cortés y profesional."
+      }
+    ],
+    "criterio_para_subir_de_nivel": {
+      "palabras_minimas_usadas": 4,
+      "frases_completas_sin_ayuda": 3,
+      "sesiones_minimas_en_nivel": 2,
+      "porcentaje_errores_maximo": 30
+    }
+  },
+  {
+    "nivel": 24,
+    "nombre": "Resolución de Conflictos",
+    "idioma": "inglés",
+    "cefr": "C1",
+    "bloque": "Dominio Profesional (Avanzado)",
+    "descripcion": "El alumno aprenderá técnicas para manejar y resolver conflictos en el trabajo.",
+    "lo_que_ya_sabe": [
+      "Identificación de problemas",
+      "Comunicación asertiva"
+    ],
+    "vocabulario_funcional": [
+      "Let's address this issue",
+      "I see your point",
+      "We need to find a solution",
+      "How can we move forward?",
+      "I appreciate your feedback..."
+    ],
+    "enfoque_conversacional": {
+      "objetivo_comunicativo": "Manejar conflictos de manera constructiva y profesional.",
+      "explicacion_amigable": "Resolver conflictos es esencial en cualquier entorno laboral. Hablaremos sobre cómo comunicarte asertivamente y escuchar activamente a la otra parte. La empatía es clave; entender el punto de vista de la otra persona puede llevar a soluciones más efectivas."
+    },
+    "ejercicios": [
+      {
+        "orden": 1,
+        "tipo": "roleplay_inicio",
+        "instruccion": "Inicia una conversación con un colega sobre un conflicto reciente."
+      },
+      {
+        "orden": 2,
+        "tipo": "roleplay_desarrollo",
+        "instruccion": "Explica tu perspectiva de manera clara y calmada."
+      },
+      {
+        "orden": 3,
+        "tipo": "roleplay_pregunta",
+        "instruccion": "Pregunta cómo se siente la otra persona acerca de la situación."
+      },
+      {
+        "orden": 4,
+        "tipo": "roleplay_conflicto",
+        "instruccion": "La otra persona responde de manera defensiva. Mantén la calma y busca una solución."
+      },
+      {
+        "orden": 5,
+        "tipo": "roleplay_cierre",
+        "instruccion": "Concluye la conversación agradeciendo su tiempo y proponiendo un seguimiento."
+      }
+    ],
+    "errores_comunes": [
+      {
+        "error": "Decir 'Let's ignore this problem'",
+        "correccion": "Let's address this issue",
+        "explicacion_para_alumno": "Es crucial abordar los problemas en vez de ignorarlos."
+      }
+    ],
+    "criterio_para_subir_de_nivel": {
+      "palabras_minimas_usadas": 4,
+      "frases_completas_sin_ayuda": 3,
+      "sesiones_minimas_en_nivel": 2,
+      "porcentaje_errores_maximo": 30
+    }
+  },
+  {
+    "nivel": 25,
+    "nombre": "Gestión del Tiempo y Productividad",
+    "idioma": "inglés",
+    "cefr": "C1",
+    "bloque": "Dominio Profesional (Avanzado)",
+    "descripcion": "El alumno aprenderá estrategias para mejorar su gestión del tiempo y aumentar la productividad.",
+    "lo_que_ya_sabe": [
+      "Técnicas básicas de organización",
+      "Uso de herramientas digitales"
+    ],
+    "vocabulario_funcional": [
+      "I prioritize tasks by...",
+      "Let's set some deadlines",
+      "We need to stay on track",
+      "How can we optimize our workflow?",
+      "Time management is crucial..."
+    ],
+    "enfoque_conversacional": {
+      "objetivo_comunicativo": "Discutir y aplicar técnicas de gestión del tiempo en el trabajo.",
+      "explicacion_amigable": "La gestión del tiempo es fundamental para ser productivo. En esta lección, exploraremos diferentes estrategias para organizar tu día y establecer prioridades. Recuerda, la clave está en encontrar un equilibrio entre trabajo y descanso para mantenerte motivado y eficiente."
+    },
+    "ejercicios": [
+      {
+        "orden": 1,
+        "tipo": "roleplay_inicio",
+        "instruccion": "Inicia una conversación con tu supervisor sobre las prioridades del proyecto."
+      },
+      {
+        "orden": 2,
+        "tipo": "roleplay_desarrollo",
+        "instruccion": "Explica cómo piensas organizar el trabajo para cumplir con los plazos."
+      },
+      {
+        "orden": 3,
+        "tipo": "roleplay_pregunta",
+        "instruccion": "Pregunta si hay alguna tarea que debería tener mayor prioridad."
+      },
+      {
+        "orden": 4,
+        "tipo": "roleplay_conflicto",
+        "instruccion": "Tu supervisor plantea que hay demasiadas tareas. Discute cómo manejar la carga de trabajo."
+      },
+      {
+        "orden": 5,
+        "tipo": "roleplay_cierre",
+        "instruccion": "Finaliza acordando un plan de acción y agradeciendo la conversación."
+      }
+    ],
+    "errores_comunes": [
+      {
+        "error": "Decir 'I manage time good'",
+        "correccion": "I manage my time well",
+        "explicacion_para_alumno": "La forma correcta utiliza el adverbio 'well' para describir cómo se realiza la acción."
+      }
+    ],
+    "criterio_para_subir_de_nivel": {
+      "palabras_minimas_usadas": 4,
+      "frases_completas_sin_ayuda": 3,
+      "sesiones_minimas_en_nivel": 2,
+      "porcentaje_errores_maximo": 30
+    }
+  },
+  {
+    "nivel": 26,
+    "nombre": "Persuasion in Depth",
+    "idioma": "inglés",
+    "cefr": "C2",
+    "bloque": "Maestría y Matices (Experto)",
+    "descripcion": "En este nivel, el alumno dominará técnicas avanzadas de persuasión en conversaciones complejas.",
+    "lo_que_ya_sabe": [
+      "Estructuras gramaticales complejas",
+      "Vocabulario avanzado sobre argumentación"
+    ],
+    "vocabulario_funcional": [
+      "to sway someone's opinion",
+      "to back up a claim",
+      "to appeal to emotions",
+      "to counter an argument",
+      "to establish credibility"
+    ],
+    "enfoque_conversacional": {
+      "objetivo_comunicativo": "Convencer a un panel de jueces en una presentación.",
+      "explicacion_amigable": "Hoy nos adentraremos en el arte de la persuasión. ¿Sabías que la forma en que estructuras tus argumentos puede ser más importante que el contenido mismo? Vamos a desglosar cómo usar 'to appeal to emotions' y 'to back up a claim' para hacer que tus puntos sean irresistibles. Recuerda, el secreto está en conectar con tu audiencia primero."
+    },
+    "ejercicios": [
+      {
+        "orden": 1,
+        "tipo": "roleplay_inicio",
+        "instruccion": "Te encuentras en una sala de reuniones y debes iniciar una presentación sobre un nuevo producto."
+      },
+      {
+        "orden": 2,
+        "tipo": "roleplay_desarrollo",
+        "instruccion": "A medida que presentas, un miembro del panel plantea dudas sobre la viabilidad del producto."
+      },
+      {
+        "orden": 3,
+        "tipo": "roleplay_pregunta",
+        "instruccion": "Responde a la pregunta del miembro del panel utilizando datos y ejemplos."
+      },
+      {
+        "orden": 4,
+        "tipo": "roleplay_conflicto",
+        "instruccion": "Un miembro del panel se opone firmemente a tu argumento; debes contrarrestar su opinión."
+      },
+      {
+        "orden": 5,
+        "tipo": "roleplay_cierre",
+        "instruccion": "Cierra tu presentación resumiendo los puntos clave y agradeciendo al panel por su tiempo."
+      }
+    ],
+    "errores_comunes": [
+      {
+        "error": "Confundir 'affect' con 'effect'",
+        "correccion": "'affect' es un verbo, 'effect' es un sustantivo",
+        "explicacion_para_alumno": "Recuerda que 'affect' indica una acción, mientras que 'effect' es el resultado de esa acción."
+      }
+    ],
+    "criterio_para_subir_de_nivel": {
+      "palabras_minimas_usadas": 4,
+      "frases_completas_sin_ayuda": 3,
+      "sesiones_minimas_en_nivel": 2,
+      "porcentaje_errores_maximo": 30
+    }
+  },
+  {
+    "nivel": 27,
+    "nombre": "Cultural Nuances",
+    "idioma": "inglés",
+    "cefr": "C2",
+    "bloque": "Maestría y Matices (Experto)",
+    "descripcion": "El alumno explorará matices culturales en la comunicación en inglés.",
+    "lo_que_ya_sabe": [
+      "Expresiones idiomáticas",
+      "Referencias culturales en inglés"
+    ],
+    "vocabulario_funcional": [
+      "to break the ice",
+      "to read the room",
+      "to know the ropes",
+      "to play it by ear",
+      "to hit the nail on the head"
+    ],
+    "enfoque_conversacional": {
+      "objetivo_comunicativo": "Interactuar con hablantes nativos en contextos culturales específicos.",
+      "explicacion_amigable": "Hoy nos enfocaremos en cómo las expresiones y referencias culturales pueden cambiar el significado de nuestras palabras. Por ejemplo, 'to break the ice' no significa romper nada, ¡sino iniciar una conversación! Vamos a explorar estas expresiones y practicar cómo usarlas correctamente en diferentes situaciones."
+    },
+    "ejercicios": [
+      {
+        "orden": 1,
+        "tipo": "roleplay_inicio",
+        "instruccion": "Te encuentras en una fiesta donde no conoces a nadie y necesitas iniciar una conversación."
+      },
+      {
+        "orden": 2,
+        "tipo": "roleplay_desarrollo",
+        "instruccion": "Alguien menciona un evento cultural; tú debes participar y compartir tu opinión."
+      },
+      {
+        "orden": 3,
+        "tipo": "roleplay_pregunta",
+        "instruccion": "Pregúntales a otros sobre sus tradiciones culturales."
+      },
+      {
+        "orden": 4,
+        "tipo": "roleplay_conflicto",
+        "instruccion": "Surge un malentendido cultural que debes aclarar."
+      },
+      {
+        "orden": 5,
+        "tipo": "roleplay_cierre",
+        "instruccion": "Despídete, agradeciendo a todos por la conversación y expresando tu interés en sus culturas."
+      }
+    ],
+    "errores_comunes": [
+      {
+        "error": "No entender el uso de 'to read the room'",
+        "correccion": "'to read the room' significa entender la atmósfera de un lugar",
+        "explicacion_para_alumno": "Es esencial entender cómo se siente la gente en una conversación para adaptarte a ella."
+      }
+    ],
+    "criterio_para_subir_de_nivel": {
+      "palabras_minimas_usadas": 4,
+      "frases_completas_sin_ayuda": 3,
+      "sesiones_minimas_en_nivel": 2,
+      "porcentaje_errores_maximo": 30
+    }
+  },
+  {
+    "nivel": 28,
+    "nombre": "Emotional Intelligence in Dialogue",
+    "idioma": "inglés",
+    "cefr": "C2",
+    "bloque": "Maestría y Matices (Experto)",
+    "descripcion": "Los estudiantes desarrollarán habilidades de inteligencia emocional en diálogos complejos.",
+    "lo_que_ya_sabe": [
+      "Técnicas de escucha activa",
+      "Expresión de emociones en inglés"
+    ],
+    "vocabulario_funcional": [
+      "to empathize",
+      "to validate feelings",
+      "to express concern",
+      "to diffuse tension",
+      "to build rapport"
+    ],
+    "enfoque_conversacional": {
+      "objetivo_comunicativo": "Manejar conversaciones difíciles con empatía y comprensión.",
+      "explicacion_amigable": "La inteligencia emocional es clave para una comunicación efectiva. Al aprender a 'validate feelings', no solo estás escuchando, sino mostrando que te importa. Practicaremos cómo 'diffuse tension' en un diálogo complicado usando las palabras adecuadas y el tono correcto."
+    },
+    "ejercicios": [
+      {
+        "orden": 1,
+        "tipo": "roleplay_inicio",
+        "instruccion": "Inicias una conversación con un amigo que está pasando por un momento difícil."
+      },
+      {
+        "orden": 2,
+        "tipo": "roleplay_desarrollo",
+        "instruccion": "Tu amigo expresa su frustración; debes demostrar empatía."
+      },
+      {
+        "orden": 3,
+        "tipo": "roleplay_pregunta",
+        "instruccion": "Haz preguntas para entender mejor sus sentimientos."
+      },
+      {
+        "orden": 4,
+        "tipo": "roleplay_conflicto",
+        "instruccion": "Un desacuerdo surge; trabaja para calmar la situación."
+      },
+      {
+        "orden": 5,
+        "tipo": "roleplay_cierre",
+        "instruccion": "Cierra la conversación reafirmando tu apoyo y disposición para ayudar."
+      }
+    ],
+    "errores_comunes": [
+      {
+        "error": "Decir 'I feel like' sin un contexto claro",
+        "correccion": "'I feel like' debe ser seguido de una opinión o sentimiento específico",
+        "explicacion_para_alumno": "Es importante ser claro sobre tus sentimientos para que otros te entiendan."
+      }
+    ],
+    "criterio_para_subir_de_nivel": {
+      "palabras_minimas_usadas": 4,
+      "frases_completas_sin_ayuda": 3,
+      "sesiones_minimas_en_nivel": 2,
+      "porcentaje_errores_maximo": 30
+    }
+  },
+  {
+    "nivel": 29,
+    "nombre": "Negotiation Tactics",
+    "idioma": "inglés",
+    "cefr": "C2",
+    "bloque": "Maestría y Matices (Experto)",
+    "descripcion": "El alumno se especializará en tácticas de negociación en inglés.",
+    "lo_que_ya_sabe": [
+      "Estrategias de negociación",
+      "Vocabulario técnico relacionado"
+    ],
+    "vocabulario_funcional": [
+      "to reach an agreement",
+      "to make concessions",
+      "to leverage strengths",
+      "to outline terms",
+      "to close a deal"
+    ],
+    "enfoque_conversacional": {
+      "objetivo_comunicativo": "Negociar con éxito un contrato o acuerdo importante.",
+      "explicacion_amigable": "La negociación es un arte que requiere no solo habilidad verbal, sino también una comprensión profunda de las necesidades de ambas partes. Usaremos 'to leverage strengths' y 'to make concessions' para encontrar una solución que beneficie a todos. Recuerda, una buena negociación termina con un apretón de manos y una sonrisa."
+    },
+    "ejercicios": [
+      {
+        "orden": 1,
+        "tipo": "roleplay_inicio",
+        "instruccion": "Te preparas para una reunión de negociación con un cliente."
+      },
+      {
+        "orden": 2,
+        "tipo": "roleplay_desarrollo",
+        "instruccion": "Presentas tu propuesta y escuchas la reacción del cliente."
+      },
+      {
+        "orden": 3,
+        "tipo": "roleplay_pregunta",
+        "instruccion": "Haz preguntas para clarificar las expectativas del cliente."
+      },
+      {
+        "orden": 4,
+        "tipo": "roleplay_conflicto",
+        "instruccion": "Surgen desacuerdos sobre los términos; intenta negociar un compromiso."
+      },
+      {
+        "orden": 5,
+        "tipo": "roleplay_cierre",
+        "instruccion": "Cierra la reunión confirmando un acuerdo y los próximos pasos."
+      }
+    ],
+    "errores_comunes": [
+      {
+        "error": "No usar 'to reach an agreement' correctamente",
+        "correccion": "'to reach an agreement' implica llegar a un consenso",
+        "explicacion_para_alumno": "Recuerda que la negociación busca un resultado positivo para ambas partes."
+      }
+    ],
+    "criterio_para_subir_de_nivel": {
+      "palabras_minimas_usadas": 4,
+      "frases_completas_sin_ayuda": 3,
+      "sesiones_minimas_en_nivel": 2,
+      "porcentaje_errores_maximo": 30
+    }
+  },
+  {
+    "nivel": 30,
+    "nombre": "Crisis Management Communication",
+    "idioma": "inglés",
+    "cefr": "C2",
+    "bloque": "Maestría y Matices (Experto)",
+    "descripcion": "Los alumnos aprenderán a comunicarse efectivamente en situaciones de crisis.",
+    "lo_que_ya_sabe": [
+      "Gestión de conflictos",
+      "Técnicas de comunicación efectiva"
+    ],
+    "vocabulario_funcional": [
+      "to assess the situation",
+      "to communicate clearly",
+      "to provide reassurance",
+      "to take responsibility",
+      "to implement a plan"
+    ],
+    "enfoque_conversacional": {
+      "objetivo_comunicativo": "Manejar la comunicación durante una crisis en el entorno laboral.",
+      "explicacion_amigable": "La comunicación en crisis requiere claridad y calma. Al usar 'to assess the situation' y 'to provide reassurance', puedes controlar el mensaje y mantener la confianza. Practicaremos cómo manejar estos diálogos críticos con confianza y profesionalismo."
+    },
+    "ejercicios": [
+      {
+        "orden": 1,
+        "tipo": "roleplay_inicio",
+        "instruccion": "Te informan sobre una crisis en la empresa y debes convocar a una reunión de emergencia."
+      },
+      {
+        "orden": 2,
+        "tipo": "roleplay_desarrollo",
+        "instruccion": "Explicas la situación actual a tu equipo."
+      },
+      {
+        "orden": 3,
+        "tipo": "roleplay_pregunta",
+        "instruccion": "Respondes a las preguntas del equipo mientras intentas mantener la calma."
+      },
+      {
+        "orden": 4,
+        "tipo": "roleplay_conflicto",
+        "instruccion": "Un miembro del equipo expresa su preocupación; debes tratar de calmarlo."
+      },
+      {
+        "orden": 5,
+        "tipo": "roleplay_cierre",
+        "instruccion": "Cierra la reunión destacando los siguientes pasos y ofreciendo tu apoyo."
+      }
+    ],
+    "errores_comunes": [
+      {
+        "error": "Decir 'I will fix it' sin un plan claro",
+        "correccion": "'I will implement a plan' es más profesional",
+        "explicacion_para_alumno": "Es vital dar confianza mostrando que tienes un enfoque estructurado."
+      }
+    ],
+    "criterio_para_subir_de_nivel": {
+      "palabras_minimas_usadas": 4,
+      "frases_completas_sin_ayuda": 3,
+      "sesiones_minimas_en_nivel": 2,
+      "porcentaje_errores_maximo": 30
+    }
+  }
+]

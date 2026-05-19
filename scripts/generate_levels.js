@@ -18,36 +18,36 @@ config();
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUTPUT_DIR  = join(__dirname, '../levels/english');
-const OUTPUT_FILE = join(OUTPUT_DIR, 'levels_1_100.json');
+const OUTPUT_FILE = join(OUTPUT_DIR, 'levels_1_30.json');
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-// ─── Configuración de lotes de 5 niveles (más pequeños y estables) ─────────────
+// ─── Currículo Maestro de 30 Niveles (Marco Común Europeo) ─────────────
 const BATCHES = [];
-for (let i = 1; i <= 100; i += 5) {
+for (let i = 1; i <= 30; i += 5) {
   const from = i;
-  const to = Math.min(i + 4, 100);
+  const to = Math.min(i + 4, 30);
   let cefr = 'A1';
-  let bloque = 'supervivencia';
+  let bloque = 'Supervivencia Inicial';
   
-  if (from >= 1 && to <= 15) {
+  if (from >= 1 && to <= 5) {
     cefr = 'A1';
-    bloque = 'supervivencia';
-  } else if (from >= 16 && to <= 30) {
-    cefr = 'A1-A2';
-    bloque = 'vida_cotidiana';
-  } else if (from >= 31 && to <= 50) {
-    cefr = 'A2-B1';
-    bloque = 'comunicacion_real';
-  } else if (from >= 51 && to <= 70) {
-    cefr = 'B1-B2';
-    bloque = 'fluidez';
-  } else if (from >= 71 && to <= 85) {
-    cefr = 'B2-C1';
-    bloque = 'precision';
+    bloque = 'Supervivencia (Principiante)';
+  } else if (from >= 6 && to <= 10) {
+    cefr = 'A2';
+    bloque = 'Vida Cotidiana (Básico)';
+  } else if (from >= 11 && to <= 15) {
+    cefr = 'B1';
+    bloque = 'Comunicación Fluida (Intermedio)';
+  } else if (from >= 16 && to <= 20) {
+    cefr = 'B2';
+    bloque = 'Expresión Espontánea (Intermedio Alto)';
+  } else if (from >= 21 && to <= 25) {
+    cefr = 'C1';
+    bloque = 'Dominio Profesional (Avanzado)';
   } else {
-    cefr = 'C1-C2';
-    bloque = 'maestria';
+    cefr = 'C2';
+    bloque = 'Maestría y Matices (Experto)';
   }
   
   BATCHES.push({ from, to, cefr, bloque });
@@ -74,15 +74,15 @@ Cada objeto de nivel dentro del array "levels" debe tener EXACTAMENTE esta estru
   "lo_que_ya_sabe": ["<conocimiento previo 1>", "<conocimiento previo 2>"],
   "vocabulario_funcional": ["<frase_o_palabra1>", "<frase_o_palabra2>", "<frase_o_palabra3>", "<frase_o_palabra4>", "<frase_o_palabra5>"],
   "enfoque_conversacional": {
-    "objetivo_comunicativo": "<Qué logrará hacer el alumno en la vida real, ej. Pedir un café, Ligar en un bar>",
-    "explicacion_amigable": "<explicación brevísima y amigable de la gramática/vocabulario necesario>"
+    "objetivo_comunicativo": "<Qué logrará hacer el alumno en la vida real. Ej: Pedir un café, Pasar aduana>",
+    "explicacion_amigable": "<Lección teórica profunda pero amigable (Mr. Ranedeer Style). Explica la gramática, el porqué, y cómo usar las frases paso a paso.>"
   },
   "ejercicios": [
-    {"orden": 1, "tipo": "roleplay_inicio", "instruccion": "<Micro-escenario inmersivo 1. Ej: 'Imagina que acabas de entrar a mi cafetería en Londres. Salúdame y pídeme el menú.'>"},
-    {"orden": 2, "tipo": "roleplay_desarrollo", "instruccion": "<Micro-escenario 2. Ej: 'Dime que no tomas lácteos y pregúntame si tengo leche de avena.'>"},
-    {"orden": 3, "tipo": "roleplay_pregunta", "instruccion": "<Micro-escenario 3. Ej: 'Pregúntame cuánto cuesta todo.'>"},
-    {"orden": 4, "tipo": "roleplay_conflicto", "instruccion": "<Micro-escenario 4. Ej: 'Te digo que tu tarjeta fue rechazada. Pregúntame si puedes pagar en efectivo.'>"},
-    {"orden": 5, "tipo": "roleplay_cierre", "instruccion": "<Micro-escenario 5. Ej: 'Despídete cordialmente y deséame un buen día.'>"}
+    {"orden": 1, "tipo": "roleplay_inicio", "instruccion": "<Micro-escenario inmersivo 1>"},
+    {"orden": 2, "tipo": "roleplay_desarrollo", "instruccion": "<Micro-escenario 2>"},
+    {"orden": 3, "tipo": "roleplay_pregunta", "instruccion": "<Micro-escenario 3>"},
+    {"orden": 4, "tipo": "roleplay_conflicto", "instruccion": "<Micro-escenario 4 (Conflicto/Problema a resolver)>"},
+    {"orden": 5, "tipo": "roleplay_cierre", "instruccion": "<Micro-escenario 5 (Cierre y despedida)>"}
   ],
   "errores_comunes": [
     {"error": "<error típico hispanohablante>", "correccion": "<versión correcta>", "explicacion_para_alumno": "<por qué>"}
@@ -95,12 +95,11 @@ Cada objeto de nivel dentro del array "levels" debe tener EXACTAMENTE esta estru
   }
 }
 
-Reglas IMPORTANTES (MODELO PRAKTIKA - TASK-BASED LEARNING):
-- NUNCA uses instrucciones escolares como "Completa la oración", "Di tu nombre", o "Imagina una tarjeta".
-- TODOS los ejercicios deben ser micro-escenarios inmersivos encadenados (Roleplays reales y emocionantes de la vida cotidiana).
-- El tutor (IA) y el alumno deben jugar un rol (ej. Mesero y Cliente, Entrevistador y Candidato, Dos desconocidos en un tren, Agente de aduanas).
-- Cada nivel construye un hilo conversacional coherente de principio a fin (Ejercicio 1 empieza la interacción, Ejercicio 5 la despide).
-- Vocabulario enfocado en 'lexical chunks' (frases funcionales útiles) en lugar de palabras aisladas.
+Reglas IMPORTANTES (MODELO LANGUAGEGPT + MR. RANEDEER + PRAKTIKA):
+- El campo 'explicacion_amigable' será la CLASE MAESTRA del tutor. Escríbelo como si fueras el mejor profesor de idiomas de Harvard. Enséñale la lógica de la gramática y los trucos para recordar el vocabulario.
+- TODOS los ejercicios deben ser micro-escenarios inmersivos encadenados.
+- Cada nivel construye un hilo conversacional coherente de principio a fin.
+- Vocabulario enfocado en 'lexical chunks'.
 - Devuelve SOLO el JSON, sin formato markdown (\`\`\`json ... \`\`\`), solo el objeto de respuesta directo.`;
 }
 
@@ -188,9 +187,9 @@ async function main() {
   allLevels.sort((a, b) => a.nivel - b.nivel);
 
   // Validación final
-  console.log(`\n📊 Total de fichas generadas: ${allLevels.length}/100`);
+  console.log(`\n📊 Total de fichas generadas: ${allLevels.length}/30`);
   const missing = [];
-  for (let i = 1; i <= 100; i++) {
+  for (let i = 1; i <= 30; i++) {
     if (!allLevels.find(l => l.nivel === i)) missing.push(i);
   }
   if (missing.length) {
