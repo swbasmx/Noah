@@ -378,6 +378,28 @@ export function registerHandlers(bot, openai) {
 }
 
 /**
+ * Realiza un editMessageText seguro en Telegram. Si la parse_mode es Markdown y falla
+ * debido a errores de formato (entidades mal cerradas), hace un fallback automático
+ * a texto plano para evitar que el bot se quede congelado ("escribiendo...").
+ */
+async function safeEditMessageText(ctx, messageId, text, options = { parse_mode: 'Markdown' }) {
+  try {
+    await ctx.telegram.editMessageText(ctx.chat.id, messageId, null, text, options);
+  } catch (err) {
+    if (options && options.parse_mode === 'Markdown' && err.message.includes("can't parse entities")) {
+      console.warn(`⚠️ [safeEditMessageText] Fallback a texto plano para el mensaje ${messageId} debido a error de Markdown:`, err.message);
+      try {
+        await ctx.telegram.editMessageText(ctx.chat.id, messageId, null, text);
+      } catch (fallbackErr) {
+        console.error('❌ [safeEditMessageText] Falló también el fallback a texto plano:', fallbackErr.message);
+      }
+    } else {
+      console.error('❌ [safeEditMessageText] Error no gestionable:', err.message);
+    }
+  }
+}
+
+/**
  * Procesa la conversación del alumno, realiza la llamada a GPT con contexto de ChromaDB,
  * guarda los errores y el historial en bases de datos vectoriales y SQL, y gestiona subidas de nivel.
  */
@@ -394,7 +416,8 @@ async function processTextChat(ctx, user, userMsg, openai, statusMsgId = null) {
     let sentMsg;
 
     if (statusMsgId) {
-      sentMsg = await ctx.telegram.editMessageText(ctx.chat.id, statusMsgId, null, messageToSend, { parse_mode: 'Markdown' });
+      await safeEditMessageText(ctx, statusMsgId, messageToSend, { parse_mode: 'Markdown' });
+      sentMsg = { message_id: statusMsgId };
     } else {
       sentMsg = await ctx.reply(messageToSend, { parse_mode: 'Markdown' });
     }
@@ -424,13 +447,7 @@ async function processTextChat(ctx, user, userMsg, openai, statusMsgId = null) {
       // Actualizar el mensaje de Telegram periódicamente (cada 800ms) para evitar limites de Telegram
       const trimmedText = visibleText.trim();
       if (trimmedText && trimmedText !== lastSentText && Date.now() - lastEditTime > 800) {
-        await ctx.telegram.editMessageText(
-          ctx.chat.id,
-          sentMsg.message_id,
-          null,
-          prefix + trimmedText,
-          { parse_mode: 'Markdown' }
-        ).catch(() => {});
+        await safeEditMessageText(ctx, sentMsg.message_id, prefix + trimmedText, { parse_mode: 'Markdown' });
         
         lastSentText = trimmedText;
         lastEditTime = Date.now();
@@ -440,13 +457,7 @@ async function processTextChat(ctx, user, userMsg, openai, statusMsgId = null) {
     // 3. Renderizar el mensaje final completo
     const { visibleText: finalVisible, evaluation } = parseTutorResponse(rawResponse);
     if (prefix + finalVisible !== lastSentText) {
-      await ctx.telegram.editMessageText(
-        ctx.chat.id,
-        sentMsg.message_id,
-        null,
-        prefix + finalVisible,
-        { parse_mode: 'Markdown' }
-      ).catch(() => {});
+      await safeEditMessageText(ctx, sentMsg.message_id, prefix + finalVisible, { parse_mode: 'Markdown' });
     }
 
     pushToHistory(userId, 'assistant', rawResponse);
