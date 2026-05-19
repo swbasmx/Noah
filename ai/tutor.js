@@ -82,11 +82,11 @@ LO QUE EL ALUMNO YA SABE
 ${levelCard.lo_que_ya_sabe.map(s => `- ${s}`).join('\n')}
 
 ═══════════════════════════════
-OBJETIVO DE ESTA SESIÓN
+OBJETIVO DE ESTA SESIÓN (APRENDIZAJE ADAPTATIVO)
 ═══════════════════════════════
-Vocabulario nuevo a introducir: ${levelCard.vocabulario_nuevo.join(', ')}
-Estructura gramatical del día: ${levelCard.estructura_gramatical.patron}
-Explicación de la gramática: ${levelCard.estructura_gramatical.explicacion}
+Objetivo Comunicativo / Descripción del nivel: ${levelCard.enfoque_conversacional ? levelCard.enfoque_conversacional.objetivo_comunicativo : levelCard.descripcion}
+Vocabulario / Frases clave a introducir: ${(levelCard.vocabulario_funcional || levelCard.vocabulario_nuevo || []).join(', ')}
+Enfoque gramatical / Explicación amigable: ${levelCard.enfoque_conversacional ? levelCard.enfoque_conversacional.explicacion_amigable : (levelCard.estructura_gramatical ? levelCard.estructura_gramatical.explicacion : '')}
 
 ═══════════════════════════════
 ERRORES FRECUENTES DE ESTE ALUMNO (Contexto semántico de ChromaDB)

@@ -72,23 +72,20 @@ Cada objeto de nivel dentro del array "levels" debe tener EXACTAMENTE esta estru
   "bloque": "${bloqueHint}",
   "descripcion": "<una oración con el objetivo del nivel>",
   "lo_que_ya_sabe": ["<conocimiento previo 1>", "<conocimiento previo 2>"],
-  "vocabulario_nuevo": ["<palabra1>", "<palabra2>", "<palabra3>", "<palabra4>", "<palabra5>", "<palabra6>"],
-  "estructura_gramatical": {
-    "patron": "<patrón gramatical en texto simple>",
-    "ejemplo_correcto": "<oración correcta>",
-    "ejemplo_incorrecto": "<error típico>",
-    "explicacion": "<explicación en español para el alumno>"
+  "vocabulario_funcional": ["<frase_o_palabra1>", "<frase_o_palabra2>", "<frase_o_palabra3>", "<frase_o_palabra4>", "<frase_o_palabra5>"],
+  "enfoque_conversacional": {
+    "objetivo_comunicativo": "<Qué logrará hacer el alumno en la vida real, ej. Pedir un café, Ligar en un bar>",
+    "explicacion_amigable": "<explicación brevísima y amigable de la gramática/vocabulario necesario>"
   },
   "ejercicios": [
-    {"orden": 1, "tipo": "produccion_libre",     "instruccion": "<instrucción para el tutor>"},
-    {"orden": 2, "tipo": "vocabulario_en_contexto","instruccion": "<instrucción para el tutor>"},
-    {"orden": 3, "tipo": "pregunta_directa",      "instruccion": "<instrucción para el tutor>"},
-    {"orden": 4, "tipo": "correccion_guiada",     "instruccion": "<instrucción para el tutor>"},
-    {"orden": 5, "tipo": "produccion_extendida",  "instruccion": "<instrucción para el tutor>"}
+    {"orden": 1, "tipo": "roleplay_inicio", "instruccion": "<Micro-escenario inmersivo 1. Ej: 'Imagina que acabas de entrar a mi cafetería en Londres. Salúdame y pídeme el menú.'>"},
+    {"orden": 2, "tipo": "roleplay_desarrollo", "instruccion": "<Micro-escenario 2. Ej: 'Dime que no tomas lácteos y pregúntame si tengo leche de avena.'>"},
+    {"orden": 3, "tipo": "roleplay_pregunta", "instruccion": "<Micro-escenario 3. Ej: 'Pregúntame cuánto cuesta todo.'>"},
+    {"orden": 4, "tipo": "roleplay_conflicto", "instruccion": "<Micro-escenario 4. Ej: 'Te digo que tu tarjeta fue rechazada. Pregúntame si puedes pagar en efectivo.'>"},
+    {"orden": 5, "tipo": "roleplay_cierre", "instruccion": "<Micro-escenario 5. Ej: 'Despídete cordialmente y deséame un buen día.'>"}
   ],
   "errores_comunes": [
-    {"error": "<error típico>", "correccion": "<versión correcta>", "explicacion_para_alumno": "<por qué>"},
-    {"error": "<error típico>", "correccion": "<versión correcta>", "explicacion_para_alumno": "<por qué>"}
+    {"error": "<error típico hispanohablante>", "correccion": "<versión correcta>", "explicacion_para_alumno": "<por qué>"}
   ],
   "criterio_para_subir_de_nivel": {
     "palabras_minimas_usadas": 4,
@@ -98,10 +95,12 @@ Cada objeto de nivel dentro del array "levels" debe tener EXACTAMENTE esta estru
   }
 }
 
-Reglas IMPORTANTES:
-- Cada nivel construye SOBRE el anterior — no repitas vocabulario ya introducido.
-- Los ejercicios son CONVERSACIONALES, nunca listas memorizadas.
-- Incluye errores típicos de hispanohablantes en cada nivel.
+Reglas IMPORTANTES (MODELO PRAKTIKA - TASK-BASED LEARNING):
+- NUNCA uses instrucciones escolares como "Completa la oración", "Di tu nombre", o "Imagina una tarjeta".
+- TODOS los ejercicios deben ser micro-escenarios inmersivos encadenados (Roleplays reales y emocionantes de la vida cotidiana).
+- El tutor (IA) y el alumno deben jugar un rol (ej. Mesero y Cliente, Entrevistador y Candidato, Dos desconocidos en un tren, Agente de aduanas).
+- Cada nivel construye un hilo conversacional coherente de principio a fin (Ejercicio 1 empieza la interacción, Ejercicio 5 la despide).
+- Vocabulario enfocado en 'lexical chunks' (frases funcionales útiles) en lugar de palabras aisladas.
 - Devuelve SOLO el JSON, sin formato markdown (\`\`\`json ... \`\`\`), solo el objeto de respuesta directo.`;
 }
 

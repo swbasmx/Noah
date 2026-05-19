@@ -43,7 +43,7 @@ async function main() {
   const metadatas = [];
 
   for (const level of levels) {
-    const docText = `Nivel ${level.nivel} - ${level.nombre}. CEFR: ${level.cefr}. Bloque: ${level.bloque}. Descripción: ${level.descripcion}. Vocabulario nuevo: ${level.vocabulario_nuevo.join(', ')}. Estructura Gramatical: ${level.estructura_gramatical.patron}. Ejemplos: Correcto: "${level.estructura_gramatical.ejemplo_correcto}" | Incorrecto: "${level.estructura_gramatical.ejemplo_incorrecto}". Explicación: ${level.estructura_gramatical.explicacion}`;
+    const docText = `Nivel ${level.nivel} - ${level.nombre}. CEFR: ${level.cefr}. Bloque: ${level.bloque}. Descripción: ${level.descripcion}. Objetivo Comunicativo: ${level.enfoque_conversacional.objetivo_comunicativo}. Explicación: ${level.enfoque_conversacional.explicacion_amigable}. Vocabulario funcional: ${level.vocabulario_funcional.join(', ')}`;
 
     ids.push(`nivel_${level.nivel}_ingles`);
     documents.push(docText);
